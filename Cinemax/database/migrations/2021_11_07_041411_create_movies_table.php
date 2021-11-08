@@ -25,6 +25,8 @@ class CreateMoviesTable extends Migration
             $table->integer('duration');
             $table->string('cast');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
+            $table->primary('id');
         });
     }
 

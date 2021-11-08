@@ -20,6 +20,8 @@ class CreateTheatersTable extends Migration
             $table->string('Address');
             $table->integer('no_of_seats');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
+            $table->primary('id');
         });
     }
 

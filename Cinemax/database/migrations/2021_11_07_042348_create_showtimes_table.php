@@ -19,6 +19,8 @@ class CreateShowtimesTable extends Migration
             $table->foreign('theater_id')->references('id')->on('theaters');
             $table->time('showtime');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
+            $table->primary('id');
         });
     }
 

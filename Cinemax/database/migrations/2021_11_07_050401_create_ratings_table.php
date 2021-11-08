@@ -19,6 +19,8 @@ class CreateRatingsTable extends Migration
             $table->foreign('movie_id')->references('id')->on('movies');
             $table->boolean('rating');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
+            $table->primary('id');
         });
     }
 

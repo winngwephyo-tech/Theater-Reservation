@@ -20,6 +20,8 @@ class CreateSeatsTable extends Migration
             $table->foreign('theater_id')->references('id')->on('theaters');
             $table->integer('price');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
+            $table->primary('id');
         });
     }
 

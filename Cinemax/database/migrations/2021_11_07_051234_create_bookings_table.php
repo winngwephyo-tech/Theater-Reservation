@@ -21,6 +21,8 @@ class CreateBookingsTable extends Migration
             $table->foreign('seat_id')->references('display_id')->on('seats');
             $table->boolean('is_booked');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
+            $table->primary('id');
         });
     }
 

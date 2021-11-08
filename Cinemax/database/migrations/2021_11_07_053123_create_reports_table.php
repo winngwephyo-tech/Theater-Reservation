@@ -19,6 +19,8 @@ class CreateReportsTable extends Migration
             $table->integer('income');
             $table->float('rating');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
+            $table->primary('id');
         });
     }
 
