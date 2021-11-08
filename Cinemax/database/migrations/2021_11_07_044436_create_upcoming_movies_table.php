@@ -14,16 +14,6 @@ class CreateUpcomingMoviesTable extends Migration
     public function up()
     {
         Schema::create('upcoming_movies', function (Blueprint $table) {
-            $table->id();
-            $table->date('release_date');
-            $table->string('genre');
-            $table->string('title');
-            $table->binary('poster');
-            $table->string('details');
-            $table->string('trailer');
-            $table->integer('duration');
-            $table->string('cast');
-            $table->timestamps();
         });
     }
 

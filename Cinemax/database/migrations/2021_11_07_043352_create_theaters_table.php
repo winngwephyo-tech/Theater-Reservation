@@ -14,12 +14,6 @@ class CreateTheatersTable extends Migration
     public function up()
     {
         Schema::create('theaters', function (Blueprint $table) {
-            $table->id();
-            $table->foreign('movie_id')->references('id')->on('movies');
-            $table->string('name');
-            $table->string('Address');
-            $table->integer('no_of_seats');
-            $table->timestamps();
         });
     }
 

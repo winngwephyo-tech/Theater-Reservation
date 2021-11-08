@@ -14,11 +14,6 @@ class CreateShowtimesTable extends Migration
     public function up()
     {
         Schema::create('showtimes', function (Blueprint $table) {
-            $table->id();
-            $table->foreign('movie_id')->references('id')->on('movies');
-            $table->foreign('theater_id')->references('id')->on('theaters');
-            $table->time('showtime');
-            $table->timestamps();
         });
     }
 

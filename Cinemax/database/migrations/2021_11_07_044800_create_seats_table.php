@@ -14,13 +14,6 @@ class CreateSeatsTable extends Migration
     public function up()
     {
         Schema::create('seats', function (Blueprint $table) {
-            $table->id();
-            $table->string('roll');
-            $table->foreign('theater_id')->references('id')->on('theaters');
-            $table->foreign('showtime_id')->references('id')->on('showtimes');
-            $table->boolean('status');
-            $table->integer('price');
-            $table->timestamps();
         });
     }
 
