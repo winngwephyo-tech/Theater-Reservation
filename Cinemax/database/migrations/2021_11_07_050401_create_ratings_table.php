@@ -14,6 +14,13 @@ class CreateRatingsTable extends Migration
     public function up()
     {
         Schema::create('ratings', function (Blueprint $table) {
+            $table->id();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('movie_id')->references('id')->on('movies');
+            $table->boolean('rating');
+            $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
+            $table->primary('id');
         });
     }
 

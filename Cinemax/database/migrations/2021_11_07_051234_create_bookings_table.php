@@ -14,6 +14,15 @@ class CreateBookingsTable extends Migration
     public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
+            $table->id();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('movie_id')->references('id')->on('movies');
+            $table->foreign('showtime_id')->references('id')->on('showtimes');
+            $table->foreign('seat_id')->references('display_id')->on('seats');
+            $table->boolean('is_booked');
+            $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
+            $table->primary('id');
         });
     }
 
