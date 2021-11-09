@@ -15,6 +15,7 @@ class CreateTheatersTable extends Migration
     {
         Schema::create('theaters', function (Blueprint $table) {
             $table->id();
+            $table->integer('movie_id');
             $table->foreign('movie_id')->references('id')->on('movies');
             $table->string('name');
             $table->string('Address');

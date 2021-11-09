@@ -17,6 +17,7 @@ class CreateSeatsTable extends Migration
             $table->id();
             $table->string('roll');
             $table->string('display_id');
+            $table->integer('theater_id');
             $table->foreign('theater_id')->references('id')->on('theaters');
             $table->integer('price');
             $table->timestamps();

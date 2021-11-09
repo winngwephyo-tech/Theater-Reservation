@@ -15,6 +15,7 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
+            $table->integer('movie_id');
             $table->foreign('movie_id')->references('id')->on('movies');
             $table->integer('income');
             $table->float('rating');
