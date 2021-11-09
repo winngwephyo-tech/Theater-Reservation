@@ -25,7 +25,6 @@ class CreateUpcomingMoviesTable extends Migration
             $table->string('cast');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
-            $table->primary('id');
         });
     }
 

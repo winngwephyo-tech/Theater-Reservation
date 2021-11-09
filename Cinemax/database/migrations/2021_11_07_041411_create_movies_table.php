@@ -15,8 +15,6 @@ class CreateMoviesTable extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->integer('theater_id');
-            $table->foreign('theater_id')->references('id')->on('theaters');
             $table->string('genre');
             $table->string('title');
             $table->binary('poster');
@@ -27,7 +25,6 @@ class CreateMoviesTable extends Migration
             $table->string('cast');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
-            $table->primary('id');
         });
     }
 
