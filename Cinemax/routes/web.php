@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Booking\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/booking/create', [BookingController::class, 'createBooking'])->name('booking.create');
+Route::post('/booking/create', [BookingController::class, 'submitBooking'])->name('booking.create');

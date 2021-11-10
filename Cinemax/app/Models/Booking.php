@@ -10,4 +10,7 @@ class Booking extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $fillable = [
+        'user_id','movie_id', 'showtime_id', 'seat_display_id','is_booked',
+    ];
 }
