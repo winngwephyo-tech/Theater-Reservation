@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Theater\TheaterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/theater/create', [TheaterController::class, 'createTheater'])->name('theater.create');
+Route::post('/theater/create', [TheaterController::class, 'submitTheater'])->name('theater.create');
