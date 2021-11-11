@@ -19,8 +19,18 @@ class UserService implements UserServiceInterface
         return $this->UserDao->count_theater();
     }
 
-    public function get_data()
+    public function count_upcomingMovie()
     {
-        return $this->UsserDao->get_data();
+        return $this->UserDao->count_upcomingMovie();
+    }
+
+    public function get_showingMovieData()
+    {
+        return $this->UserDao->get_showingMovieData();
+    }
+
+    public function get_upcomingMovieData()
+    {
+        return $this->UserDao->get_upcomingMovieData();
     }
 }

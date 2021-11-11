@@ -15,12 +15,28 @@ class UserDao implements UserDaoInterface
         return $theater;
     }
 
-    public function get_data(){
-        $value = DB::table('movies')
-                 ->join('theaters' , 'movies.id' , '=' , 'theaters.id')
-                 ->select('movies.title' , 'movies.duration')
-                 ->get();
+    public function count_upcomingMovie()
+    {
+        $upcomingMovie = DB::table('upcoming_movies')
+                         ->count();
 
-        return $value;
+        return $upcomingMovie;
+    }
+
+    public function get_showingMovieData(){
+        $showingMovie_value = DB::table('movies')
+                              ->select('title' , 'duration')
+                              ->get();
+
+        return $showingMovie_value;
+    }
+
+    public function get_upcomingMovieData()
+    {
+        $upcomingMovie_value = DB::table('upcoming_movies')
+                               ->select('title' , 'duration')
+                               ->orderBy('id')
+                               ->get();
+        return $upcomingMovie_value;
     }
 }

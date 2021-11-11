@@ -49,42 +49,6 @@
     padding: 10px 0 10px 107px;
   }
 
- /* admin-dashboard */
- .manage-sec {
-    display: flex;
-    justify-content: flex-start;
- }
-
- .manage-movie,
- .manage-booking,
- .statistics,
- .manage-theater {
-     margin:50px 100px 0 0;
-     width: 180px;
-     height: 180px;
-     border-radius: 20px;
-     text-align: center;
-     padding-top: 50px;
-     color: #fff;
- }
-
- .manage-movie {
-     background-color: blueviolet;
- }
-
- .manage-booking {
-     background-color: rgb(39, 6, 70);
- }
-
- .statistics {
-     background-color: rgb(17, 168, 93);
- }
-
- .manage-theater {
-     background-color: blueviolet;
- }
-
-
 
 
 

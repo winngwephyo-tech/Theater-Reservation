@@ -8,7 +8,9 @@
         @for($i=1 ; $i<=$count ; $i++)
             <div class="img">
                 <a href=""><img src="" alt=""></a>
-                <p>{{ $result->title }}<br> {{ $result->duration }}</p>
+                @foreach ($showingMovie_value as $data)
+                   <p>{{ $data->title }}<br> {{ $data->duration }}min</p>
+                @endforeach
             </div>
         @endfor
     </div>
@@ -19,10 +21,13 @@
     </div>
     <div class="container">
         <div class="show-list">
-            @for ($j=1 ; $j<5 ;$j++)
+            <?php $count= $upcomingMovie; ?>
+            @for ($j=1 ; $j<$count ;$j++)
             <div class="img">
                 <img src="" alt="">
-                <p>movie name <br> duration</p>
+                @foreach ($upcomingMovie_value as $item)
+                    <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
+                @endforeach
             </div>
             @endfor
         </div>

@@ -25,7 +25,6 @@ class ShowMovieController extends Controller
         return view('movie.movieList');
     }
 
-
     public function count_theater()
     {
         $theater =$this->UserInterface->count_theater();
@@ -34,10 +33,23 @@ class ShowMovieController extends Controller
 
     }
 
-    public function get_data()
+    public function count_upcomingMovie()
     {
-        $result = $this->UserInterface->get_data();
-        return view('movie.movieList' , compact('result'));
+        $upcomingMovie = $this->UserInterface->count_upcomingMovie();
+
+        return view('movie.movieList' , compact('upcomingMovie'));
+    }
+
+    public function get_showingMovieData()
+    {
+        $showingMovie_result = $this->UserInterface->get_showingMovieData();
+        return view('movie.movieList' , compact('showingMovie_result'));
+    }
+
+    public function get_upcomingMovieData()
+    {
+        $upcomingMovie_result = $this->UserInterface->get_upcomingMovieData();
+        return view('movie.movieList' , compact('upcomingMovie_result'));
     }
 
     // public function fetch_img($id)

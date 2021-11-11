@@ -6,5 +6,10 @@ interface UserServiceInterface
 {
     public function count_theater();
 
-    public function get_data();
+    public function count_upcomingMovie();
+
+    public function get_showingMovieData();
+
+    public function get_upcomingMovieData();
+
 }
