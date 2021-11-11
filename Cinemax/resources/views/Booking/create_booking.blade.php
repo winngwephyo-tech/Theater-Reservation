@@ -4,14 +4,22 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-<form action="{{ route('booking.create') }}" method="POST">
+<table>
+@foreach ($seats as $seat)
+<tr>
+    {{ $seat->display_id }}
+</tr>
+
+@endforeach
+</table>
+<form action="{{ route('booking.create', ['movie_id' => $movie_id, 'showtime_id' => $showtime_id]) }}" method="POST">
     @csrf
   
      <div>
         <div>
             <div>
                 <table class="table table-bordered" id="dynamicTable">
-                <tr>  
+                <tr>
                     <td><input type="text" name="addmore[0][roll]" placeholder="A" class="form-control" required/></td>  
                     <td><input type="text" name="addmore[0][number]" placeholder="1" class="form-control" required /></td>
                     <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>  

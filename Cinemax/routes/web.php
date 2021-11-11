@@ -18,5 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/booking/create', [BookingController::class, 'createBooking'])->name('booking.create');
-Route::post('/booking/create', [BookingController::class, 'submitBooking'])->name('booking.create');
+Route::get('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'createBooking'])->name('booking.create');
+Route::post('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'submitBooking'])->name('booking.create');

@@ -25,10 +25,10 @@ class BookingService implements BookingServiceInterface
     }
     /**
      * To add booking
-     * @param $request request with inputs
+     * @param $request , $movie_id, $showtime_id
      */
-    public function addBooking($request)
+    public function addBooking($request, $movie_id, $showtime_id)
     {
-        return $this->bookingDao->addBooking($request);
+        return $this->bookingDao->addBooking($request, $movie_id, $showtime_id);
     }
 }
