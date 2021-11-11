@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/' , 'Movie\ShowMovieController@index');
+Route::get('/' , 'Movie\ShowMovieController@count_theater');
+Route::get('admin_dashboard' , function(){
+    return view('admin.admin_dashboard');
 });

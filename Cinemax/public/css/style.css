@@ -1,0 +1,91 @@
+*{
+    box-sizing: border-box;
+
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    font-size: 0;
+  }
+
+.container {
+    max-width: 1110px;
+    padding: 0 10px;
+    margin: 0 auto;
+  }
+
+  a {
+      text-decoration: none;
+  }
+
+  /* UserMovieList */
+  .heading {
+      margin: 0;
+  }
+
+  .show-list {
+      margin-top: 3%;
+      display: flex;
+      justify-content: space-between;
+  }
+
+  img {
+      width: 200px;
+      height: 300px;
+      border: 1px solid blue;
+      border-radius: 20px;
+  }
+
+  .upcoming-list,
+  .theater-update {
+      margin-top: 40px;
+  }
+
+  .ttl {
+    background-color: rgb(239, 230, 243);
+    padding: 10px 0 10px 107px;
+  }
+
+ /* admin-dashboard */
+ .manage-sec {
+    display: flex;
+    justify-content: flex-start;
+ }
+
+ .manage-movie,
+ .manage-booking,
+ .statistics,
+ .manage-theater {
+     margin:50px 100px 0 0;
+     width: 180px;
+     height: 180px;
+     border-radius: 20px;
+     text-align: center;
+     padding-top: 50px;
+     color: #fff;
+ }
+
+ .manage-movie {
+     background-color: blueviolet;
+ }
+
+ .manage-booking {
+     background-color: rgb(39, 6, 70);
+ }
+
+ .statistics {
+     background-color: rgb(17, 168, 93);
+ }
+
+ .manage-theater {
+     background-color: blueviolet;
+ }
+
+
+
+
+
+
