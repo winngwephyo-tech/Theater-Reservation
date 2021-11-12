@@ -9,12 +9,35 @@ use App\Models\Report;
 use App\Models\Seat;
 use App\Models\Showtime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Data accessing object for booking
  */
 class BookingDao implements BookingDaoInterface
 {
+    /**
+     * To get all seats
+     * @param $movie_id, $showtime_id
+     */
+    public function getSeats($movie_id, $showtime_id)
+    {
+        $theater_id = DB::table('movies')->where('id', $movie_id)->value('theater_id');
+        $seats = DB::table('seats')->where('theater_id', $theater_id)->get();
+        return $seats;
+    }
+    /**
+     * To get booked seats
+     * @param $movie_id, $showtime_id
+     */
+    public function getBookedSeats($movie_id, $showtime_id)
+    {
+        $booked = DB::table('bookings')
+            ->where('movie_id', $movie_id)
+            ->where('showtime_id', $showtime_id)
+            ->pluck('seat_display_id');
+        return $booked;
+    }
     /**
      * To add bookings
      * @param $request, $movie_id, $showtime_id
@@ -32,7 +55,6 @@ class BookingDao implements BookingDaoInterface
                 'seat_display_id' => $display_id, 'is_booked' => 1];
             Booking::create($data);
 
-            
             //for report table
 
             $price = Seat::where('display_id', '=', $display_id)->value('price');

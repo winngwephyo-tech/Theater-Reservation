@@ -14,7 +14,6 @@ use App\Http\Controllers\API\Booking\BookingAPIController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/bookings', [BookingAPIController::class, 'getBookings']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

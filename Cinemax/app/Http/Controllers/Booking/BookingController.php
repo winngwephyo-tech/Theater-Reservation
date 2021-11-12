@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Booking;
 
+use App\Contracts\Services\Booking\BookingServiceInterface;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
-use App\Models\Seat;
 use Illuminate\Http\Request;
-use App\Contracts\Services\Booking\BookingServiceInterface;
-use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -31,13 +29,13 @@ class BookingController extends Controller
      * @return View create booking
      */
     public function createBooking($movie_id, $showtime_id)
-    {  
-        $theater_id = DB::table('movies')->where('id', $movie_id)->value('theater_id');
-        $seats = DB::table('seats')->where('theater_id', $theater_id)->get();
-        $booked = DB::table('bookings')->where('movie_id', $movie_id)->pluck('seat_display_id');
-        return view('booking.create_booking', compact('seats','booked'))
-        ->with('movie_id', $movie_id)
-        ->with('showtime_id', $showtime_id);
+    {
+        $seats = $this->bookingInterface->getSeats($movie_id, $showtime_id);
+        $booked = $this->bookingInterface->getBookedSeats($movie_id, $showtime_id);
+
+        return view('booking.create_booking', compact('seats', 'booked'))
+            ->with('movie_id', $movie_id)
+            ->with('showtime_id', $showtime_id);
     }
     /**
      * To check booking create form and redirect to confirm page.
