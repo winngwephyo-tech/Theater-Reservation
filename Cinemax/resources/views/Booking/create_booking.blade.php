@@ -3,13 +3,39 @@
 <head> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
+<style>
+    .red{
+        color:red;
+    }
+    .green{
+        color:green;
+    }
+</style>
 <body>
-<table>
+<table>   
+    @php
+    $old_roll = 'A';
+    @endphp
 @foreach ($seats as $seat)
-<tr>
-    {{ $seat->display_id }}
-</tr>
+ 
+    @if( $old_roll !== $seat->roll)
+    <br>
+    @endif
+    @foreach($booked as $key => $value)
 
+        @if ($seat->display_id == $value)
+            <tr> <span class="red"> {{ $seat->display_id }} </span> </tr> 
+            @break
+        @endif
+
+    @endforeach
+
+         @if ($seat->display_id !== $value)
+            <tr> <span class="green"> {{ $seat->display_id }} </span> </tr>
+        @endif
+    @php
+    $old_roll = $seat->roll;
+    @endphp
 @endforeach
 </table>
 <form action="{{ route('booking.create', ['movie_id' => $movie_id, 'showtime_id' => $showtime_id]) }}" method="POST">
