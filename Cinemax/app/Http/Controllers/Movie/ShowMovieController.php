@@ -25,32 +25,36 @@ class ShowMovieController extends Controller
         return view('movie.movieList');
     }
 
-    public function count_theater()
+    public function get_required_data()
     {
-        $theater =$this->UserInterface->count_theater();
+        $no_of_theater = $this->UserInterface->count_theater();
 
-        return view('movie.movieList' , compact('theater'));
+        $no_of_upcomingMovie = $this->UserInterface->count_upcomingMovie();
 
-    }
-
-    public function count_upcomingMovie()
-    {
-        $upcomingMovie = $this->UserInterface->count_upcomingMovie();
-
-        return view('movie.movieList' , compact('upcomingMovie'));
-    }
-
-    public function get_showingMovieData()
-    {
         $showingMovie_result = $this->UserInterface->get_showingMovieData();
-        return view('movie.movieList' , compact('showingMovie_result'));
+
+        $upcomingMovie_result = $this->UserInterface->get_upcomingMovieData();
+
+        return view('movie.movieList')->with(['no_of_theater'=>$no_of_theater  , 'no_of_upcomingMovie'=>$no_of_upcomingMovie , 'showingMovie_result' => $showingMovie_result , 'upcomingMovie_result'=>$upcomingMovie_result]);
+
     }
 
-    public function get_upcomingMovieData()
+
+    public function RequiredData_for_ManageMovie()
     {
-        $upcomingMovie_result = $this->UserInterface->get_upcomingMovieData();
-        return view('movie.movieList' , compact('upcomingMovie_result'));
+         $no_of_theater = $this->UserInterface->count_theater();
+
+         $no_of_upcomingMovie = $this->UserInterface->count_upcomingMovie();
+
+         $showingMovie_result = $this->UserInterface->get_showingMovieData();
+
+         $upcomingMovie_result = $this->UserInterface->get_upcomingMovieData();
+
+        return view('movie.manage_movie')->with(['no_of_theater'=>$no_of_theater  , 'no_of_upcomingMovie'=>$no_of_upcomingMovie , 'showingMovie_result' => $showingMovie_result , 'upcomingMovie_result'=>$upcomingMovie_result]);
     }
+
+
+
 
     // public function fetch_img($id)
     // {

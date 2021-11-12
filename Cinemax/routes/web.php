@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/' , 'Movie\ShowMovieController@index');
-Route::get('/' , 'Movie\ShowMovieController@count_theater');
-Route::get('/' , 'Movie\ShowMovieController@count_upcomingMovie');
-Route::get('/' , 'Movie\ShowMovieController@get_showingMovieData');
-Route::get('/' , 'Movie\ShowMovieController@get_upcomingMovieData');
-Route::get('admin_dashboard' , function(){
-    return view('admin.admin_dashboard');
-});
+Route::get('/' , 'Movie\ShowMovieController@get_required_data');
+Route::get('manage_movie' , 'Movie\ShowMovieController@RequiredData_for_ManageMovie');
+
