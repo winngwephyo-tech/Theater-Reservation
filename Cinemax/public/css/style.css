@@ -4,6 +4,14 @@
     margin: 0 auto;
 }
 
+.heading {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
 .manage-sec {
     display: flex;
     justify-content: flex-start;
@@ -13,14 +21,19 @@
  .manage-booking,
  .statistics,
  .manage-theater {
-     margin:50px 100px 0 0;
-     width: 180px;
-     height: 180px;
+     margin:50px 100px 40px 0;
+     width: 150px;
+     height: 120px;
      border-radius: 20px;
      text-align: center;
-     padding-top: 50px;
+     padding-top: 25px;
      color: #fff;
  }
+
+ .ttl {
+    background-color: rgb(239, 230, 243);
+    padding: 8px 0 8px 107px;
+  }
 
  .manage-movie {
      background-color: blueviolet;
