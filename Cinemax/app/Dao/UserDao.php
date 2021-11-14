@@ -25,9 +25,10 @@ class UserDao implements UserDaoInterface
          return $upcomingMovie;
     }
 
-    public function get_showingMovieData(){
+    public function get_showingMovieData()
+    {
          $showingMovie_value = DB::table('movies')
-                               ->select('title' , 'duration')
+                               ->select('theater_id' , 'title' , 'duration' ,'poster')
                                ->get();
 
          return $showingMovie_value;
@@ -36,8 +37,7 @@ class UserDao implements UserDaoInterface
     public function get_upcomingMovieData()
     {
          $upcomingMovie_value = DB::table('upcoming_movies')
-                                ->select('title' , 'duration')
-                                ->orderBy('id')
+                                ->select('id' , 'title' , 'duration' , 'poster')
                                 ->get();
         return $upcomingMovie_value;
     }

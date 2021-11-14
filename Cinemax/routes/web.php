@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Movie\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/' , 'Movie\ShowMovieController@index');
 Route::get('/' , 'Movie\ShowMovieController@get_required_data');
 Route::get('manage_movie' , 'Movie\ShowMovieController@RequiredData_for_ManageMovie');
+
+
 

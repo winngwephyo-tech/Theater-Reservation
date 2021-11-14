@@ -16,9 +16,11 @@
         <div class="show-list">
             @for($i=1 ; $i<=$no_of_theater ; $i++)
                 <div class="img">
-                    <a href=""><img src="" alt=""></a>
                     @foreach ($showingMovie_result as $data)
-                       <p>{{ $data->title }}<br> {{ $data->duration }}min</p>
+                        @if ($i == $data->theater_id)
+                           <a href="{{  route('movie.create') }}"><img src="/image/{{$data->poster}}" alt="Showing Movie Poster"></a>
+                           <p>{{ $data->title }}<br> {{ $data->duration }}min</p>
+                        @endif
                     @endforeach
                 </div>
             @endfor
@@ -32,9 +34,11 @@
             <div class="show-list">
                 @for ($j=1 ; $j<$no_of_upcomingMovie ;$j++)
                 <div class="img">
-                    <img src="" alt="">
                     @foreach ($upcomingMovie_result as $item)
-                        <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
+                        @if ($j == $item->id)
+                            <a href="{{route('movie.edit',$m->id) }}"><img src="/image/{{$item->poster}}" alt="Showing Movie Poster"></a>
+                            <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
+                        @endif
                     @endforeach
                 </div>
                 @endfor

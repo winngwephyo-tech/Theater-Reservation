@@ -19,7 +19,7 @@ class CreateMoviesTable extends Migration
             $table->foreign('theater_id')->references('id')->on('theaters');
             $table->string('genre');
             $table->string('title');
-            $table->binary('poster');
+            $table->string('poster');
             $table->string('details');
             $table->float('rating');
             $table->string('trailer');

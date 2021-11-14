@@ -12,7 +12,7 @@ class UpcomingMovie extends Model
     use SoftDeletes;
     protected $fillable = [
         'release_date',
-        'genere',
+        'genre',
         'title',
         'poster',
         'details',

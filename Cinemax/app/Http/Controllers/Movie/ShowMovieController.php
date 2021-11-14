@@ -54,19 +54,5 @@ class ShowMovieController extends Controller
     }
 
 
-
-
-    // public function fetch_img($id)
-    // {
-    //     $movie = Movie::findOrFail($id);
-
-    //     $movie_file = Image::make($movie->form_name);
-
-    //     $response = Response::make($movie_file->encode('jpeg'));
-
-    //     $response->header('Content-Type', 'movie/jpeg');
-
-    //     return $response;
-    // }
 }
 
