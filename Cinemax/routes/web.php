@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Booking\BookingController;
+use App\Http\Controllers\Movie\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/', function () {
+//     return view('booking/confirm_booking');
+// });
+Route::resource('booking', BookingController::class);
+Route::get('confirm_booking',[BookingController::class,'confirmBooking']);
+Route::get('manage_booking',[BookingController::class,'manageBooking']);
+
+Route::resource('/movie', MovieController::class);
+Route::get('create',[MovieController::class,'create']);
+Route::get('edit',[MovieController::class,'edit']);
+
+

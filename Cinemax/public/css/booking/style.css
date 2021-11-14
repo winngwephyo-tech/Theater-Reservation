@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.content {
+    margin: 0 auto;
+    width: 90%;
+    background-color: #f5f2fb;
+    border-radius: 25px;
+    padding-bottom: 5%;
+}
+
+.content-left {
+    float: left;
+    margin-left: 5%;
+    width: 60%;
+    margin-top: 8%;
+    line-height: 2em;
+}
+
+.content-right {
+    float: right;
+    margin-right: 5%;
+    margin-top: 2%;
+    line-height: 1.4em;
+}
