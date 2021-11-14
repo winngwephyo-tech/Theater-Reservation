@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Movie;
 
-use App\Models\Movie;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\Services\UserServiceInterface;
 
