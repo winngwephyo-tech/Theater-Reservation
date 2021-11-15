@@ -21,6 +21,9 @@
     @if( $old_roll !== $seat->roll)
     <br>
     @endif
+
+    @if (!(empty($booked))) 
+
     @foreach($booked as $key => $value)
 
         @if ($seat->display_id == $value)
@@ -29,6 +32,8 @@
         @endif
 
     @endforeach
+
+    @endif
 
          @if ($seat->display_id !== $value)
             <tr> <span class="green"> {{ $seat->display_id }} </span> </tr>

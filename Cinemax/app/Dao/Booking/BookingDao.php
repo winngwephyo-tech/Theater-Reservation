@@ -36,6 +36,11 @@ class BookingDao implements BookingDaoInterface
             ->where('movie_id', $movie_id)
             ->where('showtime_id', $showtime_id)
             ->pluck('seat_display_id');
+
+        if ($booked->isEmpty()) {
+            $booked[]='AA';
+         }
+         
         return $booked;
     }
     /**
