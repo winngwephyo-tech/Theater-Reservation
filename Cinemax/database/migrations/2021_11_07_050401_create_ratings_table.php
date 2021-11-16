@@ -15,10 +15,13 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('movie_id');
             $table->foreign('movie_id')->references('id')->on('movies');
             $table->boolean('rating');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

@@ -15,12 +15,16 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('movie_id');
             $table->foreign('movie_id')->references('id')->on('movies');
+            $table->unsignedBigInteger('showtime_id');
             $table->foreign('showtime_id')->references('id')->on('showtimes');
-            $table->string('seats');
-            $table->integer('total_price');
+            $table->string('seat_display_id');
+            $table->boolean('is_booked');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

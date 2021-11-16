@@ -16,11 +16,12 @@ class CreateSeatsTable extends Migration
         Schema::create('seats', function (Blueprint $table) {
             $table->id();
             $table->string('roll');
+            $table->string('display_id');
+            $table->unsignedBigInteger('theater_id');
             $table->foreign('theater_id')->references('id')->on('theaters');
-            $table->foreign('showtime_id')->references('id')->on('showtimes');
-            $table->boolean('status');
             $table->integer('price');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

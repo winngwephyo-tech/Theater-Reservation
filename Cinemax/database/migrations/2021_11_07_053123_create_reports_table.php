@@ -15,10 +15,12 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('movie_id');
             $table->foreign('movie_id')->references('id')->on('movies');
             $table->integer('income');
             $table->float('rating');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
