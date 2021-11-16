@@ -38,9 +38,9 @@ class BookingDao implements BookingDaoInterface
             ->pluck('seat_display_id');
 
         if ($booked->isEmpty()) {
-            $booked[]='AA';
-         }
-         
+            $booked[] = 'AA';
+        }
+
         return $booked;
     }
     /**
@@ -49,31 +49,51 @@ class BookingDao implements BookingDaoInterface
      */
     public function addBooking($request, $movie_id, $showtime_id)
     {
+        $booking_error = 0;
         foreach ($request->addmore as $key => $value) {
-
             //for booking table
 
             $roll = $value['roll'];
             $number = $value['number'];
             $display_id = $roll . $number;
-            $data = ['user_id' => 1, 'movie_id' => $movie_id, 'showtime_id' => $showtime_id,
-                'seat_display_id' => $display_id, 'is_booked' => 1];
-            Booking::create($data);
 
-            //for report table
-
-            $price = Seat::where('display_id', '=', $display_id)->value('price');
-            if (Report::where('movie_id', '=', $movie_id)->exists()) {
-                $income = Report::where('movie_id', '=', $movie_id)->value('income');
-            } else {
-                $income = 0;
+            //check if the seat is alread booked or not
+            if (Booking::where('seat_display_id', '=', $display_id)
+            ->where('movie_id', '=', $movie_id)
+            ->where('showtime_id', '=', $showtime_id)
+            ->exists()) {
+                    $booking_error += 1;
             }
-            $income += $price;
-            $rating = Movie::where('id', '=', $movie_id)->value('rating');
-            Report::updateOrCreate(
-                ['movie_id' => $movie_id],
-                ['income' => $income, 'rating' => $rating]
-            );
+        }
+
+        if ($booking_error > 0) {
+            return redirect()->route('booking.create', [$movie_id, $showtime_id])
+                ->with('error', 'The Seat is already booked!');
+        } else {
+
+            foreach ($request->addmore as $key => $value) {
+                $roll = $value['roll'];
+                $number = $value['number'];
+                $display_id = $roll . $number;
+                $data = ['user_id' => 1, 'movie_id' => $movie_id, 'showtime_id' => $showtime_id,
+                    'seat_display_id' => $display_id, 'is_booked' => 1];
+                Booking::create($data);
+
+                //for report table
+
+                $price = Seat::where('display_id', '=', $display_id)->value('price');
+                if (Report::where('movie_id', '=', $movie_id)->exists()) {
+                    $income = Report::where('movie_id', '=', $movie_id)->value('income');
+                } else {
+                    $income = 0;
+                }
+                $income += $price;
+                $rating = Movie::where('id', '=', $movie_id)->value('rating');
+                Report::updateOrCreate(
+                    ['movie_id' => $movie_id],
+                    ['income' => $income, 'rating' => $rating]
+                );
+            }
         }
 
     }
