@@ -43,4 +43,6 @@ class MovieController extends Controller
         return view('movie.manage_movie')->with(['no_of_theater'=>$no_of_theater , 'showingMovie_result' => $showingMovie_result]);
     }
 
+    public function
+
 }
