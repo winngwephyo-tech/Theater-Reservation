@@ -1,4 +1,10 @@
-<link href="{{ asset('css/movie/style.css') }}" rel="stylesheet" type="text/css">
+@extends('layouts.app')
+
+@section('style')
+
+@endsection
+
+@error('Test Data')
 @if ($errors->any())
 <div class="alert alert-danger">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -8,6 +14,9 @@
         @endforeach
     </ul>
 </div>
+@endif
+@enderror
+
 @endif
 
 <form action="{{ route('upmovie.update',$upmovie->id) }}" method="POST" enctype="multipart/form-data">

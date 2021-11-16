@@ -1,4 +1,10 @@
-<link href="{{ asset('css/movie/style.css') }}" rel="stylesheet" type="text/css">
+@extends('layouts.app')
+
+@section('style')
+
+@endsection
+
+@error('Test Data')
 @if ($errors->any())
 <div class="alert alert-danger">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -9,6 +15,8 @@
     </ul>
 </div>
 @endif
+@enderror
+
 
 <form action="{{ route('upmovie.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
