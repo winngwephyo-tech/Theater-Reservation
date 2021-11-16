@@ -75,7 +75,7 @@ table {
     padding: 20px;
 }
 
-.report tr:nth-child(even) {
+.report tr {
     background-color: #f2f2f2;
 }
 

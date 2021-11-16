@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/report/style.css') }}">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-</head>
-<body>
+@extends('layouts.app')
+@section('style')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/report/style.css') }}">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+@endsection
+
+@section('content')
 <div class="wrapper mt-20">
 
     <div class="clearfix">
@@ -22,7 +22,7 @@
     </div>
     <table class="report mt-20">
             <tr>
-                <th>No</th>
+                <th>ID</th>
                 <th>Movie Title</th>
                 <th>Income</th>
                 <th>Rating</th>
@@ -38,6 +38,4 @@
     </table>
 
 </div>
-
-</body>
-</html>
+@endsection
