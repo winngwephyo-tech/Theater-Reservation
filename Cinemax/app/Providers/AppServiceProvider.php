@@ -13,8 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('App\Contracts\Dao\UpcommingMovieDaoInterface', 'App\Dao\UpcommingMovieDao');
-        $this->app->bind('App\Contracts\Services\UpcommingMovieServiceInterface', 'App\Services\UpcommingMovieService');
+        $this->app->bind('App\Contracts\Dao\UpcomingMovieDaoInterface', 'App\Dao\UpcomingMovieDao');
+        $this->app->bind('App\Contracts\Services\UpcomingMovieServiceInterface', 'App\Services\UpcomingMovieService');
     }
 
     /**

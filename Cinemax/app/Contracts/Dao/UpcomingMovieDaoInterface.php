@@ -3,10 +3,10 @@
 namespace App\Contracts\Dao;
 
 
-interface UpcommingMovieDaoInterface
+interface UpcomingMovieDaoInterface
 {
     public function count_upcomingMovie();
 
-    public function get_upcommingMovieData();
+    public function get_upcomingMovieData();
 
 }

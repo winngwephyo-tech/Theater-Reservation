@@ -2,7 +2,7 @@
 namespace App\Contracts\Services;
 
 
-interface UpcommingMovieServiceInterface
+interface UpcomingMovieServiceInterface
 {
     public function count_upcomingMovie();
 

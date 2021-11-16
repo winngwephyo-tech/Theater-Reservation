@@ -3,10 +3,10 @@
 namespace App\Dao;
 
 use Illuminate\Support\Facades\DB;
-use App\Contracts\Dao\UpcommingMovieDaoInterface;
+use App\Contracts\Dao\UpcomingMovieDaoInterface;
 
 
-class UpcommingMovieDao implements UpcommingMovieDaoInterface
+class UpcomingMovieDao implements UpcomingMovieDaoInterface
 {
 
 public function count_upcomingMovie()
@@ -17,7 +17,7 @@ public function count_upcomingMovie()
          return $upcomingMovie;
     }
 
-    public function get_upcommingMovieData()
+    public function get_upcomingMovieData()
     {
          $upcomingMovie_value = DB::table('upcoming_movies')
                                 ->select('id' , 'title' , 'duration' , 'poster')

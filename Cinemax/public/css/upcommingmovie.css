@@ -24,3 +24,25 @@ body {
 a {
       text-decoration: none;
 }
+
+.show-list {
+    margin-top: 4%;
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    width: 180px;
+    height: 300px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.upcoming-list {
+    margin-top: 40px;
+}
+
+.ttl {
+  background-color: rgb(239, 230, 243);
+  padding: 10px 0 10px 107px;
+}
