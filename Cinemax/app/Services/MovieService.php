@@ -26,9 +26,4 @@ class MovieService implements MovieServiceInterface
          return $this->MovieDao->get_showingMovieData();
     }
 
-    public function show_movieData($poster)
-    {
-        return $this->MovieDao->show_movieData($poster);
-    }
-
 }

@@ -8,6 +8,4 @@ interface MovieServiceInterface
 
     public function get_showingMovieData();
 
-    public function show_movieData($poster);
-
 }

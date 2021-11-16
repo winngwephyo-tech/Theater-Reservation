@@ -26,10 +26,4 @@ class MovieDao implements MovieDaoInterface
 
          return $showingMovie_value;
     }
-
-    public function show_movieData($poster)
-    {
-        $result = Movie::where('poster','=',$poster)->get();
-        return $result;
-    }
 }
