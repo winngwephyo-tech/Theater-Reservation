@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-<link href="{{ asset('css/movie/style.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/movie/common.css') }}" rel="stylesheet" type="text/css">
+
 @endsection
 
 @error('Test Data')
