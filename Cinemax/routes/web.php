@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UpcomingMovie\UpcomingMovieController;
+use App\Http\Controllers\Movie\MovieController;
+use App\Http\Controllers\Report\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,17 @@ use App\Http\Controllers\UpcomingMovie\UpcomingMovieController;
 |
 */
 
-Route::get('/' ,[UpcommingMovieController::class , 'index']);
-Route::get('/' , [UpcommingMovieController::class , 'upcomingMovie']);
+Route::get('/' ,[UpcomingMovieController::class , 'index']);
+Route::get('/' , [UpcomingMovieController::class , 'upcomingMovie']);
 Route::get('/manage_upcomingmovie' , [UpcomingMovieController::class , 'manage_upcomingMovie']);
+Route::resource('/movie', MovieController::class);
+// Route::get('create',[MovieController::class,'create']);
+// Route::get('edit',[MovieController::class,'edit']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+Route::get('/reports', [ReportController::class, 'showReports']);
+Route::get('/export_reports', [ReportController::class, 'export']);
+Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
