@@ -15,7 +15,7 @@
                 <div class="img">
                     @foreach ($showingMovie_result as $data)
                        @if($i == $data->theater_id)
-                           <a href="#"><img src="/image/{{$data->poster}}" alt="Movie Poster"></a>
+                           <a href="{{ url('movie_description'.$data->id)}}"><img src="/image/{{$data->poster}}" alt="Movie Poster"></a>
                            <p>{{ $data->title }}<br> {{ $data->duration }}min</p>
                        @endif
                     @endforeach
