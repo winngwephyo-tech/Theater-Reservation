@@ -13,7 +13,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
+       // Dao Registration
+        $this->app->bind('App\Contracts\Dao\Report\ReportDaoInterface', 'App\Dao\Report\ReportDao');
+        $this->app->bind('App\Contracts\Dao\Movie\MovieDaoInterface', 'App\Dao\Movie\MovieDao');
         $this->app->bind('App\Contracts\Dao\UpMovie\UpMovieDaoInterface', 'App\Dao\UpMovie\UpMovieDao');
+
+
+
+        // Business logic registration
+        $this->app->bind('App\Contracts\Services\Movie\MovieServiceInterface', 'App\Services\Movie\MovieService');
+        $this->app->bind('App\Contracts\Services\Report\ReportServiceInterface', 'App\Services\Report\ReportService');
         $this->app->bind('App\Contracts\Services\UpMovie\UpMovieServiceInterface', 'App\Services\UpMovie\UpMovieService');
 
     }

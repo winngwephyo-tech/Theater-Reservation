@@ -16,7 +16,7 @@ class CreateTheatersTable extends Migration
         Schema::create('theaters', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('Address');
+            $table->string('address');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

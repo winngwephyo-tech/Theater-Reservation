@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\UpMovie\UpMovieController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Movie\MovieController;
+use App\Http\Controllers\Report\ReportController;
 
 
 /*
@@ -18,3 +20,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('upmovie', UpMovieController::class);
 
+Route::resource('/movie', MovieController::class);
+// Route::get('create',[MovieController::class,'create']);
+// Route::get('edit',[MovieController::class,'edit']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+Route::get('/reports', [ReportController::class, 'showReports']);
+Route::get('/export_reports', [ReportController::class, 'export']);
+Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
