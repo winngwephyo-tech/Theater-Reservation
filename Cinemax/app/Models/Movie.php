@@ -11,7 +11,6 @@ class Movie extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'id',
         'theater_id',
         'genre',
         'title',
