@@ -15,5 +15,5 @@ interface MovieServiceInterface{
     /**
      * Update Movie
      */
-    public function update($request, $movie);
+    public function update($request, $movie,$showtime);
 }

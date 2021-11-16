@@ -40,8 +40,8 @@ class MovieService implements MovieServiceInterface
     /**
      * 
      */
-    public function update($request, $movie){
-        $this->movieDao->update($request,$movie);
+    public function update($request, $movie,$showtime){
+        $this->movieDao->update($request,$movie,$showtime);
     }
 }
 
