@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Movie\MovieController;
 use App\Http\Controllers\Report\ReportController;
 
 /*
@@ -14,6 +15,9 @@ use App\Http\Controllers\Report\ReportController;
 |
 */
 
+Route::resource('/movie', MovieController::class);
+// Route::get('create',[MovieController::class,'create']);
+// Route::get('edit',[MovieController::class,'edit']);
 Route::get('/', function () {
     return view('welcome');
 });

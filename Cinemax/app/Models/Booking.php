@@ -10,4 +10,18 @@ class Booking extends Model
 {
     use HasFactory;
     use SoftDeletes;
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'user_id',
+        'movie_id',
+        'showtime_id',
+        'seat_display_id',
+        'is_booked',
+    ];
+
+    
 }

@@ -11,6 +11,9 @@ class Seat extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'roll', 'display_id', 'theater_id', 'price',
+        'roll',
+        'display_id',
+        'theater_id',
+        'price',
     ];
 }
