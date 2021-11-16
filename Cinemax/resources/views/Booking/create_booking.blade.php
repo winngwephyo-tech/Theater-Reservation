@@ -33,12 +33,12 @@
         <br>
         @endif
 
-        @if (!(empty($booked))) 
+        @if (!(empty($booked)))
 
         @foreach($booked as $key => $value)
 
             @if ($seat->display_id == $value)
-            <span class="booked buzz-out-on-hover"> <strong>{{ $seat->display_id }}</strong> <br> <small>{{ $seat->price }} Ks</small> </span> 
+            <span class="booked buzz-out-on-hover"> <strong>{{ $seat->display_id }}</strong> <br> <small>{{ $seat->price }} Ks</small> </span>
                 @break
             @endif
 
@@ -47,13 +47,14 @@
         @endif
 
             @if ($seat->display_id !== $value)
-            <span class="not-booked buzz-out-on-hover"> <strong>{{ $seat->display_id }}</strong> <br> <small>{{ $seat->price }} Ks</small> </span> 
+            <span class="not-booked buzz-out-on-hover"> <strong>{{ $seat->display_id }}</strong> <br> <small>{{ $seat->price }} Ks</small> </span>
             @endif
         @php
         $old_roll = $seat->roll;
         @endphp
     @endforeach
     </div>
+    <div class="info"><span class="red"> ● Booked </span><span class="green"> &emsp; ● Available </span></div>
 </div>
 <div class="line">
 @if ($message = Session::get('error'))

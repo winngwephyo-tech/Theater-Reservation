@@ -99,7 +99,7 @@ table {
     cursor: pointer;
 }
 
-span {
+.seats span {
     margin: 1% .1%;
     padding-top: 10px;
     display: inline-block;
@@ -124,7 +124,7 @@ small {
     color: #b3aabf;
 }
 
-span:hover {
+.seats span:hover {
     box-shadow: 0 0 3px rgba(33, 33, 33, .2);
     cursor: pointer;
 }
@@ -136,6 +136,19 @@ span:hover {
 
 .not-booked {
     background-color: #e3d7f3;
+}
+
+.info {
+    margin: 20px;
+    text-align: center;
+}
+
+.red {
+    color: #421980;
+}
+
+.green {
+    color: #968ca3;
 }
 
 .line {
