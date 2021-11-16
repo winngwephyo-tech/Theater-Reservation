@@ -17,7 +17,6 @@
 @endif
 @enderror
 
-@endif
 
 <form action="{{ route('upmovie.update',$upmovie->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
