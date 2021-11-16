@@ -12,6 +12,6 @@ class Theater extends Model
     use SoftDeletes;
     protected $fillable = [
         'name',
-        'Address',
+        'address',
     ];
 }
