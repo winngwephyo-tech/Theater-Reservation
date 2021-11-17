@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <title>Admin Dashboard</title>
-</head>
-<body>
+@extends('layouts.app')
 
-<div class="container">
+@section('style')
+    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+@endsection
+
+@section('content')
+<div class="wrapper">
     <h1 class="heading">Admin Dashboard</h1>
     <div class="manage-sec">
         <a href="#">
@@ -42,6 +38,5 @@
         </a>
     </div>
 </div>
-</body>
-</html>
+@endsection
 

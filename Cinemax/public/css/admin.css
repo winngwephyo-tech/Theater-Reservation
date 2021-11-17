@@ -1,13 +1,25 @@
-.container {
-    width: 1110px;
-    padding: 0 20px;
+body {
+    max-width: 1920px;
+    font-family: sans-serif;
+    background-color: #F9F9F9;
+}
+
+.wrapper {
+    width: 80%;
     margin: 0 auto;
 }
 
-.heading {
-    margin: 0;
+* {
+    box-sizing: border-box;
 }
 
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    font-size: 0;
+}
 a {
     text-decoration: none;
 }
