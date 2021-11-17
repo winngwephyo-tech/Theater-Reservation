@@ -42,7 +42,7 @@ Route::post('/up_update',[ UpMovieController::class,'update'])->name('upmovie.up
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.admin_dashboard');
 });
 
 Route::get('/theater/create', [TheaterController::class, 'createTheater'])->name('theater.create');

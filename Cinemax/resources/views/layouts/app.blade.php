@@ -8,6 +8,7 @@
 
   @yield('style')
   @yield('script')
+
   
 <title>Cinemax</title>
 </head>
@@ -15,5 +16,6 @@
       @yield('content')
 
 </body>
+
 
 </html>
