@@ -11,8 +11,6 @@ class Showtime extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'movie_id',
-        'theater_id',
-        'showtime',
+        'movie_id', 'theater_id', 'showtime',
     ];
 }
