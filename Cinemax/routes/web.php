@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Booking\ManageBookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Theater\TheaterController;
 use App\Http\Controllers\Booking\BookingController;
@@ -20,6 +21,8 @@ use App\Http\Controllers\UpMovie\UpMovieController;
 |
 */
 
+Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])->name('booking.index');
+Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
 //User View
 Route::get('/movie_list',[ MovieController::class,'get_required_data'])->name('movie');
 //Admin View 
