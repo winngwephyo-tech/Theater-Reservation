@@ -13,17 +13,10 @@
     </div>
     <div class="content clearfix">
         <div class="content-left">
-            @foreach ($booking as $book)
-            <p> You booked 2 seats for the Movie:<span>{{$book->title}} </span> </p>
-            <p> Seat Number :<span>{{$book->display_id}}</span></p>
-            <p>Total Fee :<span>4000MMK</span></p>
-            <a href="#" class="btn-link">Home</a>
-        </div>
-        <div class="content-right">
-            <img src="/image/{{ $book->poster }}" alt="Army of Thieves" class="img-poster">
-            <p>{{$book->title}} </p>
-            <span>{{$book->duration}} min</span>
-            @endforeach
+            <p> Movie Name : {{$movie_name}}</p>
+            <p> Theater Name : {{$theater_name}}</p>
+            <p> Seats : {{$seats}}</p>
+            <p> Price : {{$price}}</p>
         </div>
 
     </div>
