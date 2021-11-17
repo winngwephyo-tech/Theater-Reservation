@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Movie\ShowMovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/' , 'Movie\ShowMovieController@index');
-Route::get('/' , 'Movie\ShowMovieController@get_required_data');
-Route::get('manage_movie' , 'Movie\ShowMovieController@RequiredData_for_ManageMovie');
+Route::get('/' , [ShowMovieController::class ,'index']);
+Route::get('/' , [ShowMovieController::class , 'get_required_data']);
+Route::get('manage_movie' , [ShowMovieController::class , 'RequiredData_for_ManageMovie']);
+Route::get('movie' , [ShowMovieController::class , 'movie']);
+Route::get('create' , [ShowMovieController::class , 'create']);
+
+
 
 
 
