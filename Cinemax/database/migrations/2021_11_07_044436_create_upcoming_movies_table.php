@@ -18,7 +18,7 @@ class CreateUpcomingMoviesTable extends Migration
             $table->date('release_date');
             $table->string('genre');
             $table->string('title');
-            $table->binary('poster');
+            $table->string('poster');
             $table->string('details');
             $table->string('trailer');
             $table->integer('duration');

@@ -23,17 +23,8 @@ class UpMovieController extends Controller
   /**
    * Display a listing of the resource.
    *
-   * @return \Illuminate\Http\Response
+   * create upcomming movie
    */
-
-  public function index()
-  {
-    $upmovie = UpcomingMovie::latest()->paginate(5);
-    //$movie = $this->movieInterface->getMovies();
-    return view('upmovie.upmovie_list', compact('upmovie'))
-      ->with('i', (request()->input('page', 1) - 1) * 5);
-  }
-
   public function create()
   {
     return view('upmovie.create_image');
@@ -47,7 +38,7 @@ class UpMovieController extends Controller
   public function store(UpMovieInfoRequest $request)
   {
     $this->movieInterface->store($request);
-    return redirect()->route('upmovie.index')
+    return redirect()->route('admin_movie')
       ->with('success', 'Movie created successfully.');
   }
 
@@ -67,8 +58,7 @@ class UpMovieController extends Controller
   public function update(UpMovieInfoRequest $request, UpcomingMovie $upmovie)
   {
     $this->movieInterface->update($request, $upmovie);
-    return redirect()->route('upmovie.index')
+    return redirect()->route('admin_movie')
       ->with('success', 'Movie updated successfully');
   }
 }
-

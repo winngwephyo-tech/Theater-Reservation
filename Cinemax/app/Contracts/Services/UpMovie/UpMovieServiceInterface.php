@@ -1,15 +1,8 @@
 <?php
 
 namespace App\Contracts\Services\UpMovie;
-
-
-
 interface UpMovieServiceInterface{
-     /**
-     * To get UpMovies
-     * @return $UpMovies
-     */
-    public function getUpMovies();
+ 
     /**
      * Store UpMovie
      * User Request
@@ -20,5 +13,3 @@ interface UpMovieServiceInterface{
      */
     public function update($request, $upMovie);
 }
-
-

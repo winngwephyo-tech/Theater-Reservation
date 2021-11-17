@@ -6,15 +6,15 @@ use App\Models\Movie;
 use App\Models\Showtime;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MovieInfoRequest;
-use App\Contracts\Services\MovieServiceInterface;
+use App\Contracts\Services\Movie\MovieServiceInterface;
 
 class MovieController extends Controller
 {
-    private $MovieInterface;
+    private $movieInterface;
 
     public function __construct(MovieServiceInterface $MovieServiceInterface)
     {
-        $this->MovieInterface = $MovieServiceInterface;
+        $this->movieInterface = $MovieServiceInterface;
     }
     /**
      * Display a listing of the resource.
@@ -28,22 +28,28 @@ class MovieController extends Controller
 
     public function get_required_data()
     {
-        $no_of_theater = $this->MovieInterface->count_theater();
+        $no_of_theater = $this->movieInterface->count_theater();
+        $showingMovie_result = $this->movieInterface->get_showingMovieData();
 
-        $showingMovie_result = $this->MovieInterface->get_showingMovieData();
+        $no_of_upcomingMovie = $this->movieInterface->count_upcomingMovie();
 
-        return view('movie.movie_list')->with(['no_of_theater'=>$no_of_theater  , 'showingMovie_result' => $showingMovie_result]);
+         $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
+
+        return view('movie.movie_list')->with(['no_of_theater'=>$no_of_theater  , 'showingMovie_result' => $showingMovie_result,'no_of_upcomingMovie'=>$no_of_upcomingMovie , 'upcomingMovie_result'=>$upcomingMovie_result]);
 
     }
 
 
     public function RequiredData_for_ManageMovie()
     {
-         $no_of_theater = $this->MovieInterface->count_theater();
+         $no_of_theater = $this->movieInterface->count_theater();
+         $showingMovie_result = $this->movieInterface->get_showingMovieData();
 
-         $showingMovie_result = $this->MovieInterface->get_showingMovieData();
+         $no_of_upcomingMovie = $this->movieInterface->count_upcomingMovie();
 
-        return view('movie.manage_movie')->with(['no_of_theater'=>$no_of_theater , 'showingMovie_result' => $showingMovie_result]);
+         $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
+      
+        return view('movie.manage_movie')->with(['no_of_theater'=>$no_of_theater , 'showingMovie_result' => $showingMovie_result,'no_of_upcomingMovie'=>$no_of_upcomingMovie , 'upcomingMovie_result'=>$upcomingMovie_result]);
     }
 
 
@@ -60,7 +66,7 @@ class MovieController extends Controller
   public function store(MovieInfoRequest $request)
   {
     $this->movieInterface->store($request);
-    return redirect()->route('movie.index')
+    return redirect()->route('admin_movie')
       ->with('success', 'Movie created successfully.');
   }
 
@@ -79,8 +85,8 @@ class MovieController extends Controller
    */
   public function update(MovieInfoRequest $request, Movie $movie, Showtime $showtime)
   {
-    $this->MovieInterface->update($request, $movie,$showtime);
-    return redirect()->route('movie.index')
+    $this->movieInterface->update($request, $movie,$showtime);
+    return redirect()->route('admin_movie')
       ->with('success', 'Movie updated successfully');
   }
 }

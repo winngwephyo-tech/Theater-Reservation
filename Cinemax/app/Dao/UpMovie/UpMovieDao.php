@@ -6,17 +6,7 @@ use App\Contracts\Dao\UpMovie\UpMovieDaoInterface;
 use App\Models\UpcomingMovie;
 
 class UpMovieDao implements UpMovieDaoInterface
-{
-    /**
-     * To get Movies
-     * @return $Movies
-     */
-    public function getUpMovies()
-    {
-        $movie = UpcomingMovie::latest()->paginate(5);
-        return $movie;
-    }
-    /**
+{    /**
      * Add new Movie
      * @param $request
      */

@@ -1,16 +1,8 @@
 <?php
 
 namespace App\Contracts\Dao\UpMovie;
-
-
-
 interface UpMovieDaoInterface{
-     /**
-     * To get UpMovies
-     * @return $UpMovies
-     */
-    public function getUpMovies();
-    /**
+      /**
      * Store UpMovie
      * User Request
      */
@@ -20,5 +12,3 @@ interface UpMovieDaoInterface{
      */
     public function update($request, $upMovie);
 }
-
-

@@ -21,15 +21,6 @@ class UpMovieService implements UpMovieServiceInterface
     {
         $this->upmovieDao = $upmovieDao;
     }
-
-    /**
-     * To get Movies
-     * @return $Movies
-     */
-    public function getUpMovies()
-    {
-       $this->upmovieDao->getUpMovies();
-    }
     /**
      * 
      */
@@ -43,4 +34,3 @@ class UpMovieService implements UpMovieServiceInterface
         $this->upmovieDao->update($request,$movie);
     }
 }
-
