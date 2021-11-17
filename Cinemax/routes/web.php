@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Movie\MovieController;
 use App\Http\Controllers\Report\ReportController;
 
@@ -22,7 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'createBooking'])->name('booking.create');
+Route::post('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'submitBooking'])->name('booking.create');
 
 Route::get('/reports', [ReportController::class, 'showReports']);
 Route::get('/export_reports', [ReportController::class, 'export']);
 Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
+
