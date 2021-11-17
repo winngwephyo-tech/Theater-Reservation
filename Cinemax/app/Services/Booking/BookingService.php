@@ -16,7 +16,5 @@ class BookingService implements BookingServiceInterface
   {
     return $this->bookingDao->getConfirmInfo();
   }
-  public function manageBooking(){
-    return $this->bookingDao->manageBooking();
-  }
+ 
 }

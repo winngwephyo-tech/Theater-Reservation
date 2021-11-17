@@ -7,8 +7,5 @@ interface BookingDaoInterface{
      * Get User Confirm Booking Information
      */
     public function getConfirmInfo();
-    /**
-     * Manage Booking Link
-     */
-    public function manageBooking();
+
 }
