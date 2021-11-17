@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UpMovie\UpMovieController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UpcomingMovie\UpcomingMovieController;
 use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Movie\MovieController;
 use App\Http\Controllers\Report\ReportController;
@@ -20,6 +21,16 @@ use App\Http\Controllers\Report\ReportController;
 
 
 Route::resource('upmovie', UpMovieController::class);
+
+Route::get('/upcomingmovies' ,[UpcomingMovieController::class , 'index']);
+Route::get('/upcomingmovies' , [UpcomingMovieController::class , 'upcomingMovie']);
+Route::get('/manage_upcomingmovie' , [UpcomingMovieController::class , 'manage_upcomingMovie']);
+
+
+Route::get('/' , 'Movie\MovieController@index');
+Route::get('/' , 'Movie\MovieController@get_required_data');
+Route::get('manage_movie' , 'Movie\MovieController@RequiredData_for_ManageMovie');
+
 
 Route::resource('/movie', MovieController::class);
 // Route::get('create',[MovieController::class,'create']);
