@@ -9,11 +9,13 @@
   @yield('style')
   @yield('script')
 
+  
 <title>Cinemax</title>
 </head>
 <body>
       @yield('content')
 
 </body>
+
 
 </html>

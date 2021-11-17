@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\UpMovie\UpMovieController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UpcomingMovie\UpcomingMovieController;
+use App\Http\Controllers\Booking\BookingController;
+use App\Http\Controllers\Movie\MovieController;
+use App\Http\Controllers\Report\ReportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +19,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::resource('upmovie', UpMovieController::class);
+
+Route::get('/upcomingmovies' ,[UpcomingMovieController::class , 'index']);
+Route::get('/upcomingmovies' , [UpcomingMovieController::class , 'upcomingMovie']);
+Route::get('/manage_upcomingmovie' , [UpcomingMovieController::class , 'manage_upcomingMovie']);
+
+
+Route::get('/' , 'Movie\MovieController@index');
+Route::get('/' , 'Movie\MovieController@get_required_data');
+Route::get('manage_movie' , 'Movie\MovieController@RequiredData_for_ManageMovie');
+
+
+Route::resource('/movie', MovieController::class);
+// Route::get('create',[MovieController::class,'create']);
+// Route::get('edit',[MovieController::class,'edit']);
 Route::get('/', function () {
     return view('admin.admin_dashboard');
 });
+
+Route::get('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'createBooking'])->name('booking.create');
+Route::post('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'submitBooking'])->name('booking.create');
+
+Route::get('/reports', [ReportController::class, 'showReports']);
+Route::get('/export_reports', [ReportController::class, 'export']);
+Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
+
