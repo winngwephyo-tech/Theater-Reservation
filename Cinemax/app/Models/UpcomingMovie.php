@@ -10,4 +10,15 @@ class UpcomingMovie extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = [
+        'release_date' ,
+        'genre' ,
+        'title',
+        'poster',
+        'details',
+        'trailer',
+        'duration',
+        'cast',
+    ];
 }
