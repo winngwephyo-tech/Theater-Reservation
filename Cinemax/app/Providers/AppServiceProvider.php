@@ -18,12 +18,15 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Contracts\Dao\Booking\BookingDaoInterface', 'App\Dao\Booking\BookingDao');
         $this->app->bind('App\Contracts\Dao\Report\ReportDaoInterface', 'App\Dao\Report\ReportDao');
         $this->app->bind('App\Contracts\Dao\Movie\MovieDaoInterface', 'App\Dao\Movie\MovieDao');
+        $this->app->bind('App\Contracts\Dao\MovieDaoInterface', 'App\Dao\MovieDao');
 
 
         // Business logic registration
         $this->app->bind('App\Contracts\Services\Booking\BookingServiceInterface', 'App\Services\Booking\BookingService');
         $this->app->bind('App\Contracts\Services\Movie\MovieServiceInterface', 'App\Services\Movie\MovieService');
         $this->app->bind('App\Contracts\Services\Report\ReportServiceInterface', 'App\Services\Report\ReportService');
+        $this->app->bind('App\Contracts\Services\MovieServiceInterface', 'App\Services\MovieService');
+
 
     }
 

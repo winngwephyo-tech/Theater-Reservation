@@ -16,6 +16,11 @@ use App\Http\Controllers\Report\ReportController;
 |
 */
 
+
+Route::get('/' , 'Movie\MovieController@index');
+Route::get('/' , 'Movie\MovieController@get_required_data');
+Route::get('manage_movie' , 'Movie\MovieController@RequiredData_for_ManageMovie');
+
 Route::resource('/movie', MovieController::class);
 // Route::get('create',[MovieController::class,'create']);
 // Route::get('edit',[MovieController::class,'edit']);
