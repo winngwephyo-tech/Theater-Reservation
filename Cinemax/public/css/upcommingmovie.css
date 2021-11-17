@@ -1,0 +1,48 @@
+body {
+    max-width: 1920px;
+    font-family: sans-serif;
+    background-color: #F9F9F9;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    font-size: 0;
+}
+
+a {
+      text-decoration: none;
+}
+
+.show-list {
+    margin-top: 4%;
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    width: 180px;
+    height: 300px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.upcoming-list {
+    margin-top: 40px;
+}
+
+.ttl {
+  background-color: rgb(239, 230, 243);
+  padding: 10px 0 10px 107px;
+}
