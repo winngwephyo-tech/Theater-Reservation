@@ -18,6 +18,8 @@ use App\Http\Controllers\Report\ReportController;
 
 Route::resource('/movie', MovieController::class);
 Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking']);
+Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('/delete_booking');
+
 
 Route::get('/', function () {
     return view('welcome');

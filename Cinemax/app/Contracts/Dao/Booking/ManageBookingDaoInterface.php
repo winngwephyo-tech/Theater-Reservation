@@ -13,4 +13,8 @@ interface ManageBookingDaoInterface
      * @return $bookinglist
      */
     public function manageBooking();
+    /**
+     * delete by Booking Id 
+     */
+    public function deleteBooking($booking);
 }

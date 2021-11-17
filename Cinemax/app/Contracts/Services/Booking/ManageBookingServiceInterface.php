@@ -7,10 +7,14 @@ namespace App\Contracts\Services\Booking;
  */
 interface ManageBookingServiceInterface
 {
-   /**
-     * To show booking view
-     *
-     * @return $bookinglist
-     */
-    public function manageBooking();
+  /**
+   * To show booking view
+   *
+   * @return $bookinglist
+   */
+  public function manageBooking();
+  /**
+   * delete by booking id
+   */
+  public function deleteBooking($booking);
 }

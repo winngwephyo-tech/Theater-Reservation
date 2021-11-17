@@ -3,13 +3,13 @@
 namespace App\Dao\Booking;
 
 use App\Contracts\Dao\Booking\ManageBookingDaoInterface;
-use App\Models\Report;
+use App\Models\Booking;
 use Illuminate\Support\Facades\DB;
 
 /**
  * Data accessing object for report
  */
-class ManageBooking implements ManageBookingDaoInterface
+class ManageBookingDao implements ManageBookingDaoInterface
 {
     /**
      * Show Manage Booking
@@ -25,8 +25,16 @@ class ManageBooking implements ManageBookingDaoInterface
             ->join('seats', 'bookings.seat_display_id', '=', 'seats.display_id')
             ->join('users', 'bookings.user_id', '=', 'users.id')
             ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
-            ->select('bookings.id', 'users.name', 'movies.title', 'seats.display_id', 'showtimes.showtime')
+            ->select('bookings.id', 'users.name', 'movies.title', 'seats.display_id', 'showtimes.showtime', 'seats.roll')
             ->get();
         return $bookingList;
+    }
+    /**
+     * delete
+     * @param $Booking
+     */
+    public function deleteBooking($booking)
+    {
+        $booking->delete();
     }
 }
