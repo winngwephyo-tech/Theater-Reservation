@@ -17,8 +17,8 @@ use App\Http\Controllers\Report\ReportController;
 */
 
 Route::resource('/movie', MovieController::class);
-Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking']);
-Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('/delete_booking');
+Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])->name('booking.index');
+Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
 
 
 Route::get('/', function () {

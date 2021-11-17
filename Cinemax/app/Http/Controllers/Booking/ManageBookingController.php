@@ -31,21 +31,15 @@ class ManageBookingController extends Controller
     {
         $bookingList = $this->bookingInterface->manageBooking();
         return view('booking.index', compact('bookingList'));
-        // print_r($bookingList);
-
     }
-    // public function deleteBooking($id){
-    //     return $this->bookingInterface->deleteBooking($id);
-
-    // }
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Booking  $Booking
      * @return \Illuminate\Http\Response
      */
-    public function deleteBooking(Booking $booking)
+    public function deleteBooking($booking)
     {
-        $this->bookingInterface->deleteBooking($booking);
+        return $this->bookingInterface->deleteBooking($booking);
     }
 }

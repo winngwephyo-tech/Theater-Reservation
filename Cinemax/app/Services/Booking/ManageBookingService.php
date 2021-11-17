@@ -38,6 +38,6 @@ class ManageBookingService implements ManageBookingServiceInterface
      */
     public function deleteBooking($booking)
     {
-        $this->bookingDao->deleteBooking($booking);
+        return $this->bookingDao->deleteBooking($booking);
     }
 }

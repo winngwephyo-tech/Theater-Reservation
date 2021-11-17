@@ -4,6 +4,8 @@ namespace App\Dao\Booking;
 
 use App\Contracts\Dao\Booking\ManageBookingDaoInterface;
 use App\Models\Booking;
+use App\Models\Report;
+use App\Models\Seat;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -25,16 +27,32 @@ class ManageBookingDao implements ManageBookingDaoInterface
             ->join('seats', 'bookings.seat_display_id', '=', 'seats.display_id')
             ->join('users', 'bookings.user_id', '=', 'users.id')
             ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
-            ->select('bookings.id', 'users.name', 'movies.title', 'seats.display_id', 'showtimes.showtime', 'seats.roll')
+            ->select('bookings.id', 'users.name', 'movies.title', 'seats.display_id', 'showtimes.showtime', 'seats.price')
             ->get();
         return $bookingList;
     }
     /**
+     * Report table
+     * for cancel booking recalculate price
      * delete
      * @param $Booking
      */
     public function deleteBooking($booking)
     {
-        $booking->delete();
+        $book = Booking::find($booking);
+        if ($book) {
+            $movie_id = Booking::where('id', '=', $booking)->value('movie_id');
+            if (Report::where('movie_id', '=', $movie_id)->exists()) {
+                $display_id = Booking::where('id', '=', $booking)->value('seat_display_id');
+                $price = Seat::where('display_id', '=', $display_id)->value('price');
+                $income = Report::where('movie_id', '=', $movie_id)->value('income');
+                $income -= $price;
+                Report::where('movie_id', $movie_id)
+                    ->update(['income' => $income]);
+            }
+            $book->forceDelete();
+            return redirect()->route('booking.index');
+        }
+        return 'booking Not Found!';
     }
 }

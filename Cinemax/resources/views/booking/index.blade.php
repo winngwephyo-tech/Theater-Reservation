@@ -32,29 +32,8 @@
             <td>{{ $book->title }}</td>
             <td>{{ $book->display_id }}</td>
             <td>{{ $book->showtime}}</td>
-            @switch( $book->roll)
-            @case("A")
-            <td>2000</td>
-            @break
-            @case("B")
-            <td>2000</td>
-            @break
-
-            @case("C")
-            <td>3000</td>
-            @break
-
-            @case("D")
-            <td>3000</td>
-            @break
-
-            @case("E")
-            <td>4000</td>
-            @break
-
-            @endswitch
-
-            <td><a class="button ml-10 button2" href="{{ route('/delete_booking',$book->id ) }}"> Cancel</a></td>
+            <td>{{ $book->price}}</td>
+            <td><a class="button ml-10 button2" href="{{ route('booking.delete',$book->id ) }}"> Cancel</a></td>
 
         </tr>
         @endforeach
