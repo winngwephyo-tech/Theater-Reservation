@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\UpMovie\UpMovieController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Theater\TheaterController;
 use App\Http\Controllers\UpcomingMovie\UpcomingMovieController;
 use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Movie\MovieController;
 use App\Http\Controllers\Report\ReportController;
+
 
 
 /*
@@ -39,10 +41,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/theater/create', [TheaterController::class, 'createTheater'])->name('theater.create');
+Route::post('/theater/create', [TheaterController::class, 'submitTheater'])->name('theater.create');
+Route::post('/theater/delete/{theater_id}', [TheaterController::class, 'submitTheater'])->name('theater.delete');
+
+
 Route::get('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'createBooking'])->name('booking.create');
 Route::post('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'submitBooking'])->name('booking.create');
 
 Route::get('/reports', [ReportController::class, 'showReports']);
 Route::get('/export_reports', [ReportController::class, 'export']);
 Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
+
 
