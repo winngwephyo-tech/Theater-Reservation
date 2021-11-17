@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Booking\ManageBookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Theater\TheaterController;
-use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Report\ReportController;
 use App\Http\Controllers\Movie\MovieController;
 use App\Http\Controllers\UpMovie\UpMovieController;

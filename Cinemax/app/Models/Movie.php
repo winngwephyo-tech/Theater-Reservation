@@ -21,4 +21,6 @@ class Movie extends Model
         'duration',
         'cast',
     ];
+
+  
 }
