@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UpcomingMovie\UpcomingMovieController;
 use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Movie\MovieController;
 use App\Http\Controllers\Report\ReportController;
@@ -15,6 +16,11 @@ use App\Http\Controllers\Report\ReportController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('/upcomingmovies' ,[UpcomingMovieController::class , 'index']);
+Route::get('/upcomingmovies' , [UpcomingMovieController::class , 'upcomingMovie']);
+Route::get('/manage_upcomingmovie' , [UpcomingMovieController::class , 'manage_upcomingMovie']);
 
 
 Route::get('/' , 'Movie\MovieController@index');
