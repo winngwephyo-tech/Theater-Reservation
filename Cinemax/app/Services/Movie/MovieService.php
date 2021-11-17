@@ -43,5 +43,27 @@ class MovieService implements MovieServiceInterface
     public function update($request, $movie,$showtime){
         $this->movieDao->update($request,$movie,$showtime);
     }
+
+    public function count_theater()
+    {
+        $theater = $this->movieDao->count_theater();
+        return $theater;
+    }
+
+    public function get_showingMovieData()
+    {
+         return $this->movieDao->get_showingMovieData();
+    }
+
+    public function count_upcomingMovie()
+    {
+        return $this->movieDao->count_upcomingMovie();
+    }
+
+    public function get_upcomingMovieData()
+    {
+         return $this->movieDao->get_upcomingMovieData();
+    }
 }
+
 

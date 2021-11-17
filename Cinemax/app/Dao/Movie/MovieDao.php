@@ -5,6 +5,7 @@ namespace App\Dao\Movie;
 use App\Contracts\Dao\Movie\MovieDaoInterface;
 use App\Models\Movie;
 use App\Models\Showtime;
+use Illuminate\Support\Facades\DB;
 
 class MovieDao implements MovieDaoInterface
 {
@@ -86,7 +87,6 @@ class MovieDao implements MovieDaoInterface
                 } else {
                     unset($input['poster']);
                 }
-       //dd( $input['poster']);
 
         $input = [
             'theater_id' => $theater_id, 'genre' => $genre, 'title' => $title, 'poster' =>$input['poster'],
@@ -108,10 +108,41 @@ class MovieDao implements MovieDaoInterface
                     $time = $request->time3;
                     break;
             }
-            $data = ['movie_id' => $movieid, 'theater_id' => $theater_id, 'showtime' => $time];
-            //Showtime::create($data);
+            $data = ['movie_id' => $movieid, 'theater_id' => $theater_id, 'showtime' => $time];;
             $showtime->update($data);
         }
 
     }
+    public function count_theater()
+    {
+        $theater = DB::table('theaters')
+               ->count();
+        return $theater;
+    }
+
+    public function get_showingMovieData()
+    {
+         $showingMovie_value = DB::table('movies')
+                               ->select('theater_id' , 'title' , 'duration' ,'poster','id')
+                               ->get();
+
+         return $showingMovie_value;
+    }
+
+    public function count_upcomingMovie()
+    {
+        $upcomingMovie = DB::table('upcoming_movies')
+            ->count();
+
+        return $upcomingMovie;
+    }
+
+    public function get_upcomingMovieData()
+    {
+        $upcomingMovie_value = DB::table('upcoming_movies')
+            ->select('id', 'title', 'duration', 'poster')
+            ->get();
+        return $upcomingMovie_value;
+    }
+
 }
