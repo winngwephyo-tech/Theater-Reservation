@@ -20,18 +20,6 @@ use App\Http\Controllers\UpMovie\UpMovieController;
 |
 */
 
-
-Route::resource('upmovie', UpMovieController::class);
-
-Route::get('/upcomingmovies' ,[UpcomingMovieController::class , 'index']);
-Route::get('/upcomingmovies' , [UpcomingMovieController::class , 'upcomingMovie']);
-Route::get('/manage_upcomingmovie' , [UpcomingMovieController::class , 'manage_upcomingMovie']);
-
-
-// Route::get('/' , 'Movie\MovieController@index');
-// Route::get('/' , 'Movie\MovieController@get_required_data');
-// Route::get('manage_movie' , 'Movie\MovieController@RequiredData_for_ManageMovie');
-
 //User View
 Route::get('/movie_list',[ MovieController::class,'get_required_data'])->name('movie');
 //Admin View 
