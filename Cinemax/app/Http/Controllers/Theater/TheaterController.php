@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Seat;
 use App\Models\Theater;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateTheaterRequest;
 
 class TheaterController extends Controller
 {
@@ -41,10 +42,25 @@ class TheaterController extends Controller
      * @param Request $request Request form theater create
      * @return View theater create confirm
      */
-    public function submitTheater(Request $request)
+    public function submitTheater(CreateTheaterRequest $request)
     {
+        $validated = $request->validated();
+        
         $theater_id = $this->theaterInterface->addTheaters($request);
 
         $this->seatInterface->addSeats($request, $theater_id);
+    }
+    /**
+     * To delete theater if needed
+     *
+     * @return View probably index page
+     */
+    public function deleteTheater($theater_id)
+    {
+        $this->theaterInterface->deleteTheater($theater_id);
+
+        $this->seatInterface->deleteSeats($theater_id);
+        
+        return back();
     }
 }

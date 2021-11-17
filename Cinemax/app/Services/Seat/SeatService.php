@@ -31,4 +31,12 @@ class SeatService implements SeatServiceInterface
     {
         $this->seatDao->addSeats($request, $theater_id);
     }
+    /**
+     * To delete seats
+     * @param $theater_id
+     */
+    public function deleteSeats($theater_id)
+    {
+        $this->seatDao->deleteSeats($theater_id);
+    }
 }

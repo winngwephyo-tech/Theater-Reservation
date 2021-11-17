@@ -18,7 +18,7 @@ class SeatDao implements SeatDaoInterface
     public function addSeats($request, $theater_id)
     {
         foreach ($request->addmore as $key => $value) {
-            $roll = $value['roll'];
+            $roll = strtoupper($value['roll']);
             $number = $value['number'];
             $price = $value['price'];
             for ($i = 1; $i <= $number; $i++) {
@@ -28,5 +28,13 @@ class SeatDao implements SeatDaoInterface
                 Seat::create($data);
             }
         }
+    }
+    /**
+     * To delete seats
+     * @param $theater_id
+     */
+    public function deleteSeats($theater_id)
+    {
+        Seat::where('theater_id', '=', $theater_id)->delete();
     }
 }

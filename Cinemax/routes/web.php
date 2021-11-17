@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 Route::get('/theater/create', [TheaterController::class, 'createTheater'])->name('theater.create');
 Route::post('/theater/create', [TheaterController::class, 'submitTheater'])->name('theater.create');
+Route::post('/theater/delete/{theater_id}', [TheaterController::class, 'submitTheater'])->name('theater.delete');

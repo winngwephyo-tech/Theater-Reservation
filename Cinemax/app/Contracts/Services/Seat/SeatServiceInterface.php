@@ -14,5 +14,10 @@ interface SeatServiceInterface
      * @param $request request with inputs, $theater_id
      */
     public function addSeats($request, $theater_id);
+    /**
+     * To delete seats
+     * @param $theater_id
+     */
+    public function deleteSeats($theater_id);
 
 }

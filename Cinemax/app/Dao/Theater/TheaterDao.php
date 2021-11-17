@@ -24,4 +24,12 @@ class TheaterDao implements TheaterDaoInterface
         $theater_id = Theater::create($data)->id;
         return $theater_id;
     }
+    /**
+     * To delete theater
+     * @param $theater_id
+     */
+    public function deleteTheater($theater_id)
+    {
+        Theater::where('id', '=', $theater_id)->delete();
+    }
 }
