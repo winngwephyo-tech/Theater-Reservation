@@ -21,7 +21,6 @@ use App\Http\Controllers\UpMovie\UpMovieController;
 |
 */
 
-Route::resource('/movie', MovieController::class);
 Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])->name('booking.index');
 Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
 //User View
