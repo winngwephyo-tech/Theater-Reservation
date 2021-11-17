@@ -17,9 +17,16 @@ use App\Http\Controllers\Report\ReportController;
 |
 */
 
-Route::get('/' ,[UpcomingMovieController::class , 'index']);
-Route::get('/' , [UpcomingMovieController::class , 'upcomingMovie']);
+
+Route::get('/upcomingmovies' ,[UpcomingMovieController::class , 'index']);
+Route::get('/upcomingmovies' , [UpcomingMovieController::class , 'upcomingMovie']);
 Route::get('/manage_upcomingmovie' , [UpcomingMovieController::class , 'manage_upcomingMovie']);
+
+
+Route::get('/' , 'Movie\MovieController@index');
+Route::get('/' , 'Movie\MovieController@get_required_data');
+Route::get('manage_movie' , 'Movie\MovieController@RequiredData_for_ManageMovie');
+
 Route::resource('/movie', MovieController::class);
 // Route::get('create',[MovieController::class,'create']);
 // Route::get('edit',[MovieController::class,'edit']);
