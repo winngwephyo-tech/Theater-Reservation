@@ -25,6 +25,7 @@ class ShowMovieController extends Controller
     public function get_required_data()
     {
         $no_of_theater = $this->UserInterface->count_theater();
+        dd($no_of_theater);
 
         $no_of_upcomingMovie = $this->UserInterface->count_upcomingMovie();
 
