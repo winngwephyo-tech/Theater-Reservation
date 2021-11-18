@@ -25,7 +25,7 @@ Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])
 Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
 //User View
 Route::get('/movie_list',[ MovieController::class,'get_required_data'])->name('movie');
-//Admin View 
+//Admin View
 Route::get('/admin_movie_list',[ MovieController::class,'RequiredData_for_ManageMovie'])->name('admin_movie');
 Route::get('/create_img',[ MovieController::class,'create'])->name('movie.create');
 Route::post('/create',[ MovieController::class,'store'])->name('movie.store');
@@ -33,7 +33,7 @@ Route::get('/edit_img/{id}',[ MovieController::class,'edit'])->name('movie.edit'
 Route::post('/update',[ MovieController::class,'update'])->name('movie.update');
 
 //UpComing Movie
-//Admin View 
+//Admin View
 Route::get('/up_create_img',[ UpMovieController::class,'create'])->name('upmovie.create');
 Route::post('/up_create',[ UpMovieController::class,'store'])->name('upmovie.store');
 Route::get('/up_edit_img/{id}',[ UpMovieController::class,'edit'])->name('upmovie.edit');

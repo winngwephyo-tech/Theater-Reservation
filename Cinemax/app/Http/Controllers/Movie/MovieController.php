@@ -21,14 +21,10 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('movie.movie_list');
-    }
-
     public function get_required_data()
     {
         $no_of_theater = $this->movieInterface->count_theater();
+
         $showingMovie_result = $this->movieInterface->get_showingMovieData();
 
         $no_of_upcomingMovie = $this->movieInterface->count_upcomingMovie();
@@ -43,12 +39,13 @@ class MovieController extends Controller
     public function RequiredData_for_ManageMovie()
     {
          $no_of_theater = $this->movieInterface->count_theater();
+
          $showingMovie_result = $this->movieInterface->get_showingMovieData();
 
          $no_of_upcomingMovie = $this->movieInterface->count_upcomingMovie();
 
          $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
-      
+
         return view('movie.manage_movie')->with(['no_of_theater'=>$no_of_theater , 'showingMovie_result' => $showingMovie_result,'no_of_upcomingMovie'=>$no_of_upcomingMovie , 'upcomingMovie_result'=>$upcomingMovie_result]);
     }
 

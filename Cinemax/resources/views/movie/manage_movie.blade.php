@@ -12,8 +12,8 @@
         <a href="#" class="button">Back</a>
     </div>
     <div class="show-list">
-        @for($i=1 ; $i<=$no_of_theater ; $i++) 
-        @foreach ($showingMovie_result as $data) 
+        @for($i=1 ; $i<=$no_of_theater ; $i++)
+        @foreach ($showingMovie_result as $data)
         @if ($i==$data->theater_id)
             <div class="img">
                 <a href="{{  route('movie.edit',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Showing Movie Poster"></a>
@@ -38,7 +38,7 @@
     <div class="ttl">
         <h1 class="heading">Upcoming Movies</h1>
     </div>
-    <div class="container">
+    <div class="wrapper">
         <div class="show-list">
             @for ($j=1 ; $j<$no_of_upcomingMovie ;$j++)
                 @foreach ($upcomingMovie_result as $item)

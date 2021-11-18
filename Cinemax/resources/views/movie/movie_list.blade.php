@@ -25,7 +25,7 @@
     <div class="ttl">
         <h1 class="heading">Upcoming Movies</h1>
     </div>
-    <div class="container">
+    <div class="wrapper">
         <div class="show-list">
             @for ($j=1 ; $j<=$no_of_upcomingMovie ; $j++)
             <div class="img">
