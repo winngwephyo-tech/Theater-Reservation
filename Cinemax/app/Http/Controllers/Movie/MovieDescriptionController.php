@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers\Movie;
 
-use App\Models\Movie;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contracts\Services\MovieDescriptionServiceInterface;
 
 class MovieDescriptionController extends Controller
 {
-   public function book_movie()
-   {
-       return view('movie.movie_description');
-   }
+    private $MovieDescriptionInterface;
 
-    public function get_poster($id)
+    public function __construct(MovieDescriptionServiceInterface $MovieDescriptionServiceInterface)
     {
-        $data = Movie::where('id' , $id)->get();
+        $this->MovieDescriptionInterface = $MovieDescriptionServiceInterface;
+    }
 
-        return view('movie.movie_descripton')->with(['data'=>$data]);
+    public function get_details($id)
+    {
+        $movie = $this->MovieDescriptionInterface->movie_details('id');
+
+        $showtime = $this->MovieDescriptionInterface->showtime('id');
+
+        return view('movie.movie_description')->with(['movie'=>$movie , 'showtime'=>$showtime]);
     }
 }

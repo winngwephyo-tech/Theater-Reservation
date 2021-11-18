@@ -14,5 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('movie_description' , [MovieDescriptionController::class , 'book_movie']);
-Route::get('movie_description/{id}' , [MovieDescriptionController::class , 'get_poster']);
+Route::get('movie_description/{id}' , [ShowMovieController::class , 'get_details'])->name('movie.movie_description');
