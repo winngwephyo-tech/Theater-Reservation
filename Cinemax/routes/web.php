@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\Movie\MovieDescriptionController;
 use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Booking\ManageBookingController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +22,9 @@ use App\Http\Controllers\UpMovie\UpMovieController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('movie_description/{id}' , [ShowMovieController::class , 'get_details'])->name('movie.movie_description');
 
 Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])->name('booking.index');
 Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
@@ -56,3 +61,4 @@ Route::post('/booking/create/{movie_id}/{showtime_id}', [BookingController::clas
 Route::get('/reports', [ReportController::class, 'showReports']);
 Route::get('/export_reports', [ReportController::class, 'export']);
 Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
+
