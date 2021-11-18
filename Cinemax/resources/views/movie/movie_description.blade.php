@@ -12,7 +12,8 @@
        <div class="movie-description">
            <div class="title clearfix">
                <div class="movie-title">
-                   <h2>{{ $movie->title }} <br> <span>{{ $movie->duration }}mins</span></h2>
+                   <h1>{{ $movie->title }} </h1>
+                   <span>{{ $movie->duration }}mins</span>
                </div>
                <div class="btn">
                     <a href="" class="trailer-btn button">Trailer</a>
