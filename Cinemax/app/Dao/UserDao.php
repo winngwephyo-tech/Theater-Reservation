@@ -44,17 +44,20 @@ class UserDao implements UserDaoInterface
         return $upcomingMovie_value;
     }
 
-    public function get_poster($id)
+    public function movie_details($id)
     {
-        $data = Movie::where('id' , '=' , $id)->get();
-
-        return $data;
+        $movie = DB::table('movies')
+                ->where('id' , '=' , $id)
+                ->first();
+        return $movie;
     }
 
-//     public function showtime()
-//     {
-//         $showtime = Showtime::get();
+    public function showtime($id)
+    {
+        $showtime = DB::table('showtimes')
+                    ->where('movie_id' , '=' , $id)
+                    ->get();
+        return $showtime;
+    }
 
-//         return $showtime;
-//     }
 }

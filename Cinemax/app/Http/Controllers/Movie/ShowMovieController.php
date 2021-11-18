@@ -63,30 +63,37 @@ class ShowMovieController extends Controller
     //     return view('movie.movie_description')->with(['data'=>$data]);
     // }
 
+    // public function get_details($id)
+    // {
+    //     $movie = DB::table('movies')
+    //             ->where('id' , '=' , $id)
+    //             ->first();
+    //     //dd($movie);
+
+    //     $showtime = DB::table('showtimes')
+    //                 ->where('movie_id' , '=' , $id)
+    //                 ->get();
+    //     //dd($showtime);
+
+    //     // $data = DB::table('movies')
+    //     //         ->join('showtimes' , 'movies.id' ,'=' , 'showtimes.movie_id')
+    //     //         ->select('movies.*' , 'showtimes.id'  , 'showtimes.showtime')
+    //     //         ->get();
+
+    //     // //dd($data);
+
+
+
+    //     return view('movie.movie_description')->with(['movie'=>$movie , 'showtime'=>$showtime]);
+    // }
     public function get_details($id)
     {
-        $movie = DB::table('movies')
-                ->where('id' , '=' , $id)
-                ->first();
-        //dd($movie);
+        $movie = $this->UserInterface->movie_details($id);
 
-        $showtime = DB::table('showtimes')
-                    ->where('movie_id' , '=' , $id)
-                    ->get();
-        //dd($showtime);
-
-        // $data = DB::table('movies')
-        //         ->join('showtimes' , 'movies.id' ,'=' , 'showtimes.movie_id')
-        //         ->select('movies.*' , 'showtimes.id'  , 'showtimes.showtime')
-        //         ->get();
-
-        // //dd($data);
-
-
+        $showtime = $this->UserInterface->showtime($id);
 
         return view('movie.movie_description')->with(['movie'=>$movie , 'showtime'=>$showtime]);
     }
-
 
 
 }

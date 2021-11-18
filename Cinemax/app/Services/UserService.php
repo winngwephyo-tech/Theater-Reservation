@@ -36,14 +36,14 @@ class UserService implements UserServiceInterface
          return $this->UserDao->get_upcomingMovieData();
     }
 
-    public function get_poster($id)
+    public function movie_details($id)
     {
-        return $this->UserDao->get_poster($id);
+        return $this->UserDao->movie_details($id);
     }
 
-    // public function showtime()
-    // {
-    //     return $this->UserDao->showtime();
-    // }
+    public function showtime($id)
+    {
+        return $this->UserDao->showtime($id);
+    }
 
 }
