@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MovieInfoRequest;
 use App\Contracts\Services\Movie\MovieServiceInterface;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class MovieController extends Controller
 {
@@ -28,13 +29,10 @@ class MovieController extends Controller
   public function get_required_data()
   {
     $no_of_theater = $this->movieInterface->count_theater();
-
     $showingMovie_result = $this->movieInterface->get_showingMovieData();
     $no_of_upcomingMovie = $this->movieInterface->count_upcomingMovie();
-
     $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
-
-    return view('movie.movie_list')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
+   return view('movie.movie_list')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
   }
 
 
@@ -44,7 +42,7 @@ class MovieController extends Controller
     $showingMovie_result = $this->movieInterface->get_showingMovieData();
     $no_of_upcomingMovie = $this->movieInterface->count_upcomingMovie();
     $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
-    return view('movie.manage_movie')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
+    return view('movie.manage_movie')->with(['no_odd($upcomingMovie_result);f_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
   }
 
 

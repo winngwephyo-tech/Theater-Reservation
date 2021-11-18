@@ -37,14 +37,12 @@
             <h1 class="heading">Upcoming Movies</h1>
         </div>
         <div class="show-list">
-            @for ($j=1 ; $j<=$no_of_upcomingMovie ;$j++) @foreach ($upcomingMovie_result as $item) @if ($j==$item->id)
+             @foreach ($upcomingMovie_result as $item) 
                 <div class="img">
                     <a href="{{route('upmovie.edit',$item->id) }}"><img src="/upimage/{{$item->poster}}" alt="Showing Movie Poster"></a>
                     <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
                 </div>
-                @endif
                 @endforeach
-                @endfor
         </div>
         <a href="{{route('upmovie.create') }}">
             <div class="add-movie">
