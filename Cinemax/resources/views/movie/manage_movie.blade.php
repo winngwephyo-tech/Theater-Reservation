@@ -32,6 +32,11 @@
     </ul>
 </div>
 <!-- manage upcomming -->
+<div class="upcoming-list">
+    <div class="ttl">
+        <h1 class="heading">Upcoming Movies</h1>
+    </div>
+</div>
 <div class="wrapper">
     <div class="upcoming-list">
         <div class="ttl">
@@ -54,5 +59,10 @@
             </li>
         </ul>
     </div>
+    <a href="{{route('upmovie.create') }}">
+        <div class="add-movie">
+            <i class="fas fa-plus"></i>
+        </div>
+    </a>
 </div>
 @endsection
