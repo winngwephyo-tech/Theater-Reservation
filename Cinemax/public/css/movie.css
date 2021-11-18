@@ -65,7 +65,7 @@ body {
 }
 
 .upcoming-list {
-    margin-top: 40px;
+    margin: 40px 0 40px;
 }
 
 .ttl {
@@ -91,6 +91,7 @@ img {
     width: 17%;
     margin-right: 45px;
     margin-bottom: 20px;
+    list-style: none;
 }
 
 .recent-list li:nth-child(4n+4) {
