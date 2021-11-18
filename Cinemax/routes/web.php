@@ -56,5 +56,3 @@ Route::post('/booking/create/{movie_id}/{showtime_id}', [BookingController::clas
 Route::get('/reports', [ReportController::class, 'showReports']);
 Route::get('/export_reports', [ReportController::class, 'export']);
 Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
-
-
