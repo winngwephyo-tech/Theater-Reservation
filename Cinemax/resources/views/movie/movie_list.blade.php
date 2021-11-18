@@ -9,16 +9,14 @@
         <h1 class="heading">Now Showing</h1>
         <div class="show-list">
             @for($i=1 ; $i<= $no_of_theater ; $i++)
-            <div class="img">
-               @foreach ($showingMovie_result as $data)
-                    @if($i == $data->theater_id)
-
-                    <a href="{{route('description_movie',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Movie Poster"></a>
-                           <p>{{ $data->title }}<br> {{ $data->duration }}mins</p>
-
-                    @endif
-                @endforeach
-            </div>
+                <div class="img">
+                    @foreach ($showingMovie_result as $data)
+                        @if($i == $data->theater_id)
+                            <a href="{{route('description_movie',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Movie Poster"></a>
+                            <p>{{ $data->title }}<br> {{ $data->duration }}mins</p>
+                        @endif
+                    @endforeach
+                </div>
             @endfor
         </div>
     </div>

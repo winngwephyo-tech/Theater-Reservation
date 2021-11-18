@@ -19,7 +19,7 @@
                     <a href="" class="trailer-btn button">Trailer</a>
                     <div>
                         @foreach ($showtime as $item)
-                            <a href="#" class="button">{{ $item -> showtime}}</a>
+                            <a href="{{ route('booking.create', ['movie_id' => $movie->id, 'showtime_id' => $showtime->id]) }}" class="button">{{ $item -> showtime}}</a>
                         @endforeach
                     </div>
                </div>
