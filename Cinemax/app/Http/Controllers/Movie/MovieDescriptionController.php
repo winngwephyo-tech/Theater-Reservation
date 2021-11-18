@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Movie;
 
 use App\Http\Controllers\Controller;
-use App\Contracts\Services\MovieDescriptionServiceInterface;
+use App\Contracts\Services\Movie\MovieDescriptionServiceInterface;
 
 class MovieDescriptionController extends Controller
 {

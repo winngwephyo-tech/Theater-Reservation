@@ -16,18 +16,18 @@
             <div class="img">
                 <a href="{{  route('movie.edit',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Showing Movie Poster"></a>
                 <p>{{ $data->title }}<br> {{ $data->duration }}mins</p>
-
+            </div>
             @endif
-
+            </div>
             @endforeach
-        </div>
-            @endfor
-    </div>
+
+    @endfor
     <a href="{{  route('movie.create') }}">
         <div class="add-movie">
             <i class="fas fa-plus"></i>
         </div>
     </a>
+</div>
 </div>
 
 <!-- manage upcomming -->
@@ -37,12 +37,12 @@
             <h1 class="heading">Upcoming Movies</h1>
         </div>
         <div class="show-list">
-             @foreach ($upcomingMovie_result as $item) 
-                <div class="img">
-                    <a href="{{route('upmovie.edit',$item->id) }}"><img src="/upimage/{{$item->poster}}" alt="Showing Movie Poster"></a>
-                    <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
-                </div>
-                @endforeach
+            @foreach ($upcomingMovie_result as $item)
+            <div class="img">
+                <a href="{{route('upmovie.edit',$item->id) }}"><img src="/upimage/{{$item->poster}}" alt="Showing Movie Poster"></a>
+                <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
+            </div>
+            @endforeach
         </div>
         <a href="{{route('upmovie.create') }}">
             <div class="add-movie">

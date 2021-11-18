@@ -8,17 +8,17 @@
 <div class="wrapper">
     <h1 class="heading">Admin Dashboard</h1>
     <div class="manage-sec">
-        <a href="#">
+        <a href="{{route('admin_movie') }}">
             <div class="manage-movie">
                 <h3>Manage<br>Movies</h3>
             </div>
         </a>
-        <a href="#">
+        <a href="{{route('booking.index') }}">
             <div class="manage-booking ">
                 <h3>Manage <br>Bookings</h3>
             </div>
         </a>
-        <a href="#">
+        <a href="{{route('statistic') }}">
             <div class="statistics">
                 <h3>Statistics</h3>
             </div>

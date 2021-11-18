@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Dao;
+namespace App\Dao\Movie;
 
 use Illuminate\Support\Facades\DB;
-use App\Contracts\Dao\MovieDescriptionDaoInterface;
+use App\Contracts\Dao\Movie\MovieDescriptionDaoInterface;
 
 
 class MovieDescriptionDao implements MovieDescriptionDaoInterface

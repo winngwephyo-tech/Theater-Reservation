@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Contracts\Services;
+namespace App\Contracts\Dao\Movie;
 
-interface MovieDescriptionServiceInterface
+interface MovieDescriptionDaoInterface
 {
     public function movie_details($id);
 

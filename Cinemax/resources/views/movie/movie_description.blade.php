@@ -38,7 +38,7 @@
        </div>
     </div>
     <div class="check-out">
-        <p><a href="{{route('movie.movieList')}}">Check out </a>what other movies are showing today.</p>
+        <p><a href="{{route('movie')}}">Check out </a>what other movies are showing today.</p>
     </div>
 @endsection
 

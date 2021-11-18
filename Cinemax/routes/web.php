@@ -26,6 +26,7 @@ use App\Http\Controllers\UpMovie\UpMovieController;
 
 //User View
 Route::get('/movie_list',[ MovieController::class,'get_required_data'])->name('movie');
+Route::get('/movie_description/{id}',[ MovieDescriptionController::class,'get_details'])->name('description_movie');
 Route::get('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'createBooking'])->name('booking.create');
 Route::post('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'submitBooking'])->name('booking.create');
 
@@ -55,7 +56,7 @@ Route::post('/theater/create', [TheaterController::class, 'submitTheater'])->nam
 Route::post('/theater/delete/{theater_id}', [TheaterController::class, 'submitTheater'])->name('theater.delete');
 
 
-Route::get('/reports', [ReportController::class, 'showReports']);
+Route::get('/reports', [ReportController::class, 'showReports'])->name('statistic');
 Route::get('/export_reports', [ReportController::class, 'export']);
 Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
 

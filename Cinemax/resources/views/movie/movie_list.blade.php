@@ -13,7 +13,7 @@
                @foreach ($showingMovie_result as $data)
                     @if($i == $data->theater_id)
 
-                           <a href="#"><img src="/image/{{$data->poster}}" alt="Movie Poster"></a>
+                    <a href="{{route('description_movie',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Movie Poster"></a>
                            <p>{{ $data->title }}<br> {{ $data->duration }}mins</p>
 
                     @endif
@@ -29,18 +29,14 @@
     </div>
     <div class="wrapper">
         <div class="show-list">
-            @for ($j=1 ; $j<=$no_of_upcomingMovie ; $j++)
-            <div class="img">
+                  <div class="img">
                 @foreach ($upcomingMovie_result as $item)
-                    @if($j == $item->id)
-                        <img src="/upimage/{{$item->poster}}" alt="Upcoming Movie Poster">
-                        <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
-                    @endif
+                  <img src="/upimage/{{$item->poster}}" alt="Upcoming Movie Poster"> <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
                 @endforeach
             </div>
-            @endfor
         </div>
     </div>
 </div>
+description_movie
 
 @endsection

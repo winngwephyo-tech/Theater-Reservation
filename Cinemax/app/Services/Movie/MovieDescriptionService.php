@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Movie;
 
-use App\Contracts\Dao\MovieDescriptionDaoInterface;
-use App\Contracts\Services\MovieDescriptionServiceInterface;
+use App\Contracts\Dao\Movie\MovieDescriptionDaoInterface;
+use App\Contracts\Services\Movie\MovieDescriptionServiceInterface;
 
 class MovieDescriptionService implements MovieDescriptionServiceInterface
 {

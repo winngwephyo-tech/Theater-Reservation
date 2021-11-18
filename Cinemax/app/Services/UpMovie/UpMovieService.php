@@ -37,6 +37,6 @@ class UpMovieService implements UpMovieServiceInterface
      * delete Update Movie
      */
     public function deleteMovie($id){
-        $this->upmovieDao->deleteMovie($id);
+       return $this->upmovieDao->deleteMovie($id);
     }
 }
