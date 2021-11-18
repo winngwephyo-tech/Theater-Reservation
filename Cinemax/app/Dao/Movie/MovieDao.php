@@ -69,7 +69,7 @@ class MovieDao implements MovieDaoInterface
      * @request 
      * @param movie
      */
-    public function update($request, $movie, $showtime)
+    public function update($request, $id)
     {
         $title = $request->title;
         $duration = $request->duration;
@@ -80,53 +80,51 @@ class MovieDao implements MovieDaoInterface
         $rating = $request->rating;
         $cast = $request->cast;
         if ($poster = $request->file('poster')) {
-                    $destinationPath = 'image/';
-                    $profileImage = date('YmdHis') . "." . $poster->getClientOriginalExtension();
-                    $poster->move($destinationPath, $profileImage);
-                    $input['poster'] = "$profileImage";
-                } else {
-                    unset($input['poster']);
-                }
-
-        $input = [
-            'theater_id' => $theater_id, 'genre' => $genre, 'title' => $title, 'poster' =>$input['poster'],
-            'details' => $details, 'rating' => $rating, 'trailer' => $trailer, 'duration' => $duration, 'cast' => $cast
-        ];
-        $movie->update($input);
-        $movieid=$movie->id;
-
-        // For ShowTime Table
-         for ($i = 0; $i < 3; $i++) {
-            switch ($i) {
-                case 0:
-                    $time = $request->time1;
-                    break;
-                case 1:
-                    $time = $request->time2;
-                    break;
-                case 2:
-                    $time = $request->time3;
-                    break;
-            }
-            $data = ['movie_id' => $movieid, 'theater_id' => $theater_id, 'showtime' => $time];;
-            $showtime->update($data);
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $poster->getClientOriginalExtension();
+            $poster->move($destinationPath, $profileImage);
+            $input['poster'] = "$profileImage";
+        } else {
+            unset($input['poster']);
         }
 
+        $input = [
+            'theater_id' => $theater_id, 'genre' => $genre, 'title' => $title, 'poster' => $input['poster'],
+            'details' => $details, 'rating' => $rating, 'trailer' => $trailer, 'duration' => $duration, 'cast' => $cast
+        ];
+        Movie::where('id', '=', $id)->update($input);
+
+        // For ShowTime Table
+        for ($i = 0; $i < 3; $i++) {
+            if ($i == 0) {
+                $time = $request->time1;
+                $data = ['movie_id' => $id, 'theater_id' => $theater_id, 'showtime' => $time];
+                Showtime::where('movie_id', '=', $id)->update($data);
+            } elseif ($i == 1) {
+                $time = $request->time2;
+                $data = ['movie_id' => $id, 'theater_id' => $theater_id, 'showtime' => $time];
+                Showtime::where('movie_id', '=', $id)->update($data);
+            } elseif ($i == 2) {
+                $time = $request->time3;
+                $data = ['movie_id' => $id, 'theater_id' => $theater_id, 'showtime' => $time];
+                Showtime::where('movie_id', '=', $id)->update($data);
+            }
+        }
     }
     public function count_theater()
     {
         $theater = DB::table('theaters')
-               ->count();
+            ->count();
         return $theater;
     }
 
     public function get_showingMovieData()
     {
-         $showingMovie_value = DB::table('movies')
-                               ->select('theater_id' , 'title' , 'duration' ,'poster','id')
-                               ->get();
+        $showingMovie_value = DB::table('movies')
+            ->select('theater_id', 'title', 'duration', 'poster', 'id')
+            ->get();
 
-         return $showingMovie_value;
+        return $showingMovie_value;
     }
 
     public function count_upcomingMovie()
@@ -141,8 +139,8 @@ class MovieDao implements MovieDaoInterface
     {
         $upcomingMovie_value = DB::table('upcoming_movies')
             ->select('id', 'title', 'duration', 'poster')
+           ->whereNull('upcoming_movies.deleted_at')
             ->get();
         return $upcomingMovie_value;
     }
-
 }

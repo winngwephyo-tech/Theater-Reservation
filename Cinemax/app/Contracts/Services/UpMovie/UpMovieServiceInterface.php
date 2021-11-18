@@ -11,5 +11,9 @@ interface UpMovieServiceInterface{
     /**
      * Update UpMovie
      */
-    public function update($request, $upMovie);
+    public function update($request, $id);
+     /**
+     * delete Update Movie
+     */
+    public function deleteMovie($id);
 }

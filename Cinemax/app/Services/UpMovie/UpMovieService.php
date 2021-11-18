@@ -28,9 +28,15 @@ class UpMovieService implements UpMovieServiceInterface
         $this->upmovieDao->store($request);
     }
     /**
-     * 
+     * Update Movie
      */
-    public function update($request, $movie){
-        $this->upmovieDao->update($request,$movie);
+    public function update($request, $id){
+        $this->upmovieDao->update($request,$id);
+    }
+     /**
+     * delete Update Movie
+     */
+    public function deleteMovie($id){
+        $this->upmovieDao->deleteMovie($id);
     }
 }

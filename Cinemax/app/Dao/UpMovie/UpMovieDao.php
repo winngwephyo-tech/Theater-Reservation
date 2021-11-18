@@ -3,10 +3,12 @@
 namespace App\Dao\UpMovie;
 
 use App\Contracts\Dao\UpMovie\UpMovieDaoInterface;
+use App\Models\Movie;
 use App\Models\UpcomingMovie;
 
 class UpMovieDao implements UpMovieDaoInterface
-{    /**
+{
+    /**
      * Add new Movie
      * @param $request
      */
@@ -20,11 +22,11 @@ class UpMovieDao implements UpMovieDaoInterface
             $image->move($destinationPath, $profileImage);
             $input['poster'] = "$profileImage";
         }
-        //return $input;
+        //dd($input);
         UpcomingMovie::create($input);
     }
 
-    public function update($request, $movie)
+    public function update($request, $id)
     {
         $input = $request->all();
         $input = $request->validated();
@@ -37,7 +39,11 @@ class UpMovieDao implements UpMovieDaoInterface
         } else {
             unset($input['poster']);
         }
-
-        $movie->update($input);
+        UpcomingMovie::where('id', '=', $id)->update($input);
+    }
+    public function deleteMovie($id)
+    {   
+        UpcomingMovie::find($id)->delete();
+        return redirect()->route('admin_movie');
     }
 }

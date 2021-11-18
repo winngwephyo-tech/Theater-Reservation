@@ -31,7 +31,7 @@
             <div class="img">
                 @foreach ($upcomingMovie_result as $item)
                     @if($j == $item->id)
-                        <img src="/image/{{$item->poster}}" alt="Upcoming Movie Poster">
+                        <img src="/upimage/{{$item->poster}}" alt="Upcoming Movie Poster">
                         <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
                     @endif
                 @endforeach

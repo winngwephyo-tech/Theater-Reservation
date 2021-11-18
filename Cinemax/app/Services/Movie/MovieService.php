@@ -40,8 +40,8 @@ class MovieService implements MovieServiceInterface
     /**
      * 
      */
-    public function update($request, $movie,$showtime){
-        $this->movieDao->update($request,$movie,$showtime);
+    public function update($request, $id){
+        $this->movieDao->update($request,$id);
     }
 
     public function count_theater()

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpMovieInfoRequest;
 use App\Models\UpcomingMovie;
 use App\Contracts\Services\UpMovie\UpMovieServiceInterface;
+use Illuminate\Support\Facades\DB;
 
 class UpMovieController extends Controller
 {
@@ -43,11 +44,14 @@ class UpMovieController extends Controller
   }
 
 
-  public function edit(UpcomingMovie $upmovie)
+   public function edit($id)
   {
+    $upmovie = DB::table('upcoming_movies')
+      ->where('id', '=', $id)
+      ->select('*')
+      ->first();
     return view('upmovie.edit_image', compact('upmovie'));
   }
-
   /**
    * Update the specified resource in storage.
    *
@@ -55,10 +59,14 @@ class UpMovieController extends Controller
    * @param  \App\movie  $movie
    * @return \Illuminate\Http\Response
    */
-  public function update(UpMovieInfoRequest $request, UpcomingMovie $upmovie)
+  public function update(UpMovieInfoRequest $request, $id)
   {
-    $this->movieInterface->update($request, $upmovie);
+    $this->movieInterface->update($request, $id);
     return redirect()->route('admin_movie')
       ->with('success', 'Movie updated successfully');
   }
+  public function deleteMovie($id){
+   return $this->movieInterface->deleteMovie($id);
+  }
+  
 }

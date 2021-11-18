@@ -15,7 +15,7 @@ interface MovieServiceInterface{
     /**
      * Update Movie
      */
-    public function update($request, $movie,$showtime);
+    public function update($request, $id);
 
     public function count_theater();
 
