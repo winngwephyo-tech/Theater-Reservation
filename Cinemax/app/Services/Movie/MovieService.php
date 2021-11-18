@@ -32,34 +32,43 @@ class MovieService implements MovieServiceInterface
        $this->movieDao->getMovies();
     }
     /**
-     * 
+     *
      */
     public function store($request){
         $this->movieDao->store($request);
     }
     /**
-     * 
+     *
      */
     public function update($request, $id){
         $this->movieDao->update($request,$id);
     }
+    /**
+     *
+     */
 
     public function count_theater()
     {
         $theater = $this->movieDao->count_theater();
         return $theater;
     }
-
+    /**
+     *
+     */
     public function get_showingMovieData()
     {
          return $this->movieDao->get_showingMovieData();
     }
-
+    /**
+     *
+     */
     public function count_upcomingMovie()
     {
         return $this->movieDao->count_upcomingMovie();
     }
-
+    /**
+     *
+     */
     public function get_upcomingMovieData()
     {
          return $this->movieDao->get_upcomingMovieData();

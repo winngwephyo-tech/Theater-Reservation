@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\Movie\MovieDescriptionController;
 use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Booking\ManageBookingController;
 use Illuminate\Support\Facades\Route;

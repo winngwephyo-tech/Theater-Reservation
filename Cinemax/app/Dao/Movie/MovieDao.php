@@ -66,7 +66,7 @@ class MovieDao implements MovieDaoInterface
     }
     /**
      * Update Movie
-     * @request 
+     * @request
      * @param movie
      */
     public function update($request, $id)
@@ -111,13 +111,18 @@ class MovieDao implements MovieDaoInterface
             }
         }
     }
+    /**
+     * count theater
+     */
     public function count_theater()
     {
         $theater = DB::table('theaters')
             ->count();
         return $theater;
     }
-
+    /**
+     * get movie data
+     */
     public function get_showingMovieData()
     {
         $showingMovie_value = DB::table('movies')
@@ -126,7 +131,9 @@ class MovieDao implements MovieDaoInterface
 
         return $showingMovie_value;
     }
-
+    /**
+     * count upcoming movie
+     */
     public function count_upcomingMovie()
     {
         $upcomingMovie = DB::table('upcoming_movies')
@@ -134,7 +141,9 @@ class MovieDao implements MovieDaoInterface
 
         return $upcomingMovie;
     }
-
+    /**
+     * get upcoming movie data
+     */
     public function get_upcomingMovieData()
     {
         $upcomingMovie_value = DB::table('upcoming_movies')

@@ -16,11 +16,11 @@
             <div class="img">
                 <a href="{{  route('movie.edit',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Showing Movie Poster"></a>
                 <p>{{ $data->title }}<br> {{ $data->duration }}mins</p>
-            </div>
+
             @endif
 
             @endforeach
-
+        </div>
             @endfor
     </div>
     <a href="{{  route('movie.create') }}">

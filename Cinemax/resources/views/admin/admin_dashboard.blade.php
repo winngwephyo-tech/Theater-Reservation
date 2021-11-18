@@ -30,7 +30,7 @@
     <div class="ttl">
         <h1 class="heading">Update Theaters</h1>
     </div>
-    <div class="container">
+    <div class="wrapper">
         <a href="#">
             <div class="manage-theater">
                 <h3>Manage <br>Theaters</h3>
