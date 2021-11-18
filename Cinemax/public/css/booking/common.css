@@ -1,0 +1,55 @@
+@charset "UTF_8";
+* {
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.header {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 6%;
+}
+
+.logo {
+    float: left;
+}
+
+.account {
+    float: right;
+}
+
+span {
+    color: #732ed9;
+}
+
+.btn-link {
+    background: #732ed9;
+    border: none;
+    color: white;
+    padding: 8px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+    margin-top: 2%;
+}
+
+.img-poster {
+    width: 142px;
+    padding-bottom: 13%;
+    border-radius: 13%;
+}
