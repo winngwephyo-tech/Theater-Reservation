@@ -12,4 +12,8 @@ interface UserServiceInterface
 
     public function get_upcomingMovieData();
 
+    public function get_poster($id);
+
+    // public function showtime();
+
 }

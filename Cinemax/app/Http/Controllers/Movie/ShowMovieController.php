@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Movie;
 
 use App\Models\Movie;
-use Illuminate\Http\Request;
+use App\Models\Showtime;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Contracts\Services\UserServiceInterface;
 
@@ -20,10 +21,6 @@ class ShowMovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('movie.movieList');
-    }
 
     public function get_required_data()
     {
@@ -53,50 +50,41 @@ class ShowMovieController extends Controller
         return view('movie.manage_movie')->with(['no_of_theater'=>$no_of_theater  , 'no_of_upcomingMovie'=>$no_of_upcomingMovie , 'showingMovie_result' => $showingMovie_result , 'upcomingMovie_result'=>$upcomingMovie_result]);
     }
 
-    public function movie()
+    // public function booking()
+    // {
+    //     $data = $this->UserInterface->get_poster('id');
+
+    //     // $showtime = $this->UserInterface->showtime();
+
+    //     //return $data;
+
+    //     return $data;
+
+    //     return view('movie.movie_description')->with(['data'=>$data]);
+    // }
+
+    public function get_details($id)
     {
-        $movie = Movie::latest()->paginate(5);
+        $movie = DB::table('movies')
+                ->where('id' , '=' , $id)
+                ->first();
+        //dd($movie);
 
-        return view('movie.movie_list',compact('movie'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+        $showtime = DB::table('showtimes')
+                    ->where('movie_id' , '=' , $id)
+                    ->get();
+        //dd($showtime);
 
-    public function create()
-    {
-      return view('movie.create');
-    }
+        // $data = DB::table('movies')
+        //         ->join('showtimes' , 'movies.id' ,'=' , 'showtimes.movie_id')
+        //         ->select('movies.*' , 'showtimes.id'  , 'showtimes.showtime')
+        //         ->get();
 
-    public function store(Request $request)
-    {
-
-      $request->validate([
-        'theater_id'=>'required',
-        'genre'=>'required',
-        'title'=>'required',
-        'poster'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'details'=>'required',
-        'rating'=>'required',
-        'trailer'=>'required',
-        'duration'=>'required',
-        'cast'=>'required',
-
-      ]);
-
-      $input = $request->all();
+        // //dd($data);
 
 
 
- if ($image = $request->file('poster')) {
-        $destinationPath = 'image/';
-        $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        $image->move($destinationPath, $profileImage);
-        $input['poster'] = "$profileImage";
-      }
-      //return $input;
-       Movie::create($input);
-
-      return redirect()->route('movie.index')
-        ->with('success', 'Movie created successfully.');
+        return view('movie.movie_description')->with(['movie'=>$movie , 'showtime'=>$showtime]);
     }
 
 

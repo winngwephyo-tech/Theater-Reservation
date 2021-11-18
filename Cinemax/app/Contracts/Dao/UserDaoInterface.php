@@ -13,4 +13,8 @@ interface UserDaoInterface
 
     public function get_upcomingMovieData();
 
+    public function get_poster($id);
+
+    // public function showtime();
+
 }

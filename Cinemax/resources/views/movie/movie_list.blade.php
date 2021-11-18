@@ -41,7 +41,7 @@
                 <td>{{$m->trailer}}</td>
                 <td>{{$m->duration}}</td>
                 <td>{{$m->cast}}</td>
-                <td><a class="btn btn-primary" href="{{ route('movie.edit',$m->id) }}">Edit</a>
+                <td><a class="btn btn-primary" href="">Edit</a>
                 </td>
             </tr>
             @endforeach

@@ -2,6 +2,8 @@
 
 namespace App\Dao;
 
+use App\Models\Movie;
+use App\Models\Showtime;
 use Illuminate\Support\Facades\DB;
 use App\Contracts\Dao\UserDaoInterface;
 
@@ -28,7 +30,7 @@ class UserDao implements UserDaoInterface
     public function get_showingMovieData()
     {
          $showingMovie_value = DB::table('movies')
-                               ->select('theater_id' , 'title' , 'duration' ,'poster')
+                               ->select('id' ,'theater_id' , 'title' , 'duration' ,'poster')
                                ->get();
 
          return $showingMovie_value;
@@ -41,4 +43,18 @@ class UserDao implements UserDaoInterface
                                 ->get();
         return $upcomingMovie_value;
     }
+
+    public function get_poster($id)
+    {
+        $data = Movie::where('id' , '=' , $id)->get();
+
+        return $data;
+    }
+
+//     public function showtime()
+//     {
+//         $showtime = Showtime::get();
+
+//         return $showtime;
+//     }
 }
