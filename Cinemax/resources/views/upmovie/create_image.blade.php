@@ -38,7 +38,7 @@
 
                 <div class="right-row2 clearfix">
                     <input type="text" name="duration" class="row2-left form-control" placeholder="Duration">
-                    <input type="text" name="release_date" class="row2-left form-control" placeholder="release_date">
+                    <input type="text" name="release_date" class="row2-left form-control" placeholder="2012-12-30">
                 </div>
                 <textarea class="detail form-control" name="details" placeholder="Detail"></textarea>
                 <input type="text" name="trailer" class="movie-title form-control" placeholder="trailer">

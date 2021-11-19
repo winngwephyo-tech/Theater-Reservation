@@ -33,10 +33,6 @@
 </div>
 <!-- manage upcomming -->
 <div class="wrapper">
-    <div class="upcoming-list">
-        <div class="ttl">
-            <h1 class="heading">Upcoming Movies</h1>
-        </div>
         <ul class="recent-list clearfix">
 
             @foreach ($upcomingMovie_result as $item)
@@ -56,7 +52,10 @@
                 </a>
             </li>
         </ul>
+<<<<<<< HEAD
 
     </div>
+=======
+>>>>>>> 221fb9c9b7286edaa3bd656daf29ed54d75f3a13
 </div>
 @endsection
