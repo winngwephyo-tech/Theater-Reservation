@@ -40,6 +40,17 @@
     <div class="check-out">
         <p><a href="{{route('movie')}}">Check out </a>what other movies are showing today.</p>
     </div>
+    <div class="wrapper">
+        <h1 class="heading">Upcoming Movies</h1>
+        <ul class="recent-list clearfix">
+            @foreach ($upcomingMovie_result as $item)
+            <li>
+                <img src="/upimage/{{$item->poster}}" alt="Upcoming Movie Poster">
+                <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
+            </li>
+            @endforeach
+        </ul>
+    </div>
 @endsection
 
 

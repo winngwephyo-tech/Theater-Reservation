@@ -8,8 +8,11 @@
 <div class="wrapper">
     <h1 class="heading">Now Showing</h1>
     <ul class="recent-list clearfix">
-        @for($i=1 ; $i<= $no_of_theater ; $i++) @foreach ($showingMovie_result as $data) @if($i==$data->theater_id)
-            <li> <a href="{{route('description_movie',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Movie Poster"></a>
+        @for($i=1 ; $i<= $no_of_theater ; $i++)
+        @foreach ($showingMovie_result as $data)
+         @if($i==$data->theater_id)
+            <li>
+                <a href="{{route('description_movie',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Movie Poster"></a>
                 <p>{{ $data->title }}<br> {{ $data->duration }}mins</p>
             </li>
             @endif
@@ -25,7 +28,8 @@
     <div class="wrapper">
         <ul class="recent-list clearfix">
             @foreach ($upcomingMovie_result as $item)
-            <li> <img src="/upimage/{{$item->poster}}" alt="Upcoming Movie Poster">
+            <li> 
+                <img src="/upimage/{{$item->poster}}" alt="Upcoming Movie Poster">
                 <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
             </li>
             @endforeach
@@ -33,6 +37,5 @@
     </div>
 </div>
 </div>
-description_movie
 
 @endsection
