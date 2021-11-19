@@ -22,7 +22,6 @@ class UpMovieDao implements UpMovieDaoInterface
             $image->move($destinationPath, $profileImage);
             $input['poster'] = "$profileImage";
         }
-        //dd($input);
         UpcomingMovie::create($input);
     }
 

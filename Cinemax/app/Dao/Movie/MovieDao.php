@@ -148,7 +148,7 @@ class MovieDao implements MovieDaoInterface
     {
         $upcomingMovie_value = DB::table('upcoming_movies')
             ->select('id', 'title', 'duration', 'poster')
-           ->whereNull('upcoming_movies.deleted_at')
+            ->whereNull('upcoming_movies.deleted_at')
             ->get();
         return $upcomingMovie_value;
     }

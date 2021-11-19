@@ -32,24 +32,22 @@
     </ul>
 </div>
 <!-- manage upcomming -->
-<div class="upcoming-list">
-    <div class="ttl">
-        <h1 class="heading">Upcoming Movies</h1>
-    </div>
-</div>
 <div class="wrapper">
     <div class="upcoming-list">
         <div class="ttl">
             <h1 class="heading">Upcoming Movies</h1>
         </div>
         <ul class="recent-list clearfix">
+
             @foreach ($upcomingMovie_result as $item)
             <li>
-                <a href="{{  route('movie.edit',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Showing Movie Poster"></a>
-                <p>{{ $data->title }}<br> {{ $data->duration }}mins</p>
+                <a href="{{  route('upmovie.edit',$item->id) }}"><img src="/upimage/{{$item->poster}}" alt="Showing Movie Poster"></a>
+                <p>{{ $item->title }}<br> {{ $item->duration }}mins</p>
 
             </li>
+
             @endforeach
+
             <li>
                 <a href="{{route('upmovie.create') }}">
                     <div class="add-movie">
@@ -58,11 +56,7 @@
                 </a>
             </li>
         </ul>
+
     </div>
-    <a href="{{route('upmovie.create') }}">
-        <div class="add-movie">
-            <i class="fas fa-plus"></i>
-        </div>
-    </a>
 </div>
 @endsection
