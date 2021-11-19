@@ -7,4 +7,6 @@ interface MovieDescriptionServiceInterface
     public function movie_details($id);
 
     public function showtime($id);
+
+    public function upmovie($id);
 }

@@ -25,4 +25,12 @@ class MovieDescriptionDao implements MovieDescriptionDaoInterface
         return $showtime;
     }
 
+    public function upmovie($id)
+    {
+        $upmovie = DB::table('upcoming_movies')
+                   ->where('id' , '=' , $id)
+                   ->first();
+        return $upmovie;
+    }
+
 }

@@ -27,10 +27,11 @@ use App\Http\Controllers\UpMovie\UpMovieController;
 //User View
 Route::get('/movie_list',[ MovieController::class,'get_required_data'])->name('movie');
 Route::get('/movie_description/{id}',[ MovieDescriptionController::class,'get_details'])->name('description_movie');
+Route::get('/upmovie_description/{id}',[ MovieDescriptionController::class,'upmovie'])->name('description_upmovie');
 Route::get('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'createBooking'])->name('booking.create');
 Route::post('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'submitBooking'])->name('booking.create');
 
-//Admin View 
+//Admin View
 Route::get('/admin_movie_list',[ MovieController::class,'RequiredData_for_ManageMovie'])->name('admin_movie');
 Route::get('/create_movie',[ MovieController::class,'create'])->name('movie.create');
 Route::post('/create',[ MovieController::class,'store'])->name('movie.store');
