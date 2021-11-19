@@ -52,10 +52,7 @@
                 </a>
             </li>
         </ul>
-<<<<<<< HEAD
 
     </div>
-=======
->>>>>>> 221fb9c9b7286edaa3bd656daf29ed54d75f3a13
 </div>
 @endsection

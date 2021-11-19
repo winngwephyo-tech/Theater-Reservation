@@ -91,11 +91,7 @@ img {
     width: 17%;
     margin-right: 45px;
     margin-bottom: 20px;
-<<<<<<< HEAD
     list-style-type: none;
-=======
-    list-style: none;
->>>>>>> 221fb9c9b7286edaa3bd656daf29ed54d75f3a13
 }
 
 .recent-list li:nth-child(4n+4) {
