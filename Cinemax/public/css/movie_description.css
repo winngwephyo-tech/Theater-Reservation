@@ -102,3 +102,18 @@ span {
 }
 
 
+.recent-blk {
+    margin-top: 60px;
+}
+
+.recent-list li {
+    float: left;
+    width: 17%;
+    margin-right: 45px;
+    margin-bottom: 20px;
+    list-style: none;
+}
+
+.recent-list li:nth-child(4n+4) {
+    margin-right: 0;
+}
