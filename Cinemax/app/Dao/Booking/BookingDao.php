@@ -8,6 +8,7 @@ use App\Models\Movie;
 use App\Models\Report;
 use App\Models\Seat;
 use App\Models\Showtime;
+use App\Models\Theater;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -49,6 +50,7 @@ class BookingDao implements BookingDaoInterface
      */
     public function addBooking($request, $movie_id, $showtime_id)
     {
+        $movie_name = Movie::where('id', '=', $movie_id)->value('title');
         $booking_error = 0;
         $validated = 0;
         foreach ($request->addmore as $key => $value) {
@@ -58,6 +60,7 @@ class BookingDao implements BookingDaoInterface
             $number = $value['number'];
             $display_id = $roll . $number;
             $theater_id = Movie::where('id', '=', $movie_id)->value('theater_id');
+            $theater_name = Theater::where('id', '=', $theater_id)->value('name');
 
             //check if the seat is alread booked or not
             if (Booking::where('seat_display_id', '=', $display_id)
@@ -85,6 +88,9 @@ class BookingDao implements BookingDaoInterface
                 ->with('error', 'The Seat is not available!');
         } else {
 
+            $income = 0;
+            $fee = 0;
+
             foreach ($request->addmore as $key => $value) {
                 $roll = $value['roll'];
                 $number = $value['number'];
@@ -96,10 +102,12 @@ class BookingDao implements BookingDaoInterface
                 //for report table
 
                 $price = Seat::where('display_id', '=', $display_id)->value('price');
+                $fee += $price;
+                $seats = "" . $display_id . ",";
                 if (Report::where('movie_id', '=', $movie_id)->exists()) {
                     $income = Report::where('movie_id', '=', $movie_id)->value('income');
                 } else {
-                    $income = 0;
+                    continue;
                 }
                 $income += $price;
                 $rating = Movie::where('id', '=', $movie_id)->value('rating');
@@ -108,6 +116,7 @@ class BookingDao implements BookingDaoInterface
                     ['income' => $income, 'rating' => $rating]
                 );
             }
+
         }
 
     }

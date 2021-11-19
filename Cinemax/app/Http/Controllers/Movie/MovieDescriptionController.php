@@ -18,9 +18,8 @@ class MovieDescriptionController extends Controller
     public function get_details($id)
     {
         $movie = $this->MovieDescriptionInterface->movie_details($id);
-
         $showtime = $this->MovieDescriptionInterface->showtime($id);
-        // dd($movie);
+        //dd($showtime);
         return view('movie.movie_description')->with(['movie' => $movie, 'showtime' => $showtime]);
     }
 }

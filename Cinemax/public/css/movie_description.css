@@ -21,6 +21,16 @@ body {
     visibility: hidden;
     font-size: 0;
 }
+
+.right {
+    float: right;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+
 /* movie-description */
 
 .movie-poster img {
