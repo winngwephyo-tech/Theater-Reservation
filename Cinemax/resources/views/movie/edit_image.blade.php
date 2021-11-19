@@ -29,7 +29,7 @@
                 </div>
                 <button type="submit" class="button button2">Save</button>
                 <div>
-                    <a href="#" class="button button2">Back</a>
+                    <a href="{{ URL::previous() }}" class="button button2">Back</a>
                 </div>
               
             </div>

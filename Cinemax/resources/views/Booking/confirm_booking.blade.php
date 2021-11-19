@@ -6,17 +6,13 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="content clearfix">
-        <div class="content-left">
-            <!-- <p> Movie Name : {{$movie_name}}</p>
+<div class="wrapper">
+    <div class="clearfix">
+        <div class="left">
+            <p> Movie Name : {{$movie_name}}</p>
             <p> Theater Name : {{$theater_name}}</p>
             <p> Seats : {{$seats}}</p>
-            <p> Price : {{$price}}</p> -->
-            <p>Army of Theives </p>
-            <p>Theater Name</p>
-            <p>Theater Name</p>
-            <p>Theater Name</p>
+            <p> Price : {{$fee}}</p>
         </div>
 
     </div>

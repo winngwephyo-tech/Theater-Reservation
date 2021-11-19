@@ -56,7 +56,7 @@ class BookingDao implements BookingDaoInterface
         foreach ($request->addmore as $key => $value) {
             //for booking table
 
-            $roll = $value['roll'];
+            $roll = strtoupper($value['roll']);
             $number = $value['number'];
             $display_id = $roll . $number;
             $theater_id = Movie::where('id', '=', $movie_id)->value('theater_id');
@@ -92,7 +92,7 @@ class BookingDao implements BookingDaoInterface
             $fee = 0;
 
             foreach ($request->addmore as $key => $value) {
-                $roll = $value['roll'];
+                $roll = strtoupper($value['roll']);
                 $number = $value['number'];
                 $display_id = $roll . $number;
                 $data = ['user_id' => 1, 'movie_id' => $movie_id, 'showtime_id' => $showtime_id,
@@ -103,7 +103,7 @@ class BookingDao implements BookingDaoInterface
 
                 $price = Seat::where('display_id', '=', $display_id)->value('price');
                 $fee += $price;
-                $seats = "" . $display_id . ",";
+                $seatString = "" . $display_id . ",";
                 if (Report::where('movie_id', '=', $movie_id)->exists()) {
                     $income = Report::where('movie_id', '=', $movie_id)->value('income');
                 } else {
@@ -116,6 +116,12 @@ class BookingDao implements BookingDaoInterface
                     ['income' => $income, 'rating' => $rating]
                 );
             }
+
+            return view('booking.confirm_booking')
+                ->with('movie_name', $movie_name)
+                ->with('theater_name', $theater_name)
+                ->with('seats', $seatString)
+                ->with('fee', $fee);
 
         }
 
