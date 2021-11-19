@@ -7,11 +7,6 @@
 
 @section('content')
     <div class="wrapper clearfix">
-        <div class="clearfix">
-                <div class="right">
-                    <a class="button" href="{{ URL::previous() }}"> Back</a>
-                </div>
-        </div>
        <div class="movie-poster mt-20">
           <img src="/image/{{ $movie->poster }}" alt="">
        </div>

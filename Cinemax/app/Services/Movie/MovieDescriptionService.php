@@ -24,4 +24,9 @@ class MovieDescriptionService implements MovieDescriptionServiceInterface
          return $this->MovieDescriptionDao->showtime($id);
     }
 
+    public function upmovie($id)
+    {
+        return $this->MovieDescriptionDao->upmovie($id);
+    }
+
 }
