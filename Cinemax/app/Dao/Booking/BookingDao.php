@@ -90,6 +90,7 @@ class BookingDao implements BookingDaoInterface
 
             $income = 0;
             $fee = 0;
+            $seatString = "";
 
             foreach ($request->addmore as $key => $value) {
                 $roll = strtoupper($value['roll']);
@@ -103,11 +104,10 @@ class BookingDao implements BookingDaoInterface
 
                 $price = Seat::where('display_id', '=', $display_id)->value('price');
                 $fee += $price;
-                $seatString = "" . $display_id . ",";
+                $seatString .= $display_id . ",";
                 if (Report::where('movie_id', '=', $movie_id)->exists()) {
                     $income = Report::where('movie_id', '=', $movie_id)->value('income');
                 } else {
-                    continue;
                 }
                 $income += $price;
                 $rating = Movie::where('id', '=', $movie_id)->value('rating');

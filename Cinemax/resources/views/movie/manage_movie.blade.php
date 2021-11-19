@@ -9,7 +9,7 @@
 <div class="wrapper">
     <div class="manage-header clearFix">
         <h1 class="heading">Manage Movies</h1>
-        <a href="#" class="button">Back</a>
+        <a href="{{ URL::previous() }}" class="button">Back</a>
     </div>
     <ul class="recent-list clearfix">
 
