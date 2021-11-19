@@ -43,7 +43,7 @@
         <ul class="recent-list clearfix">
             @foreach ($upcomingMovie_result as $item)
             <li>
-                <img src="/upimage/{{$item->poster}}" alt="Upcoming Movie Poster">
+                <img src="" alt="Upcoming Movie Poster">
                 <p>{{ $item->title }} <br> {{ $item->duration }}min</p>
             </li>
             @endforeach
