@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Movie;
 
 use App\Http\Controllers\Controller;
 use App\Contracts\Services\Movie\MovieDescriptionServiceInterface;
+use Illuminate\Support\Facades\DB;
 
 class MovieDescriptionController extends Controller
 {
@@ -19,7 +20,7 @@ class MovieDescriptionController extends Controller
         $movie = $this->MovieDescriptionInterface->movie_details($id);
 
         $showtime = $this->MovieDescriptionInterface->showtime($id);
-
-        return view('movie.movie_description')->with(['movie'=>$movie , 'showtime'=>$showtime]);
+        // dd($movie);
+        return view('movie.movie_description')->with(['movie' => $movie, 'showtime' => $showtime]);
     }
 }
