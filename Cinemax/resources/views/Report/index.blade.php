@@ -13,7 +13,7 @@
             <h2>Statistics</h2>
         </div>
         <div class="right">
-            <a class="button" href="{{ URL::previous() }}"> Back</a>
+            <a class="button" href="{{ url('/') }}"> Back</a>
         </div>
     </div>
     <div class="mt-20">

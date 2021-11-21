@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('style')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
 @endsection
 
 @section('content')
-<div class="wrapper">
-    <h1 class="heading">Admin Dashboard</h1>
+<div class="wrapper mt-20">
+    <h2>Admin Dashboard</h2>
     <div class="manage-sec">
         <a href="{{route('admin_movie') }}">
             <div class="manage-movie">
@@ -25,18 +26,14 @@
         </a>
     </div>
 </div>
-
-<div class="theater-update">
-    <div class="ttl">
-        <h1 class="heading">Update Theaters</h1>
-    </div>
-    <div class="wrapper">
-        <a href="#">
+<div class="line"></div>
+<div class="wrapper mt-20">
+    <h2>Update Theaters</h2>
+        <a href="{{route('theater.manage') }}">
             <div class="manage-theater">
                 <h3>Manage <br>Theaters</h3>
             </div>
         </a>
-    </div>
 </div>
 @endsection
 
