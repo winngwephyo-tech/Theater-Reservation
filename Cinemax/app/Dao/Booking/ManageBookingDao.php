@@ -23,13 +23,12 @@ class ManageBookingDao implements ManageBookingDaoInterface
     public function manageBooking()
     {
         $bookingList = DB::table('bookings')
-            ->join('movies', 'bookings.movie_id', '=', 'movies.id')
-            ->join('seats', 'bookings.seat_display_id', '=', 'seats.display_id')
-            ->join('users', 'bookings.user_id', '=', 'users.id')
-            ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
-            ->select('bookings.id', 'users.name', 'movies.title', 'seats.display_id', 'showtimes.showtime', 'seats.price')
-            ->get();
-        return $bookingList;
+        ->join('movies', 'bookings.movie_id', '=', 'movies.id')
+        ->join('users', 'bookings.user_id', '=', 'users.id')
+        ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
+        ->select('bookings.id', 'users.name', 'movies.title', 'bookings.seat_display_id', 'showtimes.showtime','bookings.price')
+        ->get();
+    return $bookingList;
     }
     /**
      * Report table

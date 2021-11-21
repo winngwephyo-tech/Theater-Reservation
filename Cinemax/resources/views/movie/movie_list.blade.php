@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/movie.css')}}">

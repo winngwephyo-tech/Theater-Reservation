@@ -96,7 +96,7 @@ class BookingDao implements BookingDaoInterface
                 $roll = strtoupper($value['roll']);
                 $number = $value['number'];
                 $display_id = $roll . $number;
-                $data = ['user_id' => 1, 'movie_id' => $movie_id, 'showtime_id' => $showtime_id,
+                $data = ['user_id' => 1, 'theater_id'=> $theater_id,'movie_id' => $movie_id, 'showtime_id' => $showtime_id,
                     'seat_display_id' => $display_id, 'is_booked' => 1];
                 Booking::create($data);
 

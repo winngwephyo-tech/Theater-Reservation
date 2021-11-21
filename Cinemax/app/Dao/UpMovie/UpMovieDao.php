@@ -24,7 +24,10 @@ class UpMovieDao implements UpMovieDaoInterface
         }
         UpcomingMovie::create($input);
     }
-
+    /**
+     * Update Movie Data
+     * @param $request and $id
+     */
     public function update($request, $id)
     {
         $input = $request->all();
@@ -41,7 +44,7 @@ class UpMovieDao implements UpMovieDaoInterface
         UpcomingMovie::where('id', '=', $id)->update($input);
     }
     public function deleteMovie($id)
-    {   
+    {
         UpcomingMovie::find($id)->delete();
         return redirect()->route('admin_movie');
     }
