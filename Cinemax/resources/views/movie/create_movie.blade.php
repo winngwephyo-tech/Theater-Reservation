@@ -39,7 +39,7 @@
             <div class="center">
                 <div class="form-input">
                     <div class="preview">
-                        <img id="file-ip-1-preview">
+                        <img id="file-ip-1-preview" class="poster create-poster">
                     </div>
                     <label for="file-ip-1" class="button button2">Upload</label>
                     <input type="file" name="poster" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
