@@ -21,13 +21,30 @@ body {
     font-size: 0;
 }
 
+.mt-20 {
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 32px;
+    margin: 15px 0;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
 .form-control {
     padding: 10px 25px;
+    background-color: #fcfcfc;
     font-weight: bold;
     color: #31353d;
     box-sizing: border-box;
     border: 3px solid #e3d7f3;
-    background-color: inherit;
     border-radius: 10px;
     margin: 10px;
 }
