@@ -12,7 +12,7 @@
             <h2>Manage Booking</h2>
         </div>
         <div class="right">
-            <a class="button" href="{{ URL::previous() }}"> Back</a>
+            <a class="button" href="{{ url('/') }}"> Back</a>
         </div>
     </div>
     <table class="report mt-20">
