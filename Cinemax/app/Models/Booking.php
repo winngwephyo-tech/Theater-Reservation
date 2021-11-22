@@ -21,6 +21,7 @@ class Booking extends Model
         'movie_id',
         'showtime_id',
         'seat_display_id',
+        'price',
         'is_booked',
     ];
 

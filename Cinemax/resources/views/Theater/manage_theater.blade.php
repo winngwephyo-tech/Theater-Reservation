@@ -25,7 +25,9 @@
 
     <div class="mt-20 clearfix">
         @foreach ($theaters as $theater)
-            <div class="theaters">{{ $theater->name }}
+            <div class="theaters">
+                {{ $theater->name }}<br>
+                ID: {{ $theater->id }}
                 <a href="{{route('theater.delete', $theater->id) }}" class="button button2">Delete</a>
             </div>
         @endforeach
