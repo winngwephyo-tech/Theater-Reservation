@@ -29,6 +29,16 @@ class TheaterController extends Controller
         $this->theaterInterface = $theaterServiceInterface;
     }
     /**
+     * To show theaters view
+     *
+     * @return View theater
+     */
+    public function showTheaters()
+    {
+        $theaters = Theater::all();
+        return view('theater.manage_theater', compact('theaters'));
+    }
+    /**
      * To show create theater view
      *
      * @return View create theater
@@ -49,6 +59,8 @@ class TheaterController extends Controller
         $theater_id = $this->theaterInterface->addTheaters($request);
 
         $this->seatInterface->addSeats($request, $theater_id);
+        
+        return redirect()->route('theater.manage');
     }
     /**
      * To delete theater if needed
