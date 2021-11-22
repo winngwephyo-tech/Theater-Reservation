@@ -22,6 +22,16 @@
 @enderror
 
 @section('content')
+<div class="wrapper mt-20">
+    <div class="clearfix">
+            <div class="left">
+                <h2>Create Movie</h2>
+            </div>
+            <div class="right">
+                <a class="button" href="{{ URL::previous() }}"> Back</a>
+            </div>
+    </div>
+</div>
 <form action="{{ route('movie.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="wrapper clearfix">
@@ -31,7 +41,7 @@
                     <div class="preview">
                         <img id="file-ip-1-preview">
                     </div>
-                    <label for="file-ip-1">Upload Poster Image</label>
+                    <label for="file-ip-1" class="button button2">Upload</label>
                     <input type="file" name="poster" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
 
                 </div>
@@ -39,46 +49,29 @@
             <div class="center">
             <button type="submit" class="button button2">Save</button>
             </div>
-            <div class="center">
-                <a href="{{ URL::previous() }}" class="button button2">Back</a>
-            </div>
         </div>
         <div class="right-con">
-            <input type="text" name="title" placeholder="title" class="movie-title form-control">
-            <div class="time-style form-control">
+            <input type="text" name="title" placeholder="Title" class="form-control width-1">
+            <div class="form-control time-style width-1">
                 <span class="span-showtime">Add ShowTime</span>
-                <input type="time" name="time1">
-                <input type="time" name="time2">
-                <input type="time" name="time3">
+                <input type="time" class="time-input" name="time1">
+                <input type="time" class="time-input" name="time2">
+                <input type="time" class="time-input" name="time3">
             </div>
+            <input type="text" name="trailer" class="form-control width-1" placeholder="Trailer">
+            <textarea class="form-control width-1" name="details" placeholder="Detail"></textarea>
+            <div class="right-row2 clearfix">
+            <textarea class="form-control width-1" name="cast" placeholder="Casts"></textarea>
             <div class="right-row2 clearfix">
                 <input type="text" name="duration" class="row2-left form-control" placeholder="Duration">
-                <input type="text" name="theater_id" class="row2-right form-control" placeholder="TheaterID">
+                <input type="text" name="theater_id" class="row2-left form-control" placeholder="TheaterID">
             </div>
-            <textarea class="detail form-control" name="details" placeholder="Detail"></textarea>
-            <input type="text" name="trailer" class="movie-title form-control" placeholder="trailer">
-            <div class="right-row2 clearfix">
                 <input type="text" name="genre" class="row2-left form-control" placeholder="Genre">
-                <input type="text" name="rating" class="row2-right form-control" placeholder="Rating">
+                <input type="text" name="rating" class="row2-left form-control" placeholder="Rating">
             </div>
-            <textarea class="detail form-control" name="cast" placeholder="Casts"></textarea>
         </div>
 
     </div>
 
 </form>
-<!-- <script>
-    function showPreview(event) {
-        if (event.target.files.length > 0) {
-            var src = URL.createObjectURL(event.target.files[0]);
-            var preview = document.getElementById("file-ip-1-preview");
-            preview.src = src;
-            preview.style.display = "block";
-        }
-    }
-</script> -->
-
-
-
-
 @endsection

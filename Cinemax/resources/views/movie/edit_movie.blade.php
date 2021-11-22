@@ -21,6 +21,17 @@
 @enderror
 
 @section('content')
+
+<div class="wrapper mt-20">
+    <div class="clearfix">
+            <div class="left">
+                <h2>Edit Movie</h2>
+            </div>
+            <div class="right">
+                <a class="button" href="{{ URL::previous() }}"> Back</a>
+            </div>
+    </div>
+</div>
 <form action="{{ route('movie.update',$movie->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="wrapper clearfix">
@@ -30,7 +41,7 @@
                     <div class="preview">
                         <img id="file-ip-1-preview" src="/image/{{ $movie->poster }}" style="display: block;">
                     </div>
-                    <label for="file-ip-1">Edit Poster Image</label>
+                    <label for="file-ip-1" class="button button2">Edit</label>
                     <input type="file" name="poster" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
 
                 </div>
@@ -38,15 +49,12 @@
             <div class="center">
                 <button type="submit" class="button button2">Save</button>
             </div>
-            <div class="center">
-                <a href="{{ URL::previous() }}" class="button button2">Back</a>
-            </div>
 
         </div>
         <div class="right-con">
-            <input type="text" name="title" value="{{ $movie->title }}" placeholder="title" class="movie-title">
+            <input type="text" name="title" value="{{ $movie->title }}" placeholder="title" class="form-control width-1">
 
-            <div class="time-style form-control">
+            <div class="form-control time-style width-1">
                 <span class="span-showtime">Add ShowTime</span>
                 @foreach($showtime as $key=>$showtime)
                 @switch($key)
@@ -77,23 +85,23 @@
 
                 @endforeach
 
-                <input type="time" name="time1" value="{{ $showtime1}}">
-                <input type="time" name="time2" value="{{ $showtime2}}">
-                <input type="time" name="time3" value="{{ $showtime3}}">
+                <input type="time" class="time-input" name="time1" value="{{ $showtime1}}">
+                <input type="time" class="time-input" name="time2" value="{{ $showtime2}}">
+                <input type="time" class="time-input" name="time3" value="{{ $showtime3}}">
 
             </div>
 
+            <input type="text" name="trailer" value="{{ $movie->trailer }}" class="form-control width-1" placeholder="trailer">
+            <input type="text" class="form-control width-1" name="details" value="{{ $movie->details }}" placeholder="Detail"></textarea>
+            <input type="text" class="form-control width-1" name="cast" value="{{ $movie->cast }}" placeholder="Casts"></textarea>
             <div class="right-row2 clearfix">
                 <input type="text" name="duration" value="{{ $movie->duration }}" class="row2-left form-control" placeholder="Duration">
-                <input type="text" name="theater_id" value="{{ $movie->theater_id }}" class="row2-right form-control" placeholder="TheaterID">
+                <input type="text" name="theater_id" value="{{ $movie->theater_id }}" class="row2-left form-control" placeholder="TheaterID">
             </div>
-            <input type="text" class="detail form-control" name="details" value="{{ $movie->details }}" placeholder="Detail"></textarea>
-            <input type="text" name="trailer" value="{{ $movie->trailer }}" class="movie-title form-control" placeholder="trailer">
             <div class="right-row2 clearfix">
                 <input type="text" name="genre" value="{{ $movie->genre }}" class="row2-left form-control" placeholder="Genre">
-                <input type="text" name="rating" value="{{ $movie->rating }}" class="row2-right form-control" placeholder="Rating">
+                <input type="text" name="rating" value="{{ $movie->rating }}" class="row2-left form-control" placeholder="Rating">
             </div>
-            <input type="text" class="detail form-control" name="cast" value="{{ $movie->cast }}" placeholder="Casts"></textarea>
         </div>
     </div>
     </div>
