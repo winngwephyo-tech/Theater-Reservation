@@ -3,6 +3,7 @@
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/movie.css')}}">
 <link rel="stylesheet" href="{{ asset('css/movie_description.css')}}">
+<link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css')}}">
 @endsection
 
 @section('content')
@@ -13,7 +14,7 @@
        <div class="movie-description mt-20">
            <div class="title clearfix">
                <div class="movie-title">
-                   <h1>{{ $movie->title }} </h1>
+                   <h1>{{ $movie->title }}<i class="far fa-thumbs-up like-btn"></i><i class="far fa-thumbs-down like-btn"></i></h1>
                    <span>{{ $movie->duration }}mins</span>
                </div>
                <div class="btn">
