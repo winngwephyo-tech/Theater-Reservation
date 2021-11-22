@@ -21,6 +21,17 @@
 @enderror
 
 
+@section('content')
+<div class="wrapper mt-20">
+    <div class="clearfix">
+            <div class="left">
+                <h2>Create Upcoming Movie</h2>
+            </div>
+            <div class="right">
+                <a class="button" href="{{ URL::previous() }}"> Back</a>
+            </div>
+    </div>
+</div>
 <form action="{{ route('upmovie.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
@@ -31,7 +42,7 @@
                     <div class="preview">
                         <img id="file-ip-1-preview">
                     </div>
-                    <label for="file-ip-1">Upload Poster Image</label>
+                    <label for="file-ip-1" class="button button2">Upload</label>
                     <input type="file" name="poster" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
 
                 </div>
@@ -39,24 +50,21 @@
             <div class="center">
             <button type="submit" class="button button2">Save</button>
             </div>
-            <div class="center">
-                <a href="{{ URL::previous() }}" class="button button2">Back</a>
-            </div>
             </div>
             <div class="right-con">
-                <input type="text" name="title" class="movie-title form-control" placeholder="Title">
-
+                <input type="text" name="title" class="form-control width-1" placeholder="Title">
+                <input type="text" name="trailer" class="form-control width-1" placeholder="Trailer">
+                <textarea class="form-control width-1" name="details" placeholder="Detail"></textarea>
+                <textarea class="form-control width-1" name="cast" placeholder="Casts"></textarea>
                 <div class="right-row2 clearfix">
                     <input type="text" name="duration" class="row2-left form-control" placeholder="Duration">
-                    <input type="text" name="release_date" class="row2-left form-control" placeholder="2012-12-30">
+                    <input type="text" name="release_date" class="row2-left form-control" placeholder="2021-12-30">
                 </div>
-                <textarea class="detail form-control" name="details" placeholder="Detail"></textarea>
-                <input type="text" name="trailer" class="movie-title form-control" placeholder="trailer">
                 <div class="right-row2 clearfix">
                     <input type="text" name="genre" class="row2-left form-control" placeholder="Genre">
                 </div>
-                <textarea class="detail form-control" name="cast" placeholder="Casts"></textarea>
             </div>
 
         </div>
 </form>
+@endsection
