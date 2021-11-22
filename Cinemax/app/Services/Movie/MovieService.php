@@ -43,7 +43,20 @@ class MovieService implements MovieServiceInterface
      *Update Movie Data
      */
     public function update($request, $id){
-        $this->movieDao->update($request,$id);
+        $input = [
+            'theater_id' => $request->theater_id, 'genre' => $request->genre, 'title' => $request->title,
+            'details' => $request->details, 'rating' => $request->rating, 'trailer' => $request->trailer,
+            'duration' => $request->duration, 'cast' => $request->cast
+        ];
+        if ($poster = $request->file('poster')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $poster->getClientOriginalExtension();
+            $poster->move($destinationPath, $profileImage);
+            $input['poster'] = "$profileImage";
+        }
+        $this->movieDao->updateMovie($input,$id);
+        $this->movieDao->updateShowTime($request,$id);
+        
     }
     /**
      *Count No of Theater

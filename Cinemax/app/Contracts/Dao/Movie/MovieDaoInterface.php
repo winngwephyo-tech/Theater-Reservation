@@ -18,7 +18,12 @@ interface MovieDaoInterface{
     /**
      * Update Movie
      */
-    public function update($request, $id);
+    public function updateMovie($input,$id);
+    /**
+     * Update ShowTime
+     */
+    public function updateShowTime($request, $id);
+ 
     /**
      * count theater
      */

@@ -43,6 +43,9 @@ class UpMovieDao implements UpMovieDaoInterface
         }
         UpcomingMovie::where('id', '=', $id)->update($input);
     }
+    /**
+     * Delete Upcoming Movie By Id
+     */
     public function deleteMovie($id)
     {
         UpcomingMovie::find($id)->delete();
