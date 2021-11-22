@@ -93,24 +93,25 @@ class MovieDao implements MovieDaoInterface
             'details' => $details, 'rating' => $rating, 'trailer' => $trailer, 'duration' => $duration, 'cast' => $cast
         ];
         Movie::where('id', '=', $id)->update($input);
-
+       
         // For ShowTime Table
         for ($i = 0; $i < 3; $i++) {
             if ($i == 0) {
                 $time = $request->time1;
-                $data = ['movie_id' => $id, 'theater_id' => $theater_id, 'showtime' => $time];
-                Showtime::where('movie_id', '=', $id)->update($data);
+                   $data = ['movie_id' => $id, 'theater_id' => $theater_id, 'showtime' => $time];
+               Showtime::where('movie_id', '=', $id)->update($data);
             } elseif ($i == 1) {
                 $time = $request->time2;
-                $data = ['movie_id' => $id, 'theater_id' => $theater_id, 'showtime' => $time];
-                Showtime::where('movie_id', '=', $id)->update($data);
+                $data = ['movie_id' => $id, 'theater_id' => $theater_id, 'showtime' => $time];                
+               Showtime::where('movie_id', '=', $id)->update($data);
+              
             } elseif ($i == 2) {
                 $time = $request->time3;
                 $data = ['movie_id' => $id, 'theater_id' => $theater_id, 'showtime' => $time];
                 Showtime::where('movie_id', '=', $id)->update($data);
             }
         }
-    }
+     }
     /**
      * count theater
      */

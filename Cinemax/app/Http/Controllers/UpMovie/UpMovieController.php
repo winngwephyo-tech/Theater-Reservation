@@ -28,7 +28,7 @@ class UpMovieController extends Controller
    */
   public function create()
   {
-    return view('upmovie.create_image');
+    return view('upmovie.create_movie');
   }
   /**
    * Store a newly created resource in storage.
@@ -42,15 +42,17 @@ class UpMovieController extends Controller
     return redirect()->route('admin_movie')
       ->with('success', 'Movie created successfully.');
   }
+  /**
+   * Edit Upcoming Movie By Id
+   */
 
-
-   public function edit($id)
+  public function edit($id)
   {
     $upmovie = DB::table('upcoming_movies')
       ->where('id', '=', $id)
       ->select('*')
       ->first();
-    return view('upmovie.edit_image', compact('upmovie'));
+    return view('upmovie.edit_movie', compact('upmovie'));
   }
   /**
    * Update the specified resource in storage.
@@ -65,8 +67,8 @@ class UpMovieController extends Controller
     return redirect()->route('admin_movie')
       ->with('success', 'Movie updated successfully');
   }
-  public function deleteMovie($id){
-   return $this->movieInterface->deleteMovie($id);
+  public function deleteMovie($id)
+  {
+    return $this->movieInterface->deleteMovie($id);
   }
-  
 }

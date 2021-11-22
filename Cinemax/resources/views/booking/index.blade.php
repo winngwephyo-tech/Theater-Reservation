@@ -30,7 +30,7 @@
             <td>{{ $book->id }}</td>
             <td>{{ $book->name }}</td>
             <td>{{ $book->title }}</td>
-            <td>{{ $book->display_id }}</td>
+            <td>{{ $book->seat_display_id }}</td>
             <td>{{ $book->showtime}}</td>
             <td>{{ $book->price}}</td>
             <td><a class="button ml-10 button2" href="{{ route('booking.delete',$book->id ) }}"> Cancel</a></td>

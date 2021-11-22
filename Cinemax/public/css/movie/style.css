@@ -30,6 +30,16 @@
     height: 40%;
     border-radius: 20px;
     margin-bottom: 10%;
+    display: block;
+}
+
+.import-poster {
+    width: 75%;
+    height: 40%;
+    border-radius: 20px;
+    margin-bottom: 10%;
+    opacity: 0.2;
+    position: relative;
 }
 
 .button {
@@ -115,3 +125,47 @@
 .span-showtime {
     margin-top: 19px;
 }
+/* 
+testing */
+.center {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  
+  }
+  .form-input {
+    width:350px;
+    padding:20px;
+    background:#fff;
+    box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377),
+                3px 3px 7px rgba(94, 104, 121, 0.377);
+  }
+  .form-input input {
+    display:none;
+  
+  }
+  .form-input label {
+    display:block;
+    width:60%;
+    height:60px;
+    line-height:50px;
+    text-align:center;
+    background:rgb(196, 195, 228);
+    margin: 0 auto;
+  
+    color:#fff;
+    font-size:15px;
+    font-family:"Open Sans",sans-serif;
+    text-transform:Uppercase;
+    font-weight:600;
+    border-radius:5px;
+    cursor:pointer;
+  }
+  
+  .form-input img {
+    width:85%;
+    display:none;
+    margin: 0 auto;
+  
+    margin-bottom:30px;
+  }
