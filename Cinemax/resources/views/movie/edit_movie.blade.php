@@ -39,7 +39,7 @@
             <div class="center">
                 <div class="form-input">
                     <div class="preview">
-                        <img id="file-ip-1-preview">
+                        <img id="file-ip-1-preview" src="/image/{{ $movie->poster }}" class="poster">
                     </div>
                     <label for="file-ip-1" class="button button2">Edit</label>
                     <input type="file" name="poster" id="file-ip-1" accept="image/*" onchange="showPreview(event);">

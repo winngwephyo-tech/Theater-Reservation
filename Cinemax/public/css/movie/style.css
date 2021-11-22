@@ -112,12 +112,15 @@
     display: none;
 }
 
-.form-input img {
+.poster{
     width: 140px;
     height: 200px;
     border-radius: 20px;
-    display: none;
+    display: block;
     margin: 20px auto 15px;
+}
+.create-poster{
+    display: none;
 }
 
 .width-1 {
