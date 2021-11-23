@@ -8,29 +8,26 @@
 <script src="{{ asset('js/preview_poster.js') }}"></script>
 @endsection
 
-@error('Test Data')
-@if ($errors->any())
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-@enderror
-
 @section('content')
 <div class="wrapper mt-20">
     <div class="clearfix">
-            <div class="left">
-                <h2>Edit Upcoming Movie</h2>
-            </div>
-            <div class="right">
-                <a class="button" href="{{ URL::previous() }}"> Back</a>
-            </div>
+        <div class="left">
+            <h2>Edit Upcoming Movie</h2>
+        </div>
+        <div class="right">
+            <a class="button" href="{{ URL::previous() }}"> Back</a>
+        </div>
     </div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 </div>
 <form action="{{ route('upmovie.update',$upmovie->id) }}" method="POST" enctype="multipart/form-data">
     @csrf

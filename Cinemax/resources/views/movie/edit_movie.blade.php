@@ -7,30 +7,28 @@
 @section('script')
 <script src="{{ asset('js/preview_poster.js') }}"></script>
 @endsection
-@error('Test Data')
-@if ($errors->any())
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-@enderror
 
 @section('content')
 
 <div class="wrapper mt-20">
     <div class="clearfix">
-            <div class="left">
-                <h2>Edit Movie</h2>
-            </div>
-            <div class="right">
-                <a class="button" href="{{ URL::previous() }}"> Back</a>
-            </div>
+        <div class="left">
+            <h2>Edit Movie</h2>
+        </div>
+        <div class="right">
+            <a class="button" href="{{ URL::previous() }}"> Back</a>
+        </div>
     </div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 </div>
 <form action="{{ route('movie.update',$movie->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -58,7 +56,7 @@
                 <span class="span-showtime">Add ShowTime</span>
                 @foreach($showtime as $key=>$showtime)
                 @switch($key)
-                
+
                 @case(0)
                 @php
                 $showtime1=$showtime->showtime
@@ -97,11 +95,11 @@
             <div class="right-row2 clearfix">
                 <input type="text" name="duration" value="{{ $movie->duration }}" class="row2-left form-control" placeholder="Duration">
                 <select name="theater_id" class="row2-left form-control">
-                        <option value="{{ $movie->theater_id }}">{{ $movie->theater_id }}</option>
-                        @foreach($theaters as $theater)
-                        <option value="{{$theater->id}}">{{$theater->id}}</option>
-                        @endforeach
-                    </select>
+                    <option value="{{ $movie->theater_id }}">{{ $movie->theater_id }}</option>
+                    @foreach($theaters as $theater)
+                    <option value="{{$theater->id}}">{{$theater->id}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="right-row2 clearfix">
                 <input type="text" name="genre" value="{{ $movie->genre }}" class="row2-left form-control" placeholder="Genre">
