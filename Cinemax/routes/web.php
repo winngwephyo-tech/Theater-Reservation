@@ -59,6 +59,7 @@ Route::get('/theater/delete/{theater_id}', [TheaterController::class, 'deleteThe
 
 
 Route::get('/reports', [ReportController::class, 'showReports'])->name('statistic');
+Route::get('/reports/chart', [ReportController::class, 'getChartData'])->name('report.chart');
 Route::get('/export_reports', [ReportController::class, 'export']);
 Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
 
