@@ -19,10 +19,10 @@
             <a class="button" href="{{ URL::previous() }}"> Back</a>
         </div>
     </div>
+
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
+    <div class="line">
+         <ul class="alert">
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
@@ -30,6 +30,7 @@
     </div>
     @endif
 </div>
+
 <form action="{{ route('movie.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="wrapper clearfix">
