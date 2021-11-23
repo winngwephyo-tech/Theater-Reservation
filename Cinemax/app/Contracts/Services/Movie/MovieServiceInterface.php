@@ -2,8 +2,9 @@
 
 namespace App\Contracts\Services\Movie;
 
-interface MovieServiceInterface{
-     /**
+interface MovieServiceInterface
+{
+    /**
      * To get Movies
      * @return $Movies
      */
@@ -12,8 +13,29 @@ interface MovieServiceInterface{
      * Store Movies
      */
     public function store($request);
+     /**
+     * Count theater id
+     * for create movie
+     */
+    public function create();
     /**
      * Update Movie
      */
-    public function update($request, $movie,$showtime);
+    public function update($request, $id);
+    /**
+     * Count Number of theater
+     */
+    public function count_theater();
+    /**
+     * Read all data from Movies table
+     */
+    public function get_showingMovieData();
+    /**
+     * Count Number of Movie
+     */
+    public function count_upcomingMovie();
+    /**
+     * Read all data from UpMovies table
+     */
+    public function get_upcomingMovieData();
 }

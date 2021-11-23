@@ -4,40 +4,57 @@ namespace App\Http\Controllers\Movie;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MovieInfoRequest;
-use App\Models\Movie;
 use App\Contracts\Services\Movie\MovieServiceInterface;
-use App\Models\Showtime;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class MovieController extends Controller
 {
   private $movieInterface;
 
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  public function __construct(MovieServiceInterface $movieServiceInterface)
+  public function __construct(MovieServiceInterface $MovieServiceInterface)
   {
-    $this->movieInterface = $movieServiceInterface;
+    $this->movieInterface = $MovieServiceInterface;
   }
   /**
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
+   * User View
+   */
+  public function get_required_data()
+  {
+    $no_of_theater = $this->movieInterface->count_theater();
+
+    $showingMovie_result = $this->movieInterface->get_showingMovieData();
+
+    $no_of_upcomingMovie = $this->movieInterface->count_upcomingMovie();
+
+    $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
+
+    return view('movie.movie_list')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
+  }
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Respons
+   * Admin View
    */
 
-  public function index()
+  public function RequiredData_for_ManageMovie()
   {
-    $movie = Movie::latest()->paginate(10);
-    //$movie = $this->movieInterface->getMovies();
-    return view('movie.movie_list', compact('movie'))
-      ->with('i', (request()->input('page', 1) - 1) * 10);
+    $no_of_theater = $this->movieInterface->count_theater();
+    $showingMovie_result = $this->movieInterface->get_showingMovieData();
+    $no_of_upcomingMovie = $this->movieInterface->count_upcomingMovie();
+    $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
+    return view('movie.manage_movie')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
   }
+
 
   public function create()
   {
-    return view('movie.create_image');
+    $theaters=$this->movieInterface->create();
+     return view('movie.create_movie',compact('theaters'));
   }
   /**
    * Store a newly created resource in storage.
@@ -48,14 +65,27 @@ class MovieController extends Controller
   public function store(MovieInfoRequest $request)
   {
     $this->movieInterface->store($request);
-    return redirect()->route('movie.index')
+    return redirect()->route('admin_movie')
       ->with('success', 'Movie created successfully.');
   }
+  /**
+   * Edit Movie By movie Id
+   * @param $id
+   */
 
-
-  public function edit(Movie $movie, Showtime $showtime)
+  public function edit($id)
   {
-    return view('movie.edit_image', compact('movie','showtime'));
+    $movie = DB::table('movies')
+      ->where('id', '=', $id)
+      ->select('*')
+      ->first();
+
+    $showtime = DB::table('showtimes')
+      ->where('movie_id', '=', $id)
+      ->select('*')
+      ->get();
+      $theaters=$this->movieInterface->create();
+    return view('movie.edit_movie', compact('movie', 'showtime','theaters'));
   }
 
   /**
@@ -65,10 +95,10 @@ class MovieController extends Controller
    * @param  \App\movie  $movie
    * @return \Illuminate\Http\Response
    */
-  public function update(MovieInfoRequest $request, Movie $movie, Showtime $showtime)
+  public function update(MovieInfoRequest $request, $id)
   {
-    $this->movieInterface->update($request, $movie,$showtime);
-    return redirect()->route('movie.index')
+    $this->movieInterface->update($request, $id);
+    return redirect()->route('admin_movie')
       ->with('success', 'Movie updated successfully');
   }
 }

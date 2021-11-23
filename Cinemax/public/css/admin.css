@@ -1,0 +1,145 @@
+body {
+    max-width: 1920px;
+    font-family: sans-serif;
+    background-color: #F9F9F9;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    font-size: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+h2 {
+    font-size: 32px;
+    margin: 15px 0;
+}
+
+h3 {
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.button {
+    background-color: #732dd9;
+    color: #fff;
+    border: 2px solid #732dd9;
+    padding: 10px 25px;
+    margin: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.button2 {
+    background-color: #421980;
+    border: 2px solid #421980;
+    color: #fff;
+    width: 70%;
+}
+
+.button:hover {
+    opacity: .7;
+}
+
+.line {
+    margin: 20px 0;
+    background-color: #732dd9;
+    height: 70px;
+}
+
+.manage-sec {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.manage-movie,
+.manage-booking,
+.statistics,
+.manage-theater {
+    margin: 50px 100px 40px 0;
+    width: 150px;
+    height: 160px;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 35px;
+    color: #fff;
+}
+
+.manage-movie {
+    background-color: blueviolet;
+}
+
+.manage-booking {
+    background-color: rgb(39, 6, 70);
+}
+
+.statistics {
+    background-color: rgb(17, 168, 93);
+}
+
+.manage-theater {
+    background-color: blueviolet;
+}
+
+.theaters {
+    background-color: #732dd9;
+    height: 160px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 1.2;
+    padding: 30px 20px 0;
+    color: #fff;
+    margin-left: 20px;
+    float: left;
+}
+
+.theaters:first-child {
+    margin-left: 0;
+}
+
+.create-theater {
+    padding-top: 60px;
+    font-weight: bold;
+    background-color: #421980;
+}
+
+.create-theater:hover {
+    opacity: .7;
+}
