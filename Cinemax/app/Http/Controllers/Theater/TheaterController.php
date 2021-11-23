@@ -56,6 +56,15 @@ class TheaterController extends Controller
     {
         $validated = $request->validated();
         
+        foreach ($request->addmore as $key => $value) {
+            $number = $value['number'];
+            if ($number > 18) {
+                return redirect()->route('theater.create')
+                    ->with('error', 'Max Seat number is 18!')
+                    ->withInput();
+            }
+        }
+        
         $theater_id = $this->theaterInterface->addTheaters($request);
 
         $this->seatInterface->addSeats($request, $theater_id);

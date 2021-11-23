@@ -4,6 +4,7 @@ namespace App\Dao\Theater;
 
 use App\Contracts\Dao\Theater\TheaterDaoInterface;
 use App\Models\Theater;
+use App\Models\Seat;
 use Illuminate\Http\Request;
 
 /**
@@ -31,5 +32,6 @@ class TheaterDao implements TheaterDaoInterface
     public function deleteTheater($theater_id)
     {
         Theater::where('id', '=', $theater_id)->delete();
+        Seat::where('theater_id', '=', $theater_id)->delete();
     }
 }
