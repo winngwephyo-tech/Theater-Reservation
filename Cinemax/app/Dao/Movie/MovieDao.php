@@ -5,6 +5,7 @@ namespace App\Dao\Movie;
 use App\Contracts\Dao\Movie\MovieDaoInterface;
 use App\Models\Movie;
 use App\Models\Showtime;
+use App\Models\Theater;
 use Illuminate\Support\Facades\DB;
 
 class MovieDao implements MovieDaoInterface
@@ -19,11 +20,23 @@ class MovieDao implements MovieDaoInterface
         return $movie;
     }
     /**
+     * Select Theater id
+     */
+    public function create(){
+        $theater=Theater::select('id')->get();
+        return $theater;
+
+    }
+    /**
      * Add new Movie
      * @param $request
      */
     public function store($request)
     {
+        $request->validate([
+              'poster' => 'required',
+        ]);
+
         $input = [
             'theater_id' =>  $request->theater_id, 'genre' =>  $request->genre, 'title' =>  $request->title,
             'details' =>  $request->details, 'rating' =>  $request->rating, 'trailer' =>  $request->trailer, 'duration' =>  $request->duration,
@@ -61,7 +74,7 @@ class MovieDao implements MovieDaoInterface
      * @param movie
      */
     public function updateMovie($input, $id)
-    {
+    { 
         Movie::where('id', '=', $id)->update($input);
     }
     /**

@@ -96,7 +96,12 @@
             <input type="text" class="form-control width-1" name="cast" value="{{ $movie->cast }}" placeholder="Casts"></textarea>
             <div class="right-row2 clearfix">
                 <input type="text" name="duration" value="{{ $movie->duration }}" class="row2-left form-control" placeholder="Duration">
-                <input type="text" name="theater_id" value="{{ $movie->theater_id }}" class="row2-left form-control" placeholder="TheaterID">
+                <select name="theater_id" class="row2-left form-control">
+                        <option value="{{ $movie->theater_id }}">{{ $movie->theater_id }}</option>
+                        @foreach($theaters as $theater)
+                        <option value="{{$theater->id}}">{{$theater->id}}</option>
+                        @endforeach
+                    </select>
             </div>
             <div class="right-row2 clearfix">
                 <input type="text" name="genre" value="{{ $movie->genre }}" class="row2-left form-control" placeholder="Genre">

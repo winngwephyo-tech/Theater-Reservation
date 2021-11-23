@@ -13,6 +13,11 @@ interface MovieServiceInterface
      * Store Movies
      */
     public function store($request);
+     /**
+     * Count theater id
+     * for create movie
+     */
+    public function create();
     /**
      * Update Movie
      */

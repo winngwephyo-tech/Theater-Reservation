@@ -53,7 +53,8 @@ class MovieController extends Controller
 
   public function create()
   {
-    return view('movie.create_movie');
+    $theaters=$this->movieInterface->create();
+     return view('movie.create_movie',compact('theaters'));
   }
   /**
    * Store a newly created resource in storage.
@@ -83,7 +84,8 @@ class MovieController extends Controller
       ->where('movie_id', '=', $id)
       ->select('*')
       ->get();
-    return view('movie.edit_movie', compact('movie', 'showtime'));
+      $theaters=$this->movieInterface->create();
+    return view('movie.edit_movie', compact('movie', 'showtime','theaters'));
   }
 
   /**

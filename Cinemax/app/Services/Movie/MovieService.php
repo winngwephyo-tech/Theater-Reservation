@@ -31,19 +31,27 @@ class MovieService implements MovieServiceInterface
     {
        $this->movieDao->getMovies();
     }
+     /**
+     * Count theater id
+     * for create movie
+     */
+    public function create(){
+        return $this->movieDao->create(); 
+    }
+
     /**
      * @param request
      *Store Movie Data
      */
     public function store($request){
-        $this->movieDao->store($request);
+         $this->movieDao->store($request);
     }
     /**
      * @param request and $id
      *Update Movie Data
      */
     public function update($request, $id){
-        $input = [
+            $input = [
             'theater_id' => $request->theater_id, 'genre' => $request->genre, 'title' => $request->title,
             'details' => $request->details, 'rating' => $request->rating, 'trailer' => $request->trailer,
             'duration' => $request->duration, 'cast' => $request->cast

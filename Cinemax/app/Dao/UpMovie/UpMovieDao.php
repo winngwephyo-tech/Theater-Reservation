@@ -3,7 +3,6 @@
 namespace App\Dao\UpMovie;
 
 use App\Contracts\Dao\UpMovie\UpMovieDaoInterface;
-use App\Models\Movie;
 use App\Models\UpcomingMovie;
 
 class UpMovieDao implements UpMovieDaoInterface
@@ -14,6 +13,9 @@ class UpMovieDao implements UpMovieDaoInterface
      */
     public function store($request)
     {
+        $request->validate([
+            'poster' => 'required',
+      ]);
         $input = $request->all();
         $input = $request->validated();
         if ($image = $request->file('poster')) {
@@ -30,7 +32,7 @@ class UpMovieDao implements UpMovieDaoInterface
      */
     public function update($request, $id)
     {
-        $input = $request->all();
+            $input = $request->all();
         $input = $request->validated();
 
         if ($image = $request->file('poster')) {

@@ -32,6 +32,9 @@ class MovieInfoRequest extends FormRequest
             'trailer' => 'required',
             'duration' => 'required',
             'cast' => 'required',
+            'time1'=>'required',
+            'time2'=>'required',
+            'time3'=>'required',
 
         ];
     }
