@@ -16,6 +16,7 @@
                 <a class="button" href="{{ url('/') }}"> Back</a>
             </div>
     </div>
+    <h3>Now Showing</h3>
     <ul class="recent-list clearfix mt-20">
 
         @for($i=1 ; $i<=$no_of_theater ; $i++) @foreach ($showingMovie_result as $data) @if ($i==$data->theater_id)
@@ -40,6 +41,8 @@
 <!-- manage upcomming -->
 <div class="wrapper">
     <div class="pt-10">
+        
+        <h3>Upcoming</h3>
         <ul class="recent-list clearfix mt-20">
 
             @foreach ($upcomingMovie_result as $item)

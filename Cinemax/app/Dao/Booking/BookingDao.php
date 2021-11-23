@@ -82,10 +82,12 @@ class BookingDao implements BookingDaoInterface
 
         if ($booking_error > 0) {
             return redirect()->route('booking.create', [$movie_id, $showtime_id])
-                ->with('error', 'The Seat is already booked!');
+                ->with('error', 'The Seat is already booked!')
+                ->withInput();
         } elseif ($validated > 0) {
             return redirect()->route('booking.create', [$movie_id, $showtime_id])
-                ->with('error', 'The Seat is not available!');
+                ->with('error', 'The Seat is not available!')
+                ->withInput();
         } else {
 
             $income = 0;

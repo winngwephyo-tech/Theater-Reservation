@@ -19,7 +19,7 @@
                 <h2>{{ $theater_name }}</h2>
             </div>
             <div class="right">
-                <a class="button" href="{{ URL::previous() }}"> Back</a>
+                <a class="button" href="{{ url('/movie_description', $movie_id) }}"> Back</a>
             </div>
     </div>
     <div class="seats">
@@ -74,10 +74,27 @@
                     <div>
                         <table id="dynamicTable">
                         <tr>
-                            <td><input type="text" name="addmore[0][roll]" placeholder="A" class="form-control" autocomplete="off" required/></td>
-                            <td><input type="text" name="addmore[0][number]" placeholder="1" class="form-control" autocomplete="off" required /></td>
+                            <td><input type="text" name="addmore[0][roll]" value="{{ old('addmore.0.roll') }}" placeholder="A" class="form-control" autocomplete="off" required/></td>
+                            <td><input type="text" name="addmore[0][number]" value="{{ old('addmore.0.number') }}" placeholder="1" class="form-control" autocomplete="off" required /></td>
                             <td><button type="button" name="add" id="add" class="button">Add More</button></td>
                         </tr>
+                    @php
+                    $count = 1;
+                    @endphp
+                    @if (old('addmore'))
+                    @foreach (old('addmore') as $index => $name)
+                        @if ($index !== 0)
+                        <tr>
+                            <td><input type="text" name="addmore[{{ $count }}][roll]" value="{{ old('addmore.'.$index.'.roll') }}" placeholder="A" class="form-control" autocomplete="off" required/></td>
+                            <td><input type="text" name="addmore[{{ $count }}][number]" value="{{ old('addmore.'.$index.'.number') }}" placeholder="1" class="form-control" autocomplete="off" required /></td>
+                            <td><button type="button" class="button button2 remove-tr">Remove</button></td>
+                        </tr>
+                        @endif
+                    @php
+                        $count++;
+                    @endphp
+                    @endforeach
+                    @endif
                         </table>
                     </div><br>
                 </div>
@@ -91,13 +108,14 @@
 </div>
 <script type="text/javascript">
 
-    var i = 0;
+    var count = <?php echo json_encode($count); ?>;
+    var i = count-1;
 
     $("#add").click(function(){
 
         ++i;
 
-        $("#dynamicTable").append('<tr><td><input type="text" name="addmore['+i+'][roll]" placeholder="A" class="form-control" autocomplete="off" required /></td><td><input type="text" name="addmore['+i+'][number]" placeholder="1" class="form-control" autocomplete="off" required /></td><td><button type="button" class="button button2 remove-tr">Remove</button></td></tr>');
+        $("#dynamicTable").append('<tr><td><input type="text" name="addmore['+i+'][roll]" value="{{ old('addmore.+i+.roll') }}" placeholder="A" class="form-control" autocomplete="off" required /></td><td><input type="text" name="addmore['+i+'][number]" value="{{ old('addmore.+i+.number') }}" placeholder="1" class="form-control" autocomplete="off" required /></td><td><button type="button" class="button button2 remove-tr">Remove</button></td></tr>');
     });
 
     $(document).on('click', '.remove-tr', function(){

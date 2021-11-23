@@ -27,7 +27,7 @@ class CreateTheaterRequest extends FormRequest
             'name' => 'required',
             'address' => 'required',
             'addmore.*.roll' => 'required|string|max:1',
-            'addmore.*.number' => 'required|max:2',
+            'addmore.*.number' => 'required',
             'addmore.*.price' => 'required|max:5',
         ];
     }
