@@ -16,13 +16,12 @@
             <h2>Edit Movie</h2>
         </div>
         <div class="right">
-            <a class="button" href="{{ URL::previous() }}"> Back</a>
+            <a class="button" href="{{ url('/admin_movie_list') }}"> Back</a>
         </div>
     </div>
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
+    <div class="line line-round">
+         <ul class="alert">
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
@@ -39,7 +38,7 @@
                     <div class="preview">
                         <img id="file-ip-1-preview" src="/image/{{ $movie->poster }}" class="poster">
                     </div>
-                    <label for="file-ip-1" class="button button2">Edit</label>
+                    <label for="file-ip-1" class="button button2">Edit Poster</label>
                     <input type="file" name="poster" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
 
                 </div>

@@ -16,12 +16,12 @@
             <h2>Create Now Showing Movie</h2>
         </div>      
         <div class="right">
-            <a class="button" href="{{ URL::previous() }}"> Back</a>
+            <a class="button" href="{{ url('/admin_movie_list') }}"> Back</a>
         </div>
     </div>
 
     @if ($errors->any())
-    <div class="line">
+    <div class="line line-round">
          <ul class="alert">
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -40,7 +40,7 @@
                     <div class="preview">
                         <img id="file-ip-1-preview" class="poster create-poster">
                     </div>
-                    <label for="file-ip-1" class="button button2">Upload</label>
+                    <label for="file-ip-1" class="button button2">Upload Poster</label>
                     <input type="file" name="poster" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
 
                 </div>

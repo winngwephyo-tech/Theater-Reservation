@@ -87,13 +87,8 @@
 }
 
 .form-input {
-    background-color: #732dd9;
-    width: 60%;
-    height: 300px;
-    border-radius: 20px;
+    width: 100%;
     text-align: center;
-    margin-bottom: 20px;
-    margin-top: 10px;
 }
 
 .form-input input {
@@ -101,11 +96,11 @@
 }
 
 .poster {
-    width: 140px;
-    height: 200px;
+    width: 175px;
+    height: 260px;
     border-radius: 20px;
     display: block;
-    margin: 20px auto 15px;
+    margin: 10px auto;
 }
 
 .create-poster {
@@ -127,6 +122,10 @@ select {
     margin: 20px 0;
     background-color: #732dd9;
     padding-bottom: 20px;
+}
+
+.line-round {
+    border-radius: 25px;
 }
 
 .alert {

@@ -16,7 +16,8 @@
             <a class="button" href="{{ url('/') }}"> Back</a>
         </div>
     </div>
-    <div class="mt-20">
+
+    <div class="mt-20 clearfix">
         <div class="left">
             <a class="button" href="{{ url('/export_reports') }}"> Export</a>
             <a class="button button2" href="{{ url('/delete_and_export_reports') }}"> Delete & Export</a>
@@ -25,7 +26,9 @@
             <a class="button button2" href="{{route('report.chart') }}"> Chart</a>
         </div>
     </div>
-    <table class="report mt-20">
+
+    <div class="mt-20">
+    <table class="report">
             <tr>
                 <th>ID</th>
                 <th>Movie Title</th>
@@ -41,6 +44,7 @@
             </tr>
             @endforeach
     </table>
+    </div>
 
 </div>
 @endsection
