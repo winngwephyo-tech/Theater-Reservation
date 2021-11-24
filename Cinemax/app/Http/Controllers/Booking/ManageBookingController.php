@@ -42,4 +42,5 @@ class ManageBookingController extends Controller
     {
         return $this->bookingInterface->deleteBooking($booking);
     }
+  
 }

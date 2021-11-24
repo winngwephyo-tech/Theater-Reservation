@@ -28,7 +28,7 @@
             <div class="theaters">
                 {{ $theater->name }}<br>
                 ID: {{ $theater->id }}
-                <a href="{{route('theater.delete', $theater->id) }}" class="button button2">Delete</a>
+                <a href="{{route('theater.delete', $theater->id) }}" class="button button2 delete">Delete</a>
             </div>
         @endforeach
     </div>
