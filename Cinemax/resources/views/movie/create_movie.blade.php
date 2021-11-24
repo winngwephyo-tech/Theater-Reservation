@@ -13,15 +13,15 @@
 <div class="wrapper mt-20">
     <div class="clearfix">
         <div class="left">
-            <h2>Create Movie</h2>
+            <h2>Create Now Showing Movie</h2>
         </div>      
         <div class="right">
-            <a class="button" href="{{ URL::previous() }}"> Back</a>
+            <a class="button" href="{{ url('/admin_movie_list') }}"> Back</a>
         </div>
     </div>
 
     @if ($errors->any())
-    <div class="line">
+    <div class="line line-round">
          <ul class="alert">
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -40,7 +40,7 @@
                     <div class="preview">
                         <img id="file-ip-1-preview" class="poster create-poster">
                     </div>
-                    <label for="file-ip-1" class="button button2">Upload</label>
+                    <label for="file-ip-1" class="button button2">Upload Poster</label>
                     <input type="file" name="poster" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
 
                 </div>
@@ -51,8 +51,7 @@
         </div>
         <div class="right-con">
             <input type="text" name="title" placeholder="Title" class="form-control width-1">
-            <div class="form-control time-style width-1">
-                <span class="span-showtime">Add ShowTime</span>
+            <div class="m-10 width-1">
                 <input type="time" class="time-input" name="time1">
                 <input type="time" class="time-input" name="time2">
                 <input type="time" class="time-input" name="time3">
