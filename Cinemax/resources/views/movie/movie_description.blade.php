@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 <link rel="stylesheet" href="{{ asset('css/movie.css')}}">
 <link rel="stylesheet" href="{{ asset('css/movie_description.css')}}">
+<link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css')}}">
 @endsection
 
 @section('content')
@@ -14,13 +15,13 @@
        <div class="movie-description mt-20">
            <div class="title clearfix">
                <div class="movie-title">
-                   <h2>{{ $movie->title }} </h2>
+                   <h2>{{ $movie->title }}</h2>
                    <small>{{ $movie->duration }} mins</small>
                </div>
                <div class="btn">
                     <div>
                         @foreach ($showtime as $item)
-                            <a href="{{ route('booking.create', ['movie_id' => $item->movie_id, 'showtime_id' => $item->id]) }}" class="button">{{ $item -> showtime}}</a>
+                            <a href="{{ route('booking.create', ['movie_id' => $item->movie_id, 'showtime_id' => $item->id]) }}" class="button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
                         @endforeach
                     </div>
                </div>

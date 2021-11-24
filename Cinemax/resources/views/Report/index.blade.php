@@ -17,8 +17,13 @@
         </div>
     </div>
     <div class="mt-20">
-    <a class="button" href="{{ url('/export_reports') }}"> Export</a>
-    <a class="button ml-10 button2" href="{{ url('/delete_and_export_reports') }}"> Delete & Export</a>
+        <div class="left">
+            <a class="button" href="{{ url('/export_reports') }}"> Export</a>
+            <a class="button button2" href="{{ url('/delete_and_export_reports') }}"> Delete & Export</a>
+        </div>
+        <div class="right">
+            <a class="button button2" href="{{route('report.chart') }}"> Chart</a>
+        </div>
     </div>
     <table class="report mt-20">
             <tr>

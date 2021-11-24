@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Report;
 
+use App\Contracts\Services\Report\ReportServiceInterface;
+use App\Exports\ReportsExport;
 use App\Http\Controllers\Controller;
 use App\Models\Report;
-use App\Contracts\Services\Report\ReportServiceInterface;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\ReportsExport;
 
 class ReportController extends Controller
 {
@@ -50,6 +51,23 @@ class ReportController extends Controller
     {
         Report::query()->delete();
         return Excel::download(new ReportsExport, 'report.xlsx');
+
+    }
+
+    /**
+     * Give data to chart blade
+     *
+     */
+    public function getChartData()
+    {
+        $reports = $this->reportInterface->showReports();
+
+        foreach($reports as $key=> $value)
+        {
+            $data[] = [$value->title, $value->income, $value->rating];
+        }
+
+        return view('report.chart', compact('data'));
 
     }
 }
