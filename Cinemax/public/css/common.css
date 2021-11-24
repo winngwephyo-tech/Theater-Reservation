@@ -106,3 +106,14 @@ body {
     border: 2px solid #421980;
     color: #fff;
 }
+
+
+.button2 {
+    background-color: #421980;
+    border: 2px solid #421980;
+    color: #fff;
+}
+
+.button:hover {
+    opacity: .7;
+}
