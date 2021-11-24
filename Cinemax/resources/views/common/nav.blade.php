@@ -28,8 +28,8 @@
   @else
   <!-- Before Login -->
   <div class="nav-before-login">
-    <a href="/login" class="button">Login</a>
-    <a href="/user/register" class="button button2">Create Account</a>
+    <a href="/login">Login</a>
+    <a href="/user/register">Create Account</a>
   </div>
 
   </li>
