@@ -15,6 +15,7 @@
             <a class="button" href="{{ url('/') }}"> Back</a>
         </div>
     </div>
+   
     <table class="report mt-20">
         <tr>
             <th>No</th>
