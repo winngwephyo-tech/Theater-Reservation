@@ -30,4 +30,5 @@ class MovieDescriptionController extends Controller
 
         return view('movie.upmovie_description')->with(['upmovie'=>$upmovie]);
     }
+
 }
