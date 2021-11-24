@@ -3,6 +3,7 @@
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/common.css') }}">
 @endsection
 
 @section('content')

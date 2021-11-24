@@ -17,4 +17,8 @@ interface ManageBookingDaoInterface
      * delete by Booking Id 
      */
     public function deleteBooking($booking);
+    /**
+     * Search Booking By Name
+     */
+    public function searchName($request);
 }
