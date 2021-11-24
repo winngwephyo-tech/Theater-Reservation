@@ -48,6 +48,7 @@ Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])
 Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
 
 
+
 Route::get('/', function () {
     return redirect('/movie_list');
 });
