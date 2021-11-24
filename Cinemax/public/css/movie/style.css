@@ -122,3 +122,18 @@ select {
     text-indent: 1px;
     text-overflow: '';
 }
+
+.line {
+    margin: 20px 0;
+    background-color: #732dd9;
+    padding-bottom: 20px;
+}
+
+.alert {
+    list-style: none;
+    color: #fff;
+    width: 30%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 25px;
+}
