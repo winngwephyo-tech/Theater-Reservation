@@ -52,8 +52,7 @@
         <div class="right-con">
             <input type="text" name="title" value="{{ $movie->title }}" placeholder="title" class="form-control width-1">
 
-            <div class="form-control time-style width-1">
-                <span class="span-showtime">Add ShowTime</span>
+            <div class="m-10 width-1">
                 @foreach($showtime as $key=>$showtime)
                 @switch($key)
 
@@ -94,7 +93,7 @@
             <input type="text" class="form-control width-1" name="cast" value="{{ $movie->cast }}" placeholder="Casts"></textarea>
             <div class="right-row2 clearfix">
                 <input type="text" name="duration" value="{{ $movie->duration }}" class="row2-left form-control" placeholder="Duration">
-                <select name="theater_id" class="row2-left form-control">
+                <select name="theater_id" class="row2-left form-control dropdown">
                     <option value="{{ $movie->theater_id }}">{{ $movie->theater_id }}</option>
                     @foreach($theaters as $theater)
                     <option value="{{$theater->id}}">{{$theater->id}}</option>

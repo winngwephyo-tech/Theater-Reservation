@@ -13,7 +13,7 @@
 <div class="wrapper mt-20">
     <div class="clearfix">
         <div class="left">
-            <h2>Create Movie</h2>
+            <h2>Create Now Showing Movie</h2>
         </div>      
         <div class="right">
             <a class="button" href="{{ URL::previous() }}"> Back</a>
@@ -50,8 +50,7 @@
         </div>
         <div class="right-con">
             <input type="text" name="title" placeholder="Title" class="form-control width-1">
-            <div class="form-control time-style width-1">
-                <span class="span-showtime">Add ShowTime</span>
+            <div class="m-10 width-1">
                 <input type="time" class="time-input" name="time1">
                 <input type="time" class="time-input" name="time2">
                 <input type="time" class="time-input" name="time3">

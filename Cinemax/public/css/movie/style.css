@@ -16,6 +16,10 @@
     margin-top: 5%;
 }
 
+.m-10 {
+    margin: 10px;
+}
+
 .button {
     background-color: #732dd9;
     color: #fff;
@@ -59,27 +63,11 @@
     float: left;
 }
 
-.time-style {
-    display: flex;
-    background-color: #732dd9;
-}
-
-.time-style>input {
-    width: 25%;
-    margin: 10px;
-    padding: 10px;
-}
-
-.span-showtime {
-    margin-top: 19px;
-}
-
 .time-input {
-    background-color: #732dd9;
-    color: #fff;
-    border: 2px solid #732dd9;
+    background-color: #fcfcfc;
+    border: 2px solid #e3d7f3;
     padding: 10px 25px;
-    margin: 10px 0;
+    margin-right: 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -112,17 +100,25 @@
     display: none;
 }
 
-.poster{
+.poster {
     width: 140px;
     height: 200px;
     border-radius: 20px;
     display: block;
     margin: 20px auto 15px;
 }
-.create-poster{
+
+.create-poster {
     display: none;
 }
 
 .width-1 {
     width: 100%;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }
