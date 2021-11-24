@@ -16,13 +16,12 @@
             <h2>Edit Movie</h2>
         </div>
         <div class="right">
-            <a class="button" href="{{ URL::previous() }}"> Back</a>
+            <a class="button" href="{{ url('/admin_movie_list') }}"> Back</a>
         </div>
     </div>
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
+    <div class="line line-round">
+         <ul class="alert">
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
@@ -39,7 +38,7 @@
                     <div class="preview">
                         <img id="file-ip-1-preview" src="/image/{{ $movie->poster }}" class="poster">
                     </div>
-                    <label for="file-ip-1" class="button button2">Edit</label>
+                    <label for="file-ip-1" class="button button2">Edit Poster</label>
                     <input type="file" name="poster" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
 
                 </div>
@@ -52,8 +51,7 @@
         <div class="right-con">
             <input type="text" name="title" value="{{ $movie->title }}" placeholder="title" class="form-control width-1">
 
-            <div class="form-control time-style width-1">
-                <span class="span-showtime">Add ShowTime</span>
+            <div class="m-10 width-1">
                 @foreach($showtime as $key=>$showtime)
                 @switch($key)
 
@@ -94,7 +92,7 @@
             <input type="text" class="form-control width-1" name="cast" value="{{ $movie->cast }}" placeholder="Casts"></textarea>
             <div class="right-row2 clearfix">
                 <input type="text" name="duration" value="{{ $movie->duration }}" class="row2-left form-control" placeholder="Duration">
-                <select name="theater_id" class="row2-left form-control">
+                <select name="theater_id" class="row2-left form-control dropdown">
                     <option value="{{ $movie->theater_id }}">{{ $movie->theater_id }}</option>
                     @foreach($theaters as $theater)
                     <option value="{{$theater->id}}">{{$theater->id}}</option>

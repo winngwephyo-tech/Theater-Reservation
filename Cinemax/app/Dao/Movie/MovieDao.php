@@ -6,7 +6,7 @@ use App\Contracts\Dao\Movie\MovieDaoInterface;
 use App\Models\Movie;
 use App\Models\Showtime;
 use App\Models\Theater;
-use Illuminate\Support\Facades\DB;
+use App\Models\UpcomingMovie;
 
 class MovieDao implements MovieDaoInterface
 {
@@ -74,7 +74,7 @@ class MovieDao implements MovieDaoInterface
      * @param movie
      */
     public function updateMovie($input, $id)
-    { 
+    {
         Movie::where('id', '=', $id)->update($input);
     }
     /**
@@ -99,8 +99,8 @@ class MovieDao implements MovieDaoInterface
      */
     public function count_theater()
     {
-        $theater = DB::table('theaters')
-            ->count();
+        $theater = Theater::count();
+
         return $theater;
     }
     /**
@@ -108,9 +108,8 @@ class MovieDao implements MovieDaoInterface
      */
     public function get_showingMovieData()
     {
-        $showingMovie_value = DB::table('movies')
-            ->select('theater_id', 'title', 'duration', 'poster', 'id')
-            ->get();
+        $showingMovie_value = Movie::select('theater_id', 'title', 'duration', 'poster', 'id')
+                             ->get();
 
         return $showingMovie_value;
     }
@@ -119,8 +118,7 @@ class MovieDao implements MovieDaoInterface
      */
     public function count_upcomingMovie()
     {
-        $upcomingMovie = DB::table('upcoming_movies')
-            ->count();
+        $upcomingMovie = UpcomingMovie::count();
 
         return $upcomingMovie;
     }
@@ -129,10 +127,9 @@ class MovieDao implements MovieDaoInterface
      */
     public function get_upcomingMovieData()
     {
-        $upcomingMovie_value = DB::table('upcoming_movies')
-            ->select('id', 'title', 'duration', 'poster')
-            ->whereNull('upcoming_movies.deleted_at')
-            ->get();
+        $upcomingMovie_value = UpcomingMovie::select('id', 'title', 'duration', 'poster')
+                               ->whereNull('upcoming_movies.deleted_at')
+                               ->get();
         return $upcomingMovie_value;
     }
 }
