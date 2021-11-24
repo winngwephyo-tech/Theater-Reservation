@@ -14,10 +14,10 @@
 <div class="wrapper mt-20">
     <div class="clearfix">
         <div class="left">
-            <h2>Statistics</h2>
+            <h2>Statistics Charts</h2>
         </div>
         <div class="right">
-            <a class="button" href="{{ url('/') }}"> Back</a>
+            <a class="button" href="{{ URL::previous() }}"> Back</a>
         </div>
     </div>
         <div id="chart_div"></div>
@@ -53,33 +53,12 @@
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
             chart.draw(data, options1);
 
-
-       }
-       
-      google.charts.setOnLoadCallback(drawChart1);
-      function drawChart1() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'title');
-        data.addColumn('number', 'rating');
-        for(i = 0; i < my_2d.length; i++)
-            {
-                data.addRow([my_2d[i][0], parseFloat(my_2d[i][2])]);
-            }
-        var options1 = {
-        hAxis: {title: 'Rating',  titleTextStyle: {color: '#333'}},
-        vAxis: {minValue: 0},
-        height: 350,
-        backgroundColor: '#f9f9f9',
-        colors:['#421980','#732dd9']
-        };
-
+            
         var chart = new google.visualization.BarChart(document.getElementById('chart_div1'));
             chart.draw(data, options1);
 
 
-        }
+       }
 
 </script>
 
