@@ -17,10 +17,10 @@
                     @csrf
 
                     @if(Auth::user()->role == '0')
-                    <a href="{{ route('admin') }}" class="button">Dashboard</a>
+                    <a href="{{ route('admin') }}">Dashboard</a>
                     @endif
-                    <a href="#" class="button">{{Auth::user()->name}}</a>
-                    <button type="submit" class="button button2">
+                    <a href="#">{{Auth::user()->name}}</a>
+                    <button type="submit">
                         {{ __('Log Out') }}
                     </button>
                 </form>

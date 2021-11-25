@@ -13,7 +13,7 @@
                 <h2>Manage Movies</h2>
             </div>
             <div class="right">
-                <a class="button" href="{{ url('/') }}"> Back</a>
+                <a class="button" href="{{ url('/admin') }}"> Back</a>
             </div>
     </div>
     <h3>Now Showing</h3>
