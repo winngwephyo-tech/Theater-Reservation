@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Movie;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MovieInfoRequest;
 use App\Contracts\Services\Movie\MovieServiceInterface;
+use App\Contracts\Services\User\UserServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -12,10 +13,12 @@ use Illuminate\Support\Facades\Log;
 class MovieController extends Controller
 {
     private $movieInterface;
+    private $userInterface;
 
-    public function __construct(MovieServiceInterface $MovieServiceInterface)
+    public function __construct(MovieServiceInterface $MovieServiceInterface, UserServiceInterface $UserServiceInterface)
     {
         $this->movieInterface = $MovieServiceInterface;
+        $this->userInterface = $UserServiceInterface;
     }
     /**
      * Display a listing of the resource.
@@ -25,7 +28,6 @@ class MovieController extends Controller
      */
     public function get_required_data()
     {
-        dd(Auth::user());
         $no_of_theater = $this->movieInterface->count_theater();
 
         $showingMovie_result = $this->movieInterface->get_showingMovieData();
