@@ -101,3 +101,38 @@ tr:last-child td:first-child {
 tr:last-child td:last-child {
     border-bottom-right-radius: 20px;
 }
+/* For Search UI */
+.input {
+    color: #555;
+    padding: .25rem;
+    height: 40px;
+    width: 175px;
+    border: none;
+    outline: none;
+    border: 1px solid #eee;
+    display: flex;
+    margin: 0 .5rem;
+    border-radius: 3px;
+    font-size: .95em;
+    float: left;
+    
+  }
+  
+  .find-btn {
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #732dd9;
+    color: #eee;
+    border-radius: 3px;
+    box-shadow: 1px 3px 5px #732dd9;
+    transition: .2s all;
+    font-size: .95em;
+  }
+  
+  .find-btn:hover {
+    color: #FFF;
+    cursor: pointer;
+    box-shadow: 3px 5px 9px #965cee;
+  }

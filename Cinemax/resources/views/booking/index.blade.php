@@ -15,7 +15,15 @@
             <a class="button" href="{{ url('/') }}"> Back</a>
         </div>
     </div>
-   
+
+    <form action="{{ route('booking.searchName')  }}" method="get">
+
+        <div class="clearfix">
+                <input type="text" class="input" name="name" placeholder="Search Name">
+                <input type="submit" class="find-btn" value="Search">
+        </div>
+    </form>
+
     <table class="report mt-20">
         <tr>
             <th>No</th>
@@ -26,7 +34,7 @@
             <th>Price</th>
             <th>Action</th>
         </tr>
-        @foreach ($bookingList as $book)
+        @foreach ($bookings as $book)
         <tr>
             <td>{{ $book->id }}</td>
             <td>{{ $book->name }}</td>

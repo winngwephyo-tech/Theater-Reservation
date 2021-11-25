@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-       // Dao Registration
+        // Dao Registration
         $this->app->bind('App\Contracts\Dao\Booking\BookingDaoInterface', 'App\Dao\Booking\BookingDao');
         $this->app->bind('App\Contracts\Dao\Report\ReportDaoInterface', 'App\Dao\Report\ReportDao');
         $this->app->bind('App\Contracts\Dao\Movie\MovieDaoInterface', 'App\Dao\Movie\MovieDao');
@@ -22,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Contracts\Dao\UpMovie\UpMovieDaoInterface', 'App\Dao\UpMovie\UpMovieDao');
         $this->app->bind('App\Contracts\Dao\Theater\TheaterDaoInterface', 'App\Dao\Theater\TheaterDao');
         $this->app->bind('App\Contracts\Dao\Seat\SeatDaoInterface', 'App\Dao\Seat\SeatDao');
-        
+        $this->app->bind('App\Contracts\Dao\User\UserDaoInterface', 'App\Dao\User\UserDao');
+
 
         // Business logic registration
         $this->app->bind('App\Contracts\Services\Booking\BookingServiceInterface', 'App\Services\Booking\BookingService');
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Contracts\Services\UpMovie\UpMovieServiceInterface', 'App\Services\UpMovie\UpMovieService');
         $this->app->bind('App\Contracts\Services\Theater\TheaterServiceInterface', 'App\Services\Theater\TheaterService');
         $this->app->bind('App\Contracts\Services\Seat\SeatServiceInterface', 'App\Services\Seat\SeatService');
+        $this->app->bind('App\Contracts\Services\User\UserServiceInterface', 'App\Services\User\UserService');
     }
 
     /**

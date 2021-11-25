@@ -55,15 +55,20 @@ class ManageBookingDao implements ManageBookingDaoInterface
         return 'booking Not Found!';
     }
 
+      /**
+     * search name
+     * @param $request
+     */
     public function searchName($request)
     {
-        $name = DB::table('bookings')
-            ->join('movies', 'bookings.movie_id', '=', 'movies.id')
-            ->join('users', 'bookings.user_id', '=', 'users.id')
-            ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
-            ->select('bookings.id', 'users.name', 'movies.title', 'bookings.seat_display_id', 'showtimes.showtime', 'bookings.price')
-            ->where('name', '=', $request->get('name'))
-            ->get();
-        return $name;
+        $bookings= DB::table('bookings')
+        ->join('movies', 'bookings.movie_id', '=', 'movies.id')
+        ->join('users', 'bookings.user_id', '=', 'users.id')
+        ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
+        ->select('bookings.id', 'users.name', 'movies.title', 'bookings.seat_display_id', 'showtimes.showtime','bookings.price')
+        ->where('name', '=',$request->get('name'))
+        ->get();
+        return $bookings;
+
     }
 }
