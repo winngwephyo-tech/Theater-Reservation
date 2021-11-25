@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
 <div class="container">
     <div class="login-container">
         <div class="header">{{ __('Register') }}</div>
@@ -76,4 +73,3 @@
         </div>
     </div>
 </div>
-@endsection
