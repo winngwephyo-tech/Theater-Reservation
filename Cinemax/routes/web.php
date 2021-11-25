@@ -79,7 +79,9 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::post('/register', [RegisterController::class, 'create'])->name('register');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])->name('booking.index');
+Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
+Route::get('/searchName', [ManageBookingController::class, 'searchName'])->name('booking.searchName');
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
     ->name('login');

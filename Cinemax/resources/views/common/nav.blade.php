@@ -30,8 +30,7 @@
             @else
             <!-- Before Login -->
             <div class="nav-before-login">
-                <a href="{{ route('login') }}" class="button">Login</a>
-                <a href="{{ route('register') }}" class="button button2">Create Account</a>
+                <a href="{{ route('login') }}">Login</a>
             </div>
             @endauth
         </ul>
