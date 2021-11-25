@@ -18,17 +18,9 @@
 
     <form action="{{ route('booking.searchName')  }}" method="get">
 
-        <div class="col-md-12">
-            <div class="form-group pull-left">
-                <label for="">Name</label>
-                <input type="text" class="form-control" name="name">
-            </div>
-        </div>
-
-        <div class="col-md-2">
-            <div class="form-group">
-                <input type="submit" class="btn btn-info" value="Submit">
-            </div>
+        <div class="clearfix">
+                <input type="text" class="input" name="name" placeholder="Search Name">
+                <input type="submit" class="find-btn" value="Search">
         </div>
     </form>
 
