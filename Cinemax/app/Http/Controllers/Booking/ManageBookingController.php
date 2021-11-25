@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Booking;
 use App\Http\Controllers\Controller;
 use App\Contracts\Services\Booking\ManageBookingServiceInterface;
 use App\Models\Booking;
+use Illuminate\Http\Request;
+
+
 
 class ManageBookingController extends Controller
 {
@@ -29,8 +32,8 @@ class ManageBookingController extends Controller
      */
     public function manageBooking()
     {
-        $bookingList = $this->bookingInterface->manageBooking();
-        return view('booking.index', compact('bookingList'));
+        $bookings = $this->bookingInterface->manageBooking();
+        return view('booking.index', compact('bookings'));
     }
     /**
      * Remove the specified resource from storage.
@@ -41,5 +44,16 @@ class ManageBookingController extends Controller
     public function deleteBooking($booking)
     {
         return $this->bookingInterface->deleteBooking($booking);
+    }
+     /**
+     * search name
+     * @param $request
+     */
+    public function searchName(Request $request)
+    {
+        $bookings = $this->bookingInterface->searchName($request);
+        return view('booking.index', compact('bookings'));
+        // return view('books.index', compact('books'))
+        //     ->with('i');
     }
 }

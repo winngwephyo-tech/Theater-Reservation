@@ -40,4 +40,14 @@ class ManageBookingService implements ManageBookingServiceInterface
     {
         return $this->bookingDao->deleteBooking($booking);
     }
+       /**
+     * search name
+     * @param $request
+     */
+    public function searchName($request)
+    {
+       return $this->bookingDao->searchName($request);
+    
+    }
+
 }

@@ -46,6 +46,7 @@ Route::get('/up_delete/{id}',[ UpMovieController::class,'deleteMovie'])->name('u
 
 Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])->name('booking.index');
 Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
+Route::get('/searchName', [ManageBookingController::class, 'searchName'])->name('booking.searchName');
 
 
 Route::get('/', function () {
