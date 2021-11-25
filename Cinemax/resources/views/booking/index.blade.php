@@ -15,6 +15,7 @@
             <a class="button" href="{{ url('/') }}"> Back</a>
         </div>
     </div>
+
     <form action="{{ route('booking.searchName')  }}" method="get">
 
         <div class="col-md-12">

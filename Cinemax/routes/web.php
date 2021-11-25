@@ -49,6 +49,7 @@ Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooki
 Route::get('/searchName', [ManageBookingController::class, 'searchName'])->name('booking.searchName');
 
 
+
 Route::get('/', function () {
     return view('admin.admin_dashboard');
 });

@@ -30,7 +30,7 @@ class ManageBookingService implements ManageBookingServiceInterface
      */
     public function manageBooking()
     {
-        return $bookingList = $this->bookingDao->manageBooking();
+        return  $this->bookingDao->manageBooking();
     }
 
     /**
@@ -40,6 +40,7 @@ class ManageBookingService implements ManageBookingServiceInterface
     {
         return $this->bookingDao->deleteBooking($booking);
     }
+
        /**
      * search name
      * @param $request
@@ -49,5 +50,6 @@ class ManageBookingService implements ManageBookingServiceInterface
        return $this->bookingDao->searchName($request);
     
     }
+
 
 }

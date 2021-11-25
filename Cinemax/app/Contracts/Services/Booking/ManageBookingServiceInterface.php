@@ -17,6 +17,7 @@ interface ManageBookingServiceInterface
    * delete by booking id
    */
   public function deleteBooking($booking);
+
        /**
      * search name
      * @param $request

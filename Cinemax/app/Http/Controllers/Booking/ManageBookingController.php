@@ -45,6 +45,7 @@ class ManageBookingController extends Controller
     {
         return $this->bookingInterface->deleteBooking($booking);
     }
+
      /**
      * search name
      * @param $request
@@ -56,4 +57,5 @@ class ManageBookingController extends Controller
         // return view('books.index', compact('books'))
         //     ->with('i');
     }
+
 }
