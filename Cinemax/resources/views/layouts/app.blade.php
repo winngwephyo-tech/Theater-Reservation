@@ -7,18 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   @yield('style')
-  <link href="{{ asset('css/common.css') }}" rel="stylesheet" type="text/css">
   @yield('script')
-  <!-- Script -->
-  <script src="{{ asset('js/common/nav.js') }}"></script>
-
-  <title>Cinemax</title>
+  
+<title>Cinemax</title>
 </head>
-
 <body>
-
-  @include('common.nav')
-  @yield('content')
+      @yield('content')
 
 </body>
 
