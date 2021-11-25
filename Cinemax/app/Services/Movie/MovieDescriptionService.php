@@ -29,4 +29,19 @@ class MovieDescriptionService implements MovieDescriptionServiceInterface
         return $this->MovieDescriptionDao->upmovie($id);
     }
 
+    /**
+     *Count UpComing Movie List
+     */
+    public function count_upcomingMovie()
+    {
+        return $this->MovieDescriptionDao->count_upcomingMovie();
+    }
+    /**
+     *Select Data from UpComing Movies Table
+     */
+    public function get_upcomingMovieData()
+    {
+         return $this->MovieDescriptionDao->get_upcomingMovieData();
+    }
+
 }

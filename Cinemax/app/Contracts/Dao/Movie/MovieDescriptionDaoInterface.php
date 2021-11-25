@@ -9,4 +9,13 @@ interface MovieDescriptionDaoInterface
     public function showtime($id);
 
     public function upmovie($id);
+
+    /**
+     * count upcoming movie
+     */
+    public function count_upcomingMovie();
+    /**
+     * get data for upcoming movie
+     */
+    public function get_upcomingMovieData();
 }

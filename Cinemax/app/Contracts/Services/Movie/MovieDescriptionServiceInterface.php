@@ -9,4 +9,13 @@ interface MovieDescriptionServiceInterface
     public function showtime($id);
 
     public function upmovie($id);
+
+    /**
+     * Count Number of Movie
+     */
+    public function count_upcomingMovie();
+    /**
+     * Read all data from UpMovies table
+     */
+    public function get_upcomingMovieData();
 }
