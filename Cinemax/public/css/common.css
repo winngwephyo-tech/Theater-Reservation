@@ -24,6 +24,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
+    background-color: #F9F9F9;
 }
 
 .navbar-nav {
