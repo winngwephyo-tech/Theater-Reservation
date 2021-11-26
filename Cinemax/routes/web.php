@@ -12,8 +12,7 @@ use App\Http\Controllers\Theater\TheaterController;
 use App\Http\Controllers\Report\ReportController;
 use App\Http\Controllers\Movie\MovieController;
 use App\Http\Controllers\UpMovie\UpMovieController;
-
-
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +28,7 @@ use App\Http\Controllers\UpMovie\UpMovieController;
 //Home View
 Route::get('/', function () {
     return redirect('/movie_list');
-});
+})->name('home');
 
 
 //User View
@@ -40,6 +39,9 @@ Route::get('/upmovie_description/{id}', [MovieDescriptionController::class, 'upm
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'createBooking'])->name('booking.create');
     Route::post('/booking/create/{movie_id}/{showtime_id}', [BookingController::class, 'submitBooking'])->name('booking.create');
+    Route::get('/user_edit', [UserController::class, 'showUserEditView'])->name('user.edit');
+    Route::post('/user_edit', [UserController::class, 'submitUserEditView'])->name('user.edit.submit');
+    Route::post('/password_change', [UserController::class, 'changePassword'])->name('user.passwordchange');
 });
 
 //Admin View
@@ -72,16 +74,17 @@ Route::group(['middleware' => ['admin', 'auth']], function () {
     Route::get('/reports/chart', [ReportController::class, 'getChartData'])->name('report.chart');
     Route::get('/export_reports', [ReportController::class, 'export']);
     Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
+
+    Route::post('/register', [RegisterController::class, 'create'])->name('register');
+    Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])->name('booking.index');
+    Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
+    Route::get('/searchName', [ManageBookingController::class, 'searchName'])->name('booking.searchName');
 });
+
 
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
-
-Route::post('/register', [RegisterController::class, 'create'])->name('register');
-Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])->name('booking.index');
-Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
-Route::get('/searchName', [ManageBookingController::class, 'searchName'])->name('booking.searchName');
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
     ->name('login');

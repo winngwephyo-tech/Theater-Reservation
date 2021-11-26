@@ -19,7 +19,7 @@
                     @if(Auth::user()->role == '0')
                     <a href="{{ route('admin') }}" class="button">Dashboard</a>
                     @endif
-                    <a href="#" class="button">{{Auth::user()->name}}</a>
+                    <a href="{{ route('user.edit') }}" class="button">{{Auth::user()->name}}</a>
                     <button type="submit" class="button button2">
                         {{ __('Log Out') }}
                     </button>
