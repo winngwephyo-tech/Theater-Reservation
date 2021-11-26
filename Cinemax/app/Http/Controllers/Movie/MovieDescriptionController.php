@@ -19,9 +19,14 @@ class MovieDescriptionController extends Controller
 
     {
         $movie = $this->MovieDescriptionInterface->movie_details($id);
+
         $showtime = $this->MovieDescriptionInterface->showtime($id);
-        //dd($showtime);
-        return view('movie.movie_description')->with(['movie' => $movie, 'showtime' => $showtime]);
+
+        $no_of_upcomingMovie = $this->MovieDescriptionInterface->count_upcomingMovie();
+
+        $upcomingMovie_result = $this->MovieDescriptionInterface->get_upcomingMovieData();
+
+        return view('movie.movie_description')->with(['movie' => $movie, 'showtime' => $showtime ,'no_of_upcomingMovie' => $no_of_upcomingMovie , 'upcomingMovie_result' => $upcomingMovie_result]);
     }
 
     public function upmovie($id)
