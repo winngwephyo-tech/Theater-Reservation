@@ -1,16 +1,17 @@
-<div class="container">
-    <div class="login-container">
-        <div class="header">{{ __('Register') }}</div>
 
-        <div class="body">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/login/style.css') }}">
+
+<div class="wrapper">
+    <div class="card">
+        <h2>{{ __('Register') }}</h2>
+
+        <div>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
-                <div class="input-container">
-                    <label for="name" class="input-label">{{ __('Name') }}</label>
-
-
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <div>
+                    <input id="name" placeholder="Name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                     @error('name')
                     <span class="invalid-feedback" role="alert">
@@ -19,10 +20,9 @@
                     @enderror
                 </div>
 
-                <div class="input-container">
-                    <label for="email" class="input-label">{{ __('E-Mail Address') }}</label>
+                <div>
 
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                    <input id="email" placeholder="Email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                     @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -30,10 +30,9 @@
                     </span>
                     @enderror
                 </div>
-                <div class="input-container">
-                    <label for="phone" class="input-label">{{ __('Phone') }}</label>
+                <div>
 
-                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="name" autofocus>
+                    <input id="phone" placeholder="Phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="name" autofocus>
 
                     @error('phone')
                     <span class="invalid-feedback" role="alert">
@@ -43,10 +42,9 @@
 
                 </div>
 
-                <div class="input-container">
-                    <label for="password" class="input-label">{{ __('Password') }}</label>
+                <div>
 
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                    <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                     @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -56,19 +54,18 @@
 
                 </div>
 
-                <div class="input-container">
-                    <label for="password-confirm" class="input-label">{{ __('Confirm Password') }}</label>
+                <div>
 
 
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    <input id="password-confirm" placeholder="Confirm Password" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
 
                 </div>
 
-                <div class="btn-container">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="button">
                         {{ __('Register') }}
                     </button>
-                </div>
+
+                    <p class="f-12 p-20"><a href="{{route('login')}}">Already Have an Account?</a></p>
             </form>
         </div>
     </div>

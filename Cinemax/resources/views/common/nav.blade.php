@@ -1,10 +1,11 @@
+<link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
 <nav class="navbar sticky-top bg-white shadow-sm">
     <div class="wrapper">
         <!-- Left Side Of Navbar -->
         <ul class="navbar-nav clearfix">
             <li class="left">
                 <a class="nav-link" href="http://127.0.0.1:8000">
-                    <strong class="logo">Cinemax</strong>
+                    <strong class="logo"><i class="fas fa-video logo-icon"></i>Cinemax</strong>
                 </a>
             </li>
 
@@ -17,10 +18,10 @@
                     @csrf
 
                     @if(Auth::user()->role == '0')
-                    <a href="{{ route('admin') }}" class="button">Dashboard</a>
+                    <a href="{{ route('admin') }}" class="pr-10">Dashboard</a>
                     @endif
                     <a href="{{ route('user.edit') }}" class="button">{{Auth::user()->name}}</a>
-                    <button type="submit" class="button button2">
+                    <button type="submit">
                         {{ __('Log Out') }}
                     </button>
                 </form>

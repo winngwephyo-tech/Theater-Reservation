@@ -1,10 +1,12 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/login/style.css') }}">
+
+<div class="wrapper">
+            <div class="card">
+                <h3>{{ __('Reset Password') }}</h3>
+
+                <div>
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
@@ -14,30 +16,23 @@
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <div>
+                                <input id="email" placeholder="Your Email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
-                                <span class="invalid-feedback" role="alert">
+                                <p class="f-12 p-20" role="alert">
                                     <strong>{{ $message }}</strong>
-                                </span>
+                                </p>
                                 @enderror
-                            </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div>
+                                <button type="submit" class="button">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
-                            </div>
+                                <p class="f-12 p-20"><a href="{{route('register')}}">Create New Account</a></p>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
 </div>

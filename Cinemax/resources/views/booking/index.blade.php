@@ -2,6 +2,7 @@
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/Report/style.css') }}">
+<link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
 @endsection
 
 @section('content')
@@ -12,24 +13,16 @@
             <h2>Manage Booking</h2>
         </div>
         <div class="right">
-            <a class="button" href="{{ url('/') }}"> Back</a>
+            <a class="button" href="{{ url('/admin') }}"> Back</a>
         </div>
     </div>
 
     <form action="{{ route('booking.searchName')  }}" method="get">
 
-        <div class="col-md-12">
-            <div class="form-group pull-left">
-                <label for="">Name</label>
-                <input type="text" class="form-control" name="name">
+            <div class="clearfix search-div" >
+                <input type="text" class="search left" name="name"  autocomplete="off" required placeholder="Search by User">               
+                <button type="submit" class="button"><i class="fa fa-search"></i></button>
             </div>
-        </div>
-
-        <div class="col-md-2">
-            <div class="form-group">
-                <input type="submit" class="btn btn-info" value="Submit">
-            </div>
-        </div>
     </form>
 
     <table class="report mt-20">
@@ -55,6 +48,12 @@
         </tr>
         @endforeach
     </table>
+    
+    <div class="clearfix mt-20">
+        <div class="right">
+            <a class="button" href="{{ route('booking.deleteall') }}">Done for the Day</a>
+        </div>
+    </div>
 
 </div>
 @endsection

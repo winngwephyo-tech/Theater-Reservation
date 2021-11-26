@@ -16,7 +16,6 @@
 
     <title>Cinemax</title>
 </head>
-
 <body>
 
     @include('common.nav')

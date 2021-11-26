@@ -32,4 +32,24 @@ class MovieDescriptionDao implements MovieDescriptionDaoInterface
         return $upmovie;
     }
 
+     /**
+     * count upcoming movie
+     */
+    public function count_upcomingMovie()
+    {
+        $upcomingMovie = UpcomingMovie::count();
+
+        return $upcomingMovie;
+    }
+    /**
+     * get upcoming movie data
+     */
+    public function get_upcomingMovieData()
+    {
+        $upcomingMovie_value = UpcomingMovie::select('id', 'title', 'duration', 'poster')
+                               ->whereNull('upcoming_movies.deleted_at')
+                               ->get();
+        return $upcomingMovie_value;
+    }
+
 }

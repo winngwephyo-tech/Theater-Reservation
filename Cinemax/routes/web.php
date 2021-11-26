@@ -62,6 +62,7 @@ Route::group(['middleware' => ['admin', 'auth']], function () {
     Route::get('/up_delete/{id}', [UpMovieController::class, 'deleteMovie'])->name('upmovie.delete');
 
     Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])->name('booking.index');
+    Route::get('/delete_bookings', [ManageBookingController::class, 'deleteAll'])->name('booking.deleteall');
     Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
 
     Route::get('/theater/create', [TheaterController::class, 'createTheater'])->name('theater.create');
