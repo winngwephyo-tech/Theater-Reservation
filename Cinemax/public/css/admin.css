@@ -10,6 +10,14 @@ a {
     float: right;
 }
 
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    font-size: 0;
+}
+
 .mt-20 {
     margin-top: 20px;
 }
@@ -27,9 +35,11 @@ h3 {
     font-size: 24px;
     margin: 15px 0;
 }
-.delete{
+
+.delete {
     width: 70%;
 }
+
 .line {
     margin: 20px 0;
     background-color: #732dd9;
