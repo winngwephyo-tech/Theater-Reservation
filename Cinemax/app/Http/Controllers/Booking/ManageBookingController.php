@@ -45,6 +45,14 @@ class ManageBookingController extends Controller
     {
         return $this->bookingInterface->deleteBooking($booking);
     }
+    /**
+     * delete all from bookings
+     *
+     */
+    public function deleteAll()
+    {
+        return $this->bookingInterface->deleteAll();
+    }
 
      /**
      * search name

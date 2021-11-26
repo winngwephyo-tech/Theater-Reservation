@@ -48,6 +48,12 @@
         </tr>
         @endforeach
     </table>
+    
+    <div class="clearfix mt-20">
+        <div class="right">
+            <a class="button" href="{{ route('booking.deleteall') }}">Done for the Day</a>
+        </div>
+    </div>
 
 </div>
 @endsection

@@ -7,17 +7,20 @@
 
 @section('content')
 <div class="wrapper">
-    <div class="clearfix">
+    <div class="clearfix receipt">
+        <h2>Order Confirmed!</h2>
         <div class="left">
-            <p> Movie Name : {{$movie_name}}</p>
-            <p> Theater Name : {{$theater_name}}</p>
-            <p> Seats : {{$seats}}</p>
-            <p> Price : {{$fee}}</p>
+            <p> Movie Name : <strong class="info-purple">{{$movie_name}}</strong></p>
+            <p> Theater Name : <strong class="info-purple">{{$theater_name}}</strong></p>
+            <p> Showtime : <strong class="info-purple">{{$showtime}}</strong></p>
+            <p> Seats : <strong class="info-purple">{{$seats}}</strong></p>
+            <p> Price : <strong class="info-purple">{{$fee}} MMK</strong></p>
         </div>
 
-    </div>
     <div class="right">
-                <a class="button" href="{{route('movie') }}"> Home</a>
-            </div>
+            <a class="button" href="{{route('movie') }}"> Home</a>
+    </div>
+
+    </div>
 </div>
 @endsection

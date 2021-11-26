@@ -26,6 +26,7 @@ class ManageBookingDao implements ManageBookingDaoInterface
             ->join('movies', 'bookings.movie_id', '=', 'movies.id')
             ->join('users', 'bookings.user_id', '=', 'users.id')
             ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
+            ->orderBy('id', 'DESC')
             ->select('bookings.id', 'users.name', 'movies.title', 'bookings.seat_display_id', 'showtimes.showtime', 'bookings.price')
             ->get();
         return $bookingList;
@@ -54,6 +55,14 @@ class ManageBookingDao implements ManageBookingDaoInterface
         }
         return 'booking Not Found!';
     }
+    /**
+     * delete all booking
+     */
+    public function deleteAll()
+    {
+        Booking::query()->forceDelete();
+        return redirect()->route('booking.index');
+    }
 
       /**
      * search name
@@ -65,6 +74,7 @@ class ManageBookingDao implements ManageBookingDaoInterface
         ->join('movies', 'bookings.movie_id', '=', 'movies.id')
         ->join('users', 'bookings.user_id', '=', 'users.id')
         ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
+        ->orderBy('id', 'DESC')
         ->select('bookings.id', 'users.name', 'movies.title', 'bookings.seat_display_id', 'showtimes.showtime','bookings.price')
         ->where('name', '=',$request->get('name'))
         ->get();

@@ -51,6 +51,7 @@ class BookingDao implements BookingDaoInterface
     public function addBooking($request, $movie_id, $showtime_id)
     {
         $movie_name = Movie::where('id', '=', $movie_id)->value('title');
+        $showtime = Showtime::where('id', '=', $showtime_id)->value('showtime');
         $booking_error = 0;
         $validated = 0;
         foreach ($request->addmore as $key => $value) {
@@ -124,6 +125,7 @@ class BookingDao implements BookingDaoInterface
                 ->with('movie_name', $movie_name)
                 ->with('theater_name', $theater_name)
                 ->with('seats', $seatString)
+                ->with('showtime', $showtime)
                 ->with('fee', $fee);
 
         }
