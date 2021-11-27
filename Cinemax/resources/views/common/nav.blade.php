@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
 <nav class="navbar sticky-top bg-white shadow-sm">
     <div class="wrapper">
@@ -21,7 +20,7 @@
                     @if(Auth::user()->role == '0')
                     <a href="{{ route('admin') }}" class="pr-10">Dashboard</a>
                     @endif
-                    <a href="#">{{Auth::user()->name}}</a>
+                    <a href="{{ route('user.edit') }}" class="button">{{Auth::user()->name}}</a>
                     <button type="submit">
                         {{ __('Log Out') }}
                     </button>
