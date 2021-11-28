@@ -11,6 +11,7 @@ use App\Models\Showtime;
 use App\Models\Theater;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 /**
  * Data accessing object for booking
@@ -50,6 +51,7 @@ class BookingDao implements BookingDaoInterface
      */
     public function addBooking($request, $movie_id, $showtime_id)
     {
+        $user = Auth::user()->id;
         $movie_name = Movie::where('id', '=', $movie_id)->value('title');
         $showtime = Showtime::where('id', '=', $showtime_id)->value('showtime');
         $booking_error = 0;
@@ -101,7 +103,7 @@ class BookingDao implements BookingDaoInterface
                 $number = $value['number'];
                 $display_id = $roll . $number;
                 $price = Seat::where('display_id', '=', $display_id)->value('price');
-                $data = ['user_id' => 1, 'theater_id'=> $theater_id,'movie_id' => $movie_id, 'showtime_id' => $showtime_id,
+                $data = ['user_id' => $user, 'theater_id'=> $theater_id,'movie_id' => $movie_id, 'showtime_id' => $showtime_id,
                     'seat_display_id' => $display_id, 'price' => $price, 'is_booked' => 1];
                 Booking::create($data);
 

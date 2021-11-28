@@ -14,17 +14,12 @@
             @auth
             <!-- After Login -->
             <div class="nav-before-login">
-                <form action="{{ route('logout') }}">
                     @csrf
 
                     @if(Auth::user()->role == '0')
-                    <a href="{{ route('admin') }}" class="pr-10">Dashboard</a>
+                    <a href="{{ route('admin') }}" class="nav-a pr-20">Dashboard</a>
                     @endif
-                    <a href="{{ route('user.edit') }}" class="button">{{Auth::user()->name}}</a>
-                    <button type="submit">
-                        {{ __('Log Out') }}
-                    </button>
-                </form>
+                    <a href="{{ route('user.edit') }}" class="nav-a"><i class="fas fa-user-circle nav-a pr-5"></i>{{Auth::user()->name}}</a>
 
             </div>
 

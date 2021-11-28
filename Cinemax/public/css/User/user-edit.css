@@ -2,6 +2,7 @@
     width: 80%;
     margin: 0 auto;
 }
+
 .user-info {
     padding: 10px 25px;
     background-color: #fcfcfc;
@@ -12,22 +13,30 @@
     border-radius: 20px;
     margin: 10px;
 }
+
+.user-info:focus {
+    outline: none;
+}
+
 .user-info-form {
     padding: 4%;
     text-align: center;
     border: 3px solid #d0c5de45;
     margin: 1% 0%;
 }
+
 .form-button {
     margin-top: 5%;
     display: flex;
     justify-content: space-evenly;
 }
+
 .cancel {
     background-color: #f1f1f1 !important;
     border: 2px solid #732dd9c7 !important;
     color: #732dd9 !important;
 }
+
 .form-title {
     color: #732dd9;
     font-size: 23px;

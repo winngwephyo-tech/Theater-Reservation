@@ -40,19 +40,19 @@
     <h3 class="form-title">Change Your Password</h3>
     <form action="/password_change" class="user-info-form" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="password" id="password" name="current_password" class="user-info" placeholder="current_password" class="current_password @error('current_password') is-invalid @enderror">
+        <input type="password" id="password" name="current_password" class="user-info" placeholder="Current Password" class="current_password @error('current_password') is-invalid @enderror">
         @error('current_password')
         <span class="form-error">
             <div>{{ $message }}</div>
         </span>
         @enderror
-        <input type="password" id="new_password" name="new_password" class="user-info" placeholder="new_password" class="new_password @error('new_password') is-invalid @enderror">
+        <input type="password" id="new_password" name="new_password" class="user-info" placeholder="New Password" class="new_password @error('new_password') is-invalid @enderror">
         @error('new_password')
         <span class="form-error">
             <div>{{ $message }}</div>
         </span>
         @enderror
-        <input type="password" id="new_confirm_password" name="new_confirm_password" class="user-info" placeholder="new_confirm_password" class="new_confirm_password @error('new_confirm_password') is-invalid @enderror">
+        <input type="password" id="new_confirm_password" name="new_confirm_password" class="user-info" placeholder="New Confirm Password" class="new_confirm_password @error('new_confirm_password') is-invalid @enderror">
         @error('new_confirm_password')
         <span class="form-error">
             <div>{{ $message }}</div>
@@ -63,6 +63,13 @@
             <a class="button cancel" href="/">Cancel</a>
         </div>
     </form>
+    
+    <form action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="button">
+                        {{ __('Log Out') }}
+                    </button>
+                </form>
 
 </div>
 @endsection
