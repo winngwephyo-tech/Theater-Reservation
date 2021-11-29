@@ -13,7 +13,6 @@
     <script src="{{ asset('js/lib/jquery.min.js') }}"></script>
     <script src="{{ asset('js/common/nav.js') }}"></script>
 
-
     <title>Cinemax</title>
 </head>
 <body>
