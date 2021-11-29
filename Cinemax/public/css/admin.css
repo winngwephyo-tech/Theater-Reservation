@@ -48,18 +48,26 @@ h3 {
 
 .manage-sec {
     display: flex;
-    justify-content: flex-start;
+}
+
+.manage-sec a {
+    margin: 5% 5% 5% 0;
+    width: 20%;
+}
+
+.manage-theater {
+    margin: 5% 0;
+    width: 20%;
 }
 
 .manage-movie,
 .manage-booking,
 .statistics,
 .manage-theater {
-    margin: 50px 100px 40px 0;
-    width: 150px;
+    height: 120px;
     border-radius: 20px;
     text-align: center;
-    padding: 45px 20px;
+    padding-top: 45px;
     color: #fff;
 }
 
