@@ -76,7 +76,6 @@ Route::group(['middleware' => ['admin', 'auth']], function () {
     Route::get('/export_reports', [ReportController::class, 'export']);
     Route::get('/delete_and_export_reports', [ReportController::class, 'deleteANDexport']);
 
-    Route::post('/register', [RegisterController::class, 'create'])->name('register');
     Route::get('/manage_booking', [ManageBookingController::class, 'manageBooking'])->name('booking.index');
     Route::get('/delete_booking/{id}', [ManageBookingController::class, 'deleteBooking'])->name('booking.delete');
     Route::get('/searchName', [ManageBookingController::class, 'searchName'])->name('booking.searchName');
@@ -86,6 +85,8 @@ Route::group(['middleware' => ['admin', 'auth']], function () {
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
+
+Route::post('/register', [RegisterController::class, 'create'])->name('register');
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
     ->name('login');
