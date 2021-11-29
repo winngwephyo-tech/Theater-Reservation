@@ -29,7 +29,7 @@
 <div class="line"></div>
 <div class="wrapper mt-20">
     <h2>Update Theaters</h2>
-        <a href="{{route('theater.manage') }}">
+        <a href="{{route('theater.manage') }}" class="manage-theater">
             <div class="manage-theater">
                 <h3>Manage <br>Theaters</h3>
             </div>
