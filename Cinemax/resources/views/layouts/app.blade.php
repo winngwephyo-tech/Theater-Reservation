@@ -13,7 +13,6 @@
     <script src="{{ asset('js/common/nav.js') }}"></script>
     @yield('script')
 
-
     <title>Cinemax</title>
 </head>
 <body>

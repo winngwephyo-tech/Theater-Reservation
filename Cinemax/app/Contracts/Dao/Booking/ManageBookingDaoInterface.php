@@ -22,10 +22,9 @@ interface ManageBookingDaoInterface
      */
     public function deleteAll();
 
-         /**
+    /**
      * search name
      * @param $request
-
      */
     public function searchName($request);
 }
