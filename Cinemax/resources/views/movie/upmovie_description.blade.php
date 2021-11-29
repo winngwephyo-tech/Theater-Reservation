@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
 @section('style')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 <link rel="stylesheet" href="{{ asset('css/movie.css')}}">
 <link rel="stylesheet" href="{{ asset('css/movie_description.css')}}">
+@endsection
+
+@section('script')
+<script src="{{ asset('js/video_popup.js') }}"></script>
 @endsection
 
 @section('content')
@@ -13,20 +18,26 @@
        <div class="movie-description mt-20">
            <div class="title clearfix">
                <div class="movie-title">
-                   <h1>{{ $upmovie->title }} </h1>
-                   <span>{{ $upmovie->duration }}mins</span>
+                   <h2>{{ $upmovie->title }} </h2>
+                   <small>{{ $upmovie->duration }} mins</small>
                </div>
                <div class="btn">
-                    <a href="{{ $upmovie->trailer }}" class="trailer-btn button">Trailer</a>
+                <button id="show-popup-btn" class="button button2">watch trailer</button>
+                <div id="popup-container">
+                    <div id="close-btn-container">
+                        <span id="close-btn">X</span>
+                    </div>
+                    <iframe width="450" height="315" src="{{ $upmovie->trailer }}" frameborder="0" allowfullscreen></iframe>
+                </div>
                </div>
            </div>
            <div class="movie-details">
-               <p>{{$upmovie->details}}</p>
+               <p><strong>{{$upmovie->details}}</strong></p>
            </div>
            <div class="description">
-               <label for="">Release date : </label>{{$upmovie->release_date}} <br>
-               <label for="">Genre : </label>{{$upmovie->genre}}<br>
-               <label for="">Casts : </label>{{$upmovie->cast}}<br>
+               <label for=""> <strong>Release date : </strong></label>{{$upmovie->release_date}} <br>
+               <label for=""> <strong> Genre :</strong> </label>{{$upmovie->genre}}<br>
+               <label for=""> <strong> Casts : </strong></label>{{$upmovie->cast}}<br>
            </div>
        </div>
     </div>

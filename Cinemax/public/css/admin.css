@@ -57,10 +57,9 @@ h3 {
 .manage-theater {
     margin: 50px 100px 40px 0;
     width: 150px;
-    height: 160px;
     border-radius: 20px;
     text-align: center;
-    padding-top: 35px;
+    padding: 43px 13px;
     color: #fff;
 }
 

@@ -7,6 +7,10 @@
 <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css')}}">
 @endsection
 
+@section('script')
+<script src="{{ asset('js/video_popup.js') }}"></script>
+@endsection
+
 @section('content')
 <div class="wrapper clearfix mt-20">
     <div class="movie-poster mt-20">
@@ -31,15 +35,22 @@
             </div>
         </div>
         <div class="movie-trailer">
-            <a href="{{ $movie->trailer }}" class="button button2">Watch Trailer</a>
+             {{-- <a href="{{ $movie->trailer }}" class="button button2">Watch Trailer</a> --}}
+             <button id="show-popup-btn" class="button button2">watch trailer</button>
+             <div id="popup-container">
+                 <div id="close-btn-container">
+                     <span id="close-btn">X</span>
+                 </div>
+                 <iframe width="450" height="315" src="{{ $movie->trailer }}" frameborder="0" allowfullscreen></iframe>
+             </div>
         </div>
         <div class="movie-details">
-            <p>{{$movie->details}}</p>
+            <p> <strong> {{$movie->details}}</strong></p>
         </div>
         <div class="description">
-            <label for="">Genre : </label>{{$movie->genre}}<br>
-            <label for="">Rating : </label>{{$movie->rating}}<br>
-            <label for="">Casts : </label>{{$movie->cast}}<br>
+            <label for=""> <strong> Genre :</strong> </label>{{$movie->genre}}<br>
+            <label for=""> <strong>Rating :</strong>  </label>{{$movie->rating}}<br>
+            <label for=""> <strong> Casts : </strong></label>{{$movie->cast}}<br>
         </div>
         <div class="showing-theater">
             <p>This movie is now showing in <strong>Theater{{$movie->theater_id}}</strong></p>
