@@ -36,7 +36,7 @@ class MovieService implements MovieServiceInterface
      * for create movie
      */
     public function create(){
-        return $this->movieDao->create(); 
+        return $this->movieDao->create();
     }
 
     /**
@@ -51,11 +51,15 @@ class MovieService implements MovieServiceInterface
      *Update Movie Data
      */
     public function update($request, $id){
-            $input = [
-            'theater_id' => $request->theater_id, 'genre' => $request->genre, 'title' => $request->title,
-            'details' => $request->details, 'rating' => $request->rating, 'trailer' => $request->trailer,
-            'duration' => $request->duration, 'cast' => $request->cast
-        ];
+            $input = ['theater_id' => $request->theater_id,
+                      'genre' => $request->genre,
+                      'title' => $request->title,
+                      'details' => $request->details,
+                      'rating' => $request->rating,
+                      'trailer' => $request->trailer,
+                      'duration' => $request->duration,
+                      'cast' => $request->cast
+                    ];
         if ($poster = $request->file('poster')) {
             $destinationPath = 'image/';
             $profileImage = date('YmdHis') . "." . $poster->getClientOriginalExtension();
@@ -64,7 +68,7 @@ class MovieService implements MovieServiceInterface
         }
         $this->movieDao->updateMovie($input,$id);
         $this->movieDao->updateShowTime($request,$id);
-        
+
     }
     /**
      *Count No of Theater

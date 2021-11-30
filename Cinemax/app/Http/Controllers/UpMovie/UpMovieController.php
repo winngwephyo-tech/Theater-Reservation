@@ -52,7 +52,7 @@ class UpMovieController extends Controller
       ->where('id', '=', $id)
       ->select('*')
       ->first();
-    return view('upmovie.edit', compact('upmovie'));
+    return view('upmovie.edit')-> with(['upmovie'=>$upmovie]);
   }
   /**
    * Update the specified resource in storage.

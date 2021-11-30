@@ -33,7 +33,7 @@ class ReportController extends Controller
     public function showReports()
     {
         $reports = $this->reportInterface->showReports();
-        return view('report.index', compact('reports'));
+        return view('report.index')-> with(['reports'=> $reports]);
     }
     /**
      * Export to excel
@@ -67,7 +67,7 @@ class ReportController extends Controller
             $data[] = [$value->title, $value->income, $value->rating];
         }
 
-        return view('report.chart', compact('data'));
+        return view('report.chart')-> with(['data'=>$data]);
 
     }
 }

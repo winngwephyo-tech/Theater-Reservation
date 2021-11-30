@@ -27,7 +27,12 @@ class ManageBookingDao implements ManageBookingDaoInterface
             ->join('users', 'bookings.user_id', '=', 'users.id')
             ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
             ->orderBy('id', 'DESC')
-            ->select('bookings.id', 'users.name', 'movies.title', 'bookings.seat_display_id', 'showtimes.showtime', 'bookings.price')
+            ->select('bookings.id',
+                     'users.name',
+                     'movies.title',
+                     'bookings.seat_display_id',
+                     'showtimes.showtime',
+                     'bookings.price')
             ->get();
         return $bookingList;
     }
@@ -75,7 +80,12 @@ class ManageBookingDao implements ManageBookingDaoInterface
         ->join('users', 'bookings.user_id', '=', 'users.id')
         ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
         ->orderBy('id', 'DESC')
-        ->select('bookings.id', 'users.name', 'movies.title', 'bookings.seat_display_id', 'showtimes.showtime','bookings.price')
+        ->select('bookings.id',
+                 'users.name',
+                 'movies.title',
+                 'bookings.seat_display_id',
+                 'showtimes.showtime',
+                 'bookings.price')
         ->where('name', '=',$request->get('name'))
         ->get();
         return $bookings;
