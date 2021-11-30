@@ -23,7 +23,8 @@ class TheaterController extends Controller
      *
      * @return void
      */
-    public function __construct(SeatServiceInterface $seatServiceInterface, TheaterServiceInterface $theaterServiceInterface)
+    public function __construct(SeatServiceInterface $seatServiceInterface, 
+                                TheaterServiceInterface $theaterServiceInterface)
     {
         $this->seatInterface = $seatServiceInterface;
         $this->theaterInterface = $theaterServiceInterface;
@@ -36,7 +37,7 @@ class TheaterController extends Controller
     public function showTheaters()
     {
         $theaters = Theater::all();
-        return view('theater.manage_theater', compact('theaters'));
+        return view('theater.manage_theater')-> with(['theaters'=>$theaters]);
     }
     /**
      * To show create theater view

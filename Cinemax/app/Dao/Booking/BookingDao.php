@@ -98,13 +98,17 @@ class BookingDao implements BookingDaoInterface
             $seatString = "";
 
             foreach ($request->addmore as $key => $value) {
-                
+
                 $roll = strtoupper($value['roll']);
                 $number = $value['number'];
                 $display_id = $roll . $number;
                 $price = Seat::where('display_id', '=', $display_id)->value('price');
-                $data = ['user_id' => $user, 'theater_id'=> $theater_id,'movie_id' => $movie_id, 'showtime_id' => $showtime_id,
-                    'seat_display_id' => $display_id, 'price' => $price, 'is_booked' => 1];
+                $data = ['user_id' => $user,
+                         'theater_id'=> $theater_id,
+                         'movie_id' => $movie_id,
+                         'showtime_id' => $showtime_id,
+                         'seat_display_id' => $display_id,
+                         'price' => $price, 'is_booked' => 1];
                 Booking::create($data);
 
                 //for report table

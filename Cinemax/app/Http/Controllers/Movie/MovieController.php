@@ -15,7 +15,8 @@ class MovieController extends Controller
     private $movieInterface;
     private $userInterface;
 
-    public function __construct(MovieServiceInterface $MovieServiceInterface, UserServiceInterface $UserServiceInterface)
+    public function __construct(MovieServiceInterface $MovieServiceInterface,
+                                UserServiceInterface $UserServiceInterface)
     {
         $this->movieInterface = $MovieServiceInterface;
         $this->userInterface = $UserServiceInterface;
@@ -36,7 +37,11 @@ class MovieController extends Controller
 
         $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
 
-        return view('movie.movie_list')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
+        return view('movie.movie_list')
+               ->with(['no_of_theater' => $no_of_theater,
+                       'showingMovie_result' => $showingMovie_result,
+                       'no_of_upcomingMovie' => $no_of_upcomingMovie,
+                       'upcomingMovie_result' => $upcomingMovie_result]);
     }
     /**
      * Display a listing of the resource.
@@ -51,14 +56,18 @@ class MovieController extends Controller
         $showingMovie_result = $this->movieInterface->get_showingMovieData();
         $no_of_upcomingMovie = $this->movieInterface->count_upcomingMovie();
         $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
-        return view('movie.manage_movie')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
+        return view('movie.manage_movie')
+                ->with(['no_of_theater' => $no_of_theater,
+                        'showingMovie_result' => $showingMovie_result,
+                        'no_of_upcomingMovie' => $no_of_upcomingMovie,
+                        'upcomingMovie_result' => $upcomingMovie_result]);
     }
 
 
     public function create()
     {
         $theaters = $this->movieInterface->create();
-        return view('movie.create_movie', compact('theaters'));
+        return view('movie.create_movie')-> with(['theaters'=>$theaters]);
     }
     /**
      * Store a newly created resource in storage.
@@ -88,8 +97,12 @@ class MovieController extends Controller
             ->where('movie_id', '=', $id)
             ->select('*')
             ->get();
+
         $theaters = $this->movieInterface->create();
-        return view('movie.edit_movie', compact('movie', 'showtime', 'theaters'));
+
+        return view('movie.edit_movie')-> with(['movie'=>$movie, 
+                                                'showtime'=>$showtime, 
+                                                'theaters'=>$theaters]);
     }
 
     /**

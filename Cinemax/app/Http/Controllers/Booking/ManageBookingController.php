@@ -33,7 +33,7 @@ class ManageBookingController extends Controller
     public function manageBooking()
     {
         $bookings = $this->bookingInterface->manageBooking();
-        return view('booking.index', compact('bookings'));
+        return view('booking.index')->with(['bookings'=>$bookings]);
     }
     /**
      * Remove the specified resource from storage.
@@ -61,7 +61,7 @@ class ManageBookingController extends Controller
     public function searchName(Request $request)
     {
         $bookings = $this->bookingInterface->searchName($request);
-        return view('booking.index', compact('bookings'));
+        return view('booking.index')-> with(['bookings'=>$booking]);
         // return view('books.index', compact('books'))
         //     ->with('i');
     }

@@ -37,7 +37,8 @@ class BookingController extends Controller
         $theater_id = Movie::where('id', '=', $movie_id)->value('theater_id');
         $theater_name = Theater::where('id', '=', $theater_id)->value('name');
 
-        return view('booking.create_booking', compact('seats', 'booked'))
+        return view('booking.create_booking')
+            ->with(['seats'=>$seats, 'booked'=>$booked])
             ->with('movie_id', $movie_id)
             ->with('showtime_id', $showtime_id)
             ->with('theater_name', $theater_name);
