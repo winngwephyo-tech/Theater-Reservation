@@ -5,6 +5,7 @@ namespace App\Dao\User;
 use App\Contracts\Dao\User\UserDaoInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserDao implements UserDaoInterface
@@ -29,6 +30,7 @@ class UserDao implements UserDaoInterface
      */
     public function saveUser($request)
     {
+       return DB::transaction(function () use ($request) {
         $user = new User();
         $user->name = $request['name'];
         $user->email = $request['email'];
@@ -36,7 +38,7 @@ class UserDao implements UserDaoInterface
         $user->role = "1";
         $user->password = Hash::make($request['password']);
         $user->save();
-        return $user;
+       });
     }
     /**
      * Update the specified resource in storage.
@@ -47,6 +49,7 @@ class UserDao implements UserDaoInterface
 
     public function submitUserEditView($request)
     {
+        return DB::transaction(function () use ($request) {
         $user = User::find(Auth::user()->id);
         $user->name = $request['name'];
         $user->email = $request['email'];
@@ -57,7 +60,7 @@ class UserDao implements UserDaoInterface
             $user->phone = $request['phone'];
         }
         $user->save();
-        return $user;
+    });
     }
 
     /**
