@@ -13,6 +13,15 @@ use Illuminate\Http\Request;
 class TheaterDao implements TheaterDaoInterface
 {
     /**
+     * To get all theaters
+     * @return $theaters
+     */
+    public function getTheaters()
+    {
+        $theaters = Theater::all();
+        return $theaters;
+    }
+    /**
      * To add theaters
      * @param $request request with inputs
      * @return $theater_id

@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 interface TheaterServiceInterface
 {
     /**
+     * To get all theaters
+     * @return $theaters
+     */
+    public function getTheaters();
+    /**
      * To add theaters
      * @param $request request with inputs
      * @return $theater_id
