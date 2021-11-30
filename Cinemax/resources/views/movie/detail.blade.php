@@ -22,7 +22,7 @@
                 <div>
                     @foreach ($showtime as $item)
                     @auth
-                    <a href="{{ route('booking.create', ['movie_id' => $item->movie_id, 'showtime_id' => $item->id]) }}" class="button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
+                    <a href="{{ route('booking-create', ['movie_id' => $item->movie_id, 'showtime_id' => $item->id]) }}" class="button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
                     @else
                     <a href="{{ route('login') }}" class="button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
                     @endauth
@@ -55,7 +55,7 @@
         <ul class="recent-list clearfix mt-40">
             @foreach ($upcomingMovie_result as $item)
                 <li>
-                    <a href="{{ route('description_upmovie' , $item->id)}}"><img src="/upimage/{{$item->poster}}" alt="Upcoming Movie Poster"></a>
+                    <a href="{{ route('description-upmovie' , $item->id)}}"><img src="/upimage/{{$item->poster}}" alt="Upcoming Movie Poster"></a>
                     <div class="pt-10 movie-lists"><strong>{{ $item->title }}</strong> <br> <small>{{ $item->duration }} mins</small></div>
                 </li>
             @endforeach

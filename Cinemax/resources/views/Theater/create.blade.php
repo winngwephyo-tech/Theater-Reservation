@@ -18,7 +18,7 @@
                 <h2>Create Theater</h2>
             </div>
             <div class="right">
-                <a class="button" href="{{ url('/theater/manage') }}"> Back</a>
+                <a class="button" href="{{ route('theater-manage') }}"> Back</a>
             </div>
     </div>
 </div>
@@ -30,7 +30,7 @@
 @endif
 </div>
 <div class="wrapper mt-20">
-<form action="{{ route('theater.create') }}" method="POST">
+<form action="{{ route('theater-create') }}" method="POST">
     @csrf
             <div>
                 <h3>Theater Infomations</h3>

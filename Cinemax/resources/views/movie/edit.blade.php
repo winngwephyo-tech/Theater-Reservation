@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 <link href="{{ asset('css/movie/style.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('css/movie/common.css') }}" rel="stylesheet" type="text/css">
 @endsection
@@ -16,7 +17,7 @@
             <h2>Edit Movie</h2>
         </div>
         <div class="right">
-            <a class="button" href="{{ url('/admin_movie_list') }}"> Back</a>
+            <a class="button" href="{{ route('admin-movie') }}"> Back</a>
         </div>
     </div>
     @if ($errors->any())
@@ -29,7 +30,7 @@
     </div>
     @endif
 </div>
-<form action="{{ route('movie.update',$movie->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('movie-update',$movie->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="wrapper clearfix">
         <div class="left-con">

@@ -51,6 +51,6 @@ class UpMovieDao implements UpMovieDaoInterface
     public function deleteMovie($id)
     {
         UpcomingMovie::find($id)->delete();
-        return redirect()->route('admin_movie');
+        return redirect()->route('admin-movie');
     }
 }

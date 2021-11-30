@@ -18,11 +18,11 @@
             <h2>Manage Booking</h2>
         </div>
         <div class="right">
-            <a class="button" href="{{ url('/admin') }}"> Back</a>
+            <a class="button" href="{{ route('admin') }}"> Back</a>
         </div>
     </div>
 
-    <form action="{{ route('booking.searchName')  }}" method="get">
+    <form action="{{ route('booking-searchName')  }}" method="get">
 
         <div class="clearfix search-div">
             <input type="text" class="search left" name="name" autocomplete="off" required placeholder="Search by User">
@@ -49,7 +49,7 @@
             <td>{{ $book->showtime}}</td>
             <td>{{ $book->price}}</td>
             <td>
-                <form method="PUT" action="{{ route('booking.delete',$book->id ) }}">
+                <form method="PUT" action="{{ route('booking-delete',$book->id ) }}">
                     <button type="submit" class="button ml-10 button2 show_confirm">Cancel</button>
                 </form>
             </td>
@@ -58,7 +58,7 @@
     </table>
     <div class="clearfix mt-20">
         <div class="right">
-            <form method="PUT" action="{{ route('booking.deleteall') }}">
+            <form method="PUT" action="{{ route('booking-deleteall') }}">
                 <a class="button show_confirm" href="">Done for the Day</a>
             </form>
         </div>

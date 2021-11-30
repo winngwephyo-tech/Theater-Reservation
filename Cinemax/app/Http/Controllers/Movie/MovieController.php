@@ -36,7 +36,7 @@ class MovieController extends Controller
 
         $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
 
-        return view('movie.movie_list')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
+        return view('movie.index')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
     }
     /**
      * Display a listing of the resource.
@@ -51,14 +51,14 @@ class MovieController extends Controller
         $showingMovie_result = $this->movieInterface->get_showingMovieData();
         $no_of_upcomingMovie = $this->movieInterface->count_upcomingMovie();
         $upcomingMovie_result = $this->movieInterface->get_upcomingMovieData();
-        return view('movie.manage_movie')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
+        return view('movie.manage')->with(['no_of_theater' => $no_of_theater, 'showingMovie_result' => $showingMovie_result, 'no_of_upcomingMovie' => $no_of_upcomingMovie, 'upcomingMovie_result' => $upcomingMovie_result]);
     }
 
 
     public function create()
     {
         $theaters = $this->movieInterface->create();
-        return view('movie.create_movie', compact('theaters'));
+        return view('movie.create', compact('theaters'));
     }
     /**
      * Store a newly created resource in storage.
@@ -69,7 +69,7 @@ class MovieController extends Controller
     public function store(MovieInfoRequest $request)
     {
         $this->movieInterface->store($request);
-        return redirect()->route('admin_movie')
+        return redirect()->route('admin-movie')
             ->with('success', 'Movie created successfully.');
     }
     /**
@@ -89,7 +89,7 @@ class MovieController extends Controller
             ->select('*')
             ->get();
         $theaters = $this->movieInterface->create();
-        return view('movie.edit_movie', compact('movie', 'showtime', 'theaters'));
+        return view('movie.edit', compact('movie', 'showtime', 'theaters'));
     }
 
     /**
@@ -102,7 +102,7 @@ class MovieController extends Controller
     public function update(MovieInfoRequest $request, $id)
     {
         $this->movieInterface->update($request, $id);
-        return redirect()->route('admin_movie')
+        return redirect()->route('admin-movie')
             ->with('success', 'Movie updated successfully');
     }
 }

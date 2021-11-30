@@ -21,7 +21,7 @@
 
         @for($i=1 ; $i<=$no_of_theater ; $i++) @foreach ($showingMovie_result as $data) @if ($i==$data->theater_id)
             <li>
-                <a href="{{  route('movie.edit',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Showing Movie Poster"></a>
+                <a href="{{  route('movie-edit',$data->id) }}"><img src="/image/{{$data->poster}}" alt="Showing Movie Poster"></a>
                 <div class="pt-10 movie-lists"><strong>{{ $data->title }}</strong> <br> <small>{{ $data->duration }} mins</small></div>
             </li>
 
@@ -29,7 +29,7 @@
             @endforeach
             @endfor
             <li>
-                <a href="{{  route('movie.create') }}">
+                <a href="{{  route('movie-create') }}">
                     <div class="add-movie">
                         <i class="fas fa-plus"></i>
                     </div>
@@ -47,14 +47,14 @@
 
             @foreach ($upcomingMovie_result as $item)
             <li>
-                <a href="{{  route('upmovie.edit',$item->id) }}"><img src="/upimage/{{$item->poster}}" alt="Showing Movie Poster"></a>
+                <a href="{{  route('upmovie-edit',$item->id) }}"><img src="/upimage/{{$item->poster}}" alt="Showing Movie Poster"></a>
                 <div class="pt-10 movie-lists"><strong>{{ $item->title }}</strong> <br> <small>{{ $item->duration }} mins</small></div>
 
             </li>
             @endforeach
 
             <li>
-                <a href="{{route('upmovie.create') }}">
+                <a href="{{route('upmovie-create') }}">
                     <div class="add-movie">
                         <i class="fas fa-plus"></i>
                     </div>

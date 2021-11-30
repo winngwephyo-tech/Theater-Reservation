@@ -84,11 +84,11 @@ class BookingDao implements BookingDaoInterface
         }
 
         if ($booking_error > 0) {
-            return redirect()->route('booking.create', [$movie_id, $showtime_id])
+            return redirect()->route('booking-create', [$movie_id, $showtime_id])
                 ->with('error', 'The Seat is already booked!')
                 ->withInput();
         } elseif ($validated > 0) {
-            return redirect()->route('booking.create', [$movie_id, $showtime_id])
+            return redirect()->route('booking-create', [$movie_id, $showtime_id])
                 ->with('error', 'The Seat is not available!')
                 ->withInput();
         } else {
@@ -123,7 +123,7 @@ class BookingDao implements BookingDaoInterface
                 );
             }
 
-            return view('booking.confirm_booking')
+            return view('booking.confirm')
                 ->with('movie_name', $movie_name)
                 ->with('theater_name', $theater_name)
                 ->with('seats', $seatString)
