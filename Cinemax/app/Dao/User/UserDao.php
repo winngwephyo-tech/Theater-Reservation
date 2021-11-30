@@ -50,7 +50,12 @@ class UserDao implements UserDaoInterface
         $user = User::find(Auth::user()->id);
         $user->name = $request['name'];
         $user->email = $request['email'];
-        $user->phone = $request['phone'];
+        if (empty($request['phone'])) {
+            $user->phone = NULL;
+        } else {
+
+            $user->phone = $request['phone'];
+        }
         $user->save();
         return $user;
     }

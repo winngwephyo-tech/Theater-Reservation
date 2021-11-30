@@ -23,6 +23,7 @@
     text-align: center;
     border: 3px solid #d0c5de45;
     margin: 1% 0%;
+    border-radius: 15px;
 }
 
 .form-button {
@@ -41,4 +42,15 @@
     color: #732dd9;
     font-size: 23px;
     padding-top: 4%;
+}
+.input-container {
+    display: inline-block;
+}
+.input-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.form-error {
+    font-size: 13px;
+    color: red;
 }

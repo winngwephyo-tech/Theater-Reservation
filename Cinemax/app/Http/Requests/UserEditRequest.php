@@ -28,7 +28,7 @@ class UserEditRequest extends FormRequest
         return [
             'name' => ['required', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255',  Rule::unique('users')->ignore(Auth::user()->id)],
-            'phone' => ['max:255'],
+            'phone' => [Rule::unique('users')->ignore(Auth::user()->id), 'required', 'max:255'],
         ];
     }
 }
