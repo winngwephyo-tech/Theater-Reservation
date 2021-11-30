@@ -29,7 +29,7 @@ use App\Http\Controllers\User\UserController;
 Route::group(['middleware' => 'prevent-back-history'], function () {
     //Home View
     Route::get('/', function () {
-        return redirect('/movie');
+        return redirect()->route('movie');
     })->name('home');
 
     //User View
