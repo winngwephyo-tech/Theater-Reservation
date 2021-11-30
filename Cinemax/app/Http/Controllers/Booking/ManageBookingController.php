@@ -62,8 +62,6 @@ class ManageBookingController extends Controller
     {
         $bookings = $this->bookingInterface->searchName($request);
         return view('booking.index', compact('bookings'));
-        // return view('books.index', compact('books'))
-        //     ->with('i');
     }
 
 }

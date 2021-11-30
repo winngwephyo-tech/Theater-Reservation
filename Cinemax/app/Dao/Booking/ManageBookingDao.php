@@ -51,7 +51,7 @@ class ManageBookingDao implements ManageBookingDaoInterface
                     ->update(['income' => $income]);
             }
             $book->forceDelete();
-            return redirect()->route('booking.index');
+            return redirect()->route('booking-index');
         }
         return 'booking Not Found!';
     }
@@ -61,7 +61,7 @@ class ManageBookingDao implements ManageBookingDaoInterface
     public function deleteAll()
     {
         Booking::query()->forceDelete();
-        return redirect()->route('booking.index');
+        return redirect()->route('booking-index');
     }
 
       /**

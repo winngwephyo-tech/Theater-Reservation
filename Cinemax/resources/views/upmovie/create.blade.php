@@ -9,14 +9,13 @@
 @endsection
 
 @section('content')
-
 <div class="wrapper mt-20">
     <div class="clearfix">
         <div class="left">
-            <h2>Create Now Showing Movie</h2>
-        </div>      
+            <h2>Create Upcoming Movie</h2>
+        </div>
         <div class="right">
-            <a class="button" href="{{ url('/admin_movie_list') }}"> Back</a>
+            <a class="button" href="{{ route('admin-movie') }}"> Back</a>
         </div>
     </div>
 
@@ -30,9 +29,9 @@
     </div>
     @endif
 </div>
-
-<form action="{{ route('movie.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('upmovie-store') }}" method="POST" enctype="multipart/form-data">
     @csrf
+
     <div class="wrapper clearfix">
         <div class="left-con">
             <div class="center">
@@ -50,31 +49,19 @@
             </div>
         </div>
         <div class="right-con">
-            <input type="text" name="title" placeholder="Title" class="form-control width-1">
-            <div class="m-10 width-1">
-                <input type="time" class="time-input" name="time1">
-                <input type="time" class="time-input" name="time2">
-                <input type="time" class="time-input" name="time3">
-            </div>
+            <input type="text" name="title" class="form-control width-1" placeholder="Title">
             <input type="text" name="trailer" class="form-control width-1" placeholder="Trailer">
             <textarea class="form-control width-1" name="details" placeholder="Detail"></textarea>
+            <textarea class="form-control width-1" name="cast" placeholder="Casts"></textarea>
             <div class="right-row2 clearfix">
-                <textarea class="form-control width-1" name="cast" placeholder="Casts"></textarea>
-                <div class="right-row2 clearfix">
-                    <input type="text" name="duration" class="row2-left form-control" placeholder="Duration">
-                    <select name="theater_id" class="row2-left form-control">
-                        <option value="">Select Theater ID</option>
-                        @foreach($theaters as $theater)
-                        <option value="{{$theater->id}}">{{$theater->id}}</option>
-                        @endforeach
-                    </select>
-                </div>
+                <input type="text" name="duration" class="row2-left form-control" placeholder="Duration">
+                <input type="text" name="release_date" class="row2-left form-control" placeholder="2021-12-30">
+            </div>
+            <div class="right-row2 clearfix">
                 <input type="text" name="genre" class="row2-left form-control" placeholder="Genre">
-                <input type="text" name="rating" class="row2-left form-control" placeholder="Rating">
             </div>
         </div>
 
     </div>
-
 </form>
 @endsection

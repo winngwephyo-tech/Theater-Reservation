@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 <link rel="stylesheet" href="{{ asset('css/movie.css')}}">
 <link rel="stylesheet" href="{{ asset('css/movie_description.css')}}">
 @endsection

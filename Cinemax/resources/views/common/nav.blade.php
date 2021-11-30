@@ -19,7 +19,7 @@
                     @if(Auth::user()->role == '0')
                     <a href="{{ route('admin') }}" class="nav-a pr-20">Dashboard</a>
                     @endif
-                    <a href="{{ route('user.edit') }}" class="nav-a"><i class="fas fa-user-circle nav-a pr-5"></i>{{Auth::user()->name}}</a>
+                    <a href="{{ route('user-edit') }}" class="nav-a"><i class="fas fa-user-circle nav-a pr-5"></i>{{Auth::user()->name}}</a>
 
             </div>
 

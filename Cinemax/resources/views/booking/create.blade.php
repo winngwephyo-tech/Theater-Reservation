@@ -19,7 +19,7 @@
                 <h2>{{ $theater_name }}</h2>
             </div>
             <div class="right">
-                <a class="button" href="{{ url('/movie_description', $movie_id) }}"> Back</a>
+                <a class="button" href="{{ route('description-movie', $movie_id) }}"> Back</a>
             </div>
     </div>
     <div class="seats">
@@ -66,7 +66,7 @@
 <div class="wrapper">
     <div class="inputs">
         <h3>Choose Your Seats</h3>
-        <form action="{{ route('booking.create', ['movie_id' => $movie_id, 'showtime_id' => $showtime_id]) }}" method="POST">
+        <form action="{{ route('booking-create', ['movie_id' => $movie_id, 'showtime_id' => $showtime_id]) }}" method="POST">
             @csrf
 
             <div>

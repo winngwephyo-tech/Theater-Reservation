@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 <link href="{{ asset('css/movie/style.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('css/movie/common.css') }}" rel="stylesheet" type="text/css">
 @endsection
@@ -15,7 +16,7 @@
             <h2>Edit Upcoming Movie</h2>
         </div>
         <div class="right">
-            <a class="button" href="{{ url('/admin_movie_list') }}"> Back</a>
+            <a class="button" href="{{ route('admin-movie') }}"> Back</a>
         </div>
     </div>
     @if ($errors->any())
@@ -28,7 +29,7 @@
     </div>
     @endif
 </div>
-<form action="{{ route('upmovie.update',$upmovie->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('upmovie-update',$upmovie->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="wrapper clearfix">
         <div class="left-con">
@@ -46,7 +47,7 @@
                 <button type="submit" class="button button2">Save</button>
             </div>
             <div class="center">
-                <a href="{{route('upmovie.delete',$upmovie->id) }}" class="button delete">Delete</a>
+                <a href="{{route('upmovie-delete',$upmovie->id) }}" class="button delete">Delete</a>
             </div>
         </div>
         <div class="right-con">

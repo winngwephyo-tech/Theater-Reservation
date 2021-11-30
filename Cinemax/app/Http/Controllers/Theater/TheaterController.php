@@ -36,7 +36,7 @@ class TheaterController extends Controller
     public function showTheaters()
     {
         $theaters = Theater::all();
-        return view('theater.manage_theater', compact('theaters'));
+        return view('theater.manage', compact('theaters'));
     }
     /**
      * To show create theater view
@@ -45,7 +45,7 @@ class TheaterController extends Controller
      */
     public function createTheater()
     {
-        return view('theater.create_theater');
+        return view('theater.create');
     }
     /**
      * To check theater create form and redirect to confirm page.
@@ -59,7 +59,7 @@ class TheaterController extends Controller
         foreach ($request->addmore as $key => $value) {
             $number = $value['number'];
             if ($number > 18) {
-                return redirect()->route('theater.create')
+                return redirect()->route('theater-create')
                     ->with('error', 'Max Seat number is 18!')
                     ->withInput();
             }
@@ -69,7 +69,7 @@ class TheaterController extends Controller
 
         $this->seatInterface->addSeats($request, $theater_id);
         
-        return redirect()->route('theater.manage');
+        return redirect()->route('theater-manage');
     }
     /**
      * To delete theater if needed
