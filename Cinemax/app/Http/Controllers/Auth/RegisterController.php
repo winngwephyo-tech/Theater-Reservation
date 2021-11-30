@@ -29,6 +29,6 @@ class RegisterController extends Controller
     {
         $request = $request->validated();
         $this->userInterface->saveUser($request);
-        return redirect('login');
+        return redirect()->route('login');
     }
 }

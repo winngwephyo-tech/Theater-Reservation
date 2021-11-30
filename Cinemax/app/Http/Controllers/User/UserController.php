@@ -45,7 +45,7 @@ class UserController extends Controller
     {
         $request->validated();
         $user = $this->userInterface->submitUserEditView($request);
-        return redirect('/');
+        return redirect()->route('home');
     }
     /**
      * To Show the application dashboard.
@@ -56,6 +56,6 @@ class UserController extends Controller
     {
         $request->validated();
         $this->userInterface->changeUserPassword($request);
-        return redirect('/');
+        return redirect()->route('home');
     }
 }
