@@ -4,6 +4,7 @@
 }
 
 .user-info {
+    width: 200px;
     padding: 10px 25px;
     background-color: #fcfcfc;
     font-weight: bold;
@@ -11,7 +12,7 @@
     box-sizing: border-box;
     border: 2px solid #e3d7f3;
     border-radius: 20px;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .user-info:focus {
@@ -43,14 +44,36 @@
     font-size: 23px;
     padding-top: 4%;
 }
+
 .input-container {
+    width: 100%;
     display: inline-block;
 }
+
 .input-wrapper {
     display: flex;
     justify-content: center;
 }
+
 .form-error {
     font-size: 13px;
     color: red;
+}
+
+
+/*for responsive*/
+
+@media screen and (max-width: 900px) {
+    body {
+        font-size: 12px;
+    }
+    .input-wrapper {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .user-info-form {
+        border: none;
+    }
 }

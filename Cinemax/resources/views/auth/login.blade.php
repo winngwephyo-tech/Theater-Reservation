@@ -1,5 +1,7 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/login/style.css') }}">
+<body>
 
 <div class="wrapper">
     <div class="card">
@@ -53,3 +55,5 @@
         </div>
     </div>
 </div>
+
+</body>
