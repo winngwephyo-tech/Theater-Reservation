@@ -24,6 +24,14 @@ class TheaterService implements TheaterServiceInterface
         $this->theaterDao = $theaterDao;
     }
     /**
+     * To get all theaters
+     * @return $theaters
+     */
+    public function getTheaters()
+    {
+        return $this->theaterDao->getTheaters();
+    }
+    /**
      * To add theater
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

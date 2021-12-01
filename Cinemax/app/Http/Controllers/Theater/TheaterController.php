@@ -33,7 +33,7 @@ class TheaterController extends Controller
      */
     public function showTheaters()
     {
-        $theaters = Theater::all();
+        $theaters = $this->theaterInterface->getTheaters();
         return view('theater.manage')-> with(['theaters'=>$theaters]);
     }
     /**

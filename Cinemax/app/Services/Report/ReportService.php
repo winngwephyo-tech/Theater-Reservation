@@ -31,4 +31,11 @@ class ReportService implements ReportServiceInterface
     {
         return  $this->reportDao->showReports();    
     }
+    /**
+     * To delete all reports
+     */
+    public function deleteReports()
+    {
+        $this->reportDao->deleteReports();
+    }
 }

@@ -25,6 +25,16 @@ interface BookingDaoInterface
      */
     public function getBookedSeats($movie_id, $showtime_id);
     /**
+     * To get theaterId
+     * @param int $movie_id
+     */
+    public function getTheaterId($movie_id);
+    /**
+     * To get theaterName
+     * @param int $theater_id
+     */
+    public function getTheaterName($theater_id);
+    /**
      * To add booking
      * @param Movie $movie_id 
      * @param Showtime $showtime_id 

@@ -22,5 +22,12 @@ class ReportDao implements ReportDaoInterface
                    ->get();
         
     }
+    /**
+     * To delete all reports
+     */
+    public function deleteReports()
+    {
+        Report::query()->delete();
+    }
 
 }

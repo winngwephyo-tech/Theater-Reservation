@@ -12,4 +12,8 @@ interface ReportServiceInterface
      * @return object $reports report
      */
     public function showReports();
+    /**
+     * To delete all reports
+     */
+    public function deleteReports();
 }

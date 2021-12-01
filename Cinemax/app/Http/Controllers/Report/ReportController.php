@@ -46,7 +46,7 @@ class ReportController extends Controller
      */
     public function deleteANDexport()
     {
-        Report::query()->delete();
+        $this->reportInterface->deleteReports();
         return Excel::download(new ReportsExport, 'report.xlsx');
     }
     /**

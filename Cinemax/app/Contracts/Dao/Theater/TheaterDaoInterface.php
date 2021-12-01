@@ -10,6 +10,11 @@ use App\Models\Theater;
 interface TheaterDaoInterface
 {
     /**
+     * To get all theaters
+     * @return $theaters
+     */
+    public function getTheaters();
+    /**
      * To add theater
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
