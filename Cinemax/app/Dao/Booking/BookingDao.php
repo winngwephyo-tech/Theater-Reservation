@@ -9,9 +9,8 @@ use App\Models\Report;
 use App\Models\Seat;
 use App\Models\Showtime;
 use App\Models\Theater;
-use Illuminate\Support\Facades\DB;\
-use Auth;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 /**
  * Data accessing object for booking
