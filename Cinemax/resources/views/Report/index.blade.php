@@ -8,7 +8,7 @@
 @section('content')
 <div class="wrapper mt-20">
 
-    <div class="clearfix">
+    <div class="clearfix pt-20">
         <div class="left">
             <h2>Statistics</h2>
         </div>
@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="mt-20">
+    <div class="mt-20 overscroll">
     <table class="report">
             <tr>
                 <th>ID</th>

@@ -8,7 +8,7 @@
 @endsection
 
 @section('script')
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{{ asset('js/lib/jquery.min.js') }}"></script>
 @endsection
 
 @section('content')
@@ -42,9 +42,9 @@
                 <h3>Add Seat Rows</h3>
                 <table id="dynamicTable">
                 <tr>
-                    <td><input type="text" name="addmore[0][roll]" value="{{ old('addmore.0.roll') }}" placeholder="A" class="form-control" autocomplete="off" required/></td>
-                    <td><input type="text" name="addmore[0][number]" value="{{ old('addmore.0.number') }}" placeholder="1" class="form-control" autocomplete="off" required /></td>
-                    <td><input type="text" name="addmore[0][price]" value="{{ old('addmore.0.price') }}" placeholder="3000" class="form-control" autocomplete="off" required /></td>
+                    <td><input type="text" name="addmore[0][roll]" value="{{ old('addmore.0.roll') }}" placeholder="A" class="form-control form-control3" autocomplete="off" required/></td>
+                    <td><input type="text" name="addmore[0][number]" value="{{ old('addmore.0.number') }}" placeholder="1" class="form-control form-control3" autocomplete="off" required /></td>
+                    <td><input type="text" name="addmore[0][price]" value="{{ old('addmore.0.price') }}" placeholder="3000" class="form-control form-control3" autocomplete="off" required /></td>
                     <td><button type="button" name="add" id="add" class="button">Add More</button></td>
                 </tr>
             @php
