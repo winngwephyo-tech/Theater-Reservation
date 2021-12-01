@@ -19,10 +19,10 @@
            <div class="movie-trailer">
             <a href="{{ $upmovie->trailer }}" class="trailer-btn button">Watch Trailer</a>
            </div>
-           <div class="movie-details">
+           <div class="movie-details font-size">
                <p>{{$upmovie->details}}</p>
            </div>
-           <div class="description">
+           <div class="description font-size">
                <label for="">Release date : </label>{{$upmovie->release_date}} <br>
                <label for="">Genre : </label>{{$upmovie->genre}}<br>
                <label for="">Casts : </label>{{$upmovie->cast}}<br>
