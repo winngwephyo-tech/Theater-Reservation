@@ -36,7 +36,7 @@ class TheaterController extends Controller
     public function showTheaters()
     {
         $theaters = $this->theaterInterface->getTheaters();
-        return view('theater.manage', compact('theaters'));
+        return view('theater.manage')-> with(['theaters'=>$theaters]);
     }
     /**
      * To show create theater view
@@ -55,7 +55,7 @@ class TheaterController extends Controller
     public function submitTheater(CreateTheaterRequest $request)
     {
         $validated = $request->validated();
-        
+
         foreach ($request->addmore as $key => $value) {
             $number = $value['number'];
             if ($number > 18) {
@@ -64,11 +64,11 @@ class TheaterController extends Controller
                     ->withInput();
             }
         }
-        
+
         $theater_id = $this->theaterInterface->addTheaters($request);
 
         $this->seatInterface->addSeats($request, $theater_id);
-        
+
         return redirect()->route('theater-manage');
     }
     /**
@@ -81,7 +81,7 @@ class TheaterController extends Controller
         $this->theaterInterface->deleteTheater($theater_id);
 
         $this->seatInterface->deleteSeats($theater_id);
-        
+
         return back();
     }
 }

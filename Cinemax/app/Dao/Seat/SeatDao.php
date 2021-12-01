@@ -25,7 +25,10 @@ class SeatDao implements SeatDaoInterface
             for ($i = 1; $i <= $number; $i++) {
                 $display_id = $roll . $i;
 
-                $data = ['roll' => $roll, 'display_id' => $display_id, 'theater_id' => $theater_id, 'price' => $price];
+                $data = ['roll' => $roll,
+                         'display_id' => $display_id,
+                         'theater_id' => $theater_id,
+                         'price' => $price];
                 DB::transaction(function () use ($data) {
                     Seat::create($data);
                 });

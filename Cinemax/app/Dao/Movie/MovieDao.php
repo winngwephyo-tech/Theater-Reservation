@@ -37,11 +37,15 @@ class MovieDao implements MovieDaoInterface
               'poster' => 'required',
         ]);
 
-        $input = [
-            'theater_id' =>  $request->theater_id, 'genre' =>  $request->genre, 'title' =>  $request->title,
-            'details' =>  $request->details, 'rating' =>  $request->rating, 'trailer' =>  $request->trailer, 'duration' =>  $request->duration,
-            'cast' =>  $request->cast
-        ];
+        $input = ['theater_id' =>  $request->theater_id,
+                  'genre' =>  $request->genre,
+                  'title' =>  $request->title,
+                  'details' =>  $request->details,
+                  'rating' =>  $request->rating,
+                  'trailer' =>  $request->trailer,
+                  'duration' =>  $request->duration,
+                  'cast' =>  $request->cast
+                 ];
         if ($poster = $request->file('poster')) {
             $destinationPath = 'image/';
             $profileImage = date('YmdHis') . "." . $poster->getClientOriginalExtension();
@@ -64,7 +68,9 @@ class MovieDao implements MovieDaoInterface
                     $showtime = $request->time3;
                     break;
             }
-            $data = ['movie_id' => $movieid, 'theater_id' => $request->theater_id, 'showtime' => $showtime];
+            $data = ['movie_id' => $movieid,
+                     'theater_id' => $request->theater_id,
+                     'showtime' => $showtime];
             Showtime::create($data);
         }
     }

@@ -37,7 +37,8 @@ class BookingController extends Controller
         $theater_id = $this->bookingInterface->getTheaterId($movie_id);
         $theater_name = $this->bookingInterface->getTheaterName($theater_id);
 
-        return view('booking.create', compact('seats', 'booked'))
+        return view('booking.create')
+            ->with(['seats'=>$seats, 'booked'=>$booked])
             ->with('movie_id', $movie_id)
             ->with('showtime_id', $showtime_id)
             ->with('theater_name', $theater_name);
