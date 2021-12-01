@@ -12,14 +12,12 @@
           <img src="/upimage/{{ $upmovie->poster }}" alt="">
        </div>
        <div class="movie-description mt-20">
-           <div class="title clearfix">
-               <div class="movie-title">
-                   <h1>{{ $upmovie->title }} </h1>
-                   <span>{{ $upmovie->duration }}mins</span>
-               </div>
-               <div class="btn">
-                    <a href="{{ $upmovie->trailer }}" class="trailer-btn button">Trailer</a>
-               </div>
+            <div class="upmovie-title">
+                <h2>{{ $upmovie->title }} </h2>
+                <small>{{ $upmovie->duration }}mins</small>
+            </div>
+           <div class="movie-trailer">
+            <a href="{{ $upmovie->trailer }}" class="trailer-btn button">Watch Trailer</a>
            </div>
            <div class="movie-details">
                <p>{{$upmovie->details}}</p>
