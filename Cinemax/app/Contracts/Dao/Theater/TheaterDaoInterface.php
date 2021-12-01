@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 interface TheaterDaoInterface
 {
     /**
+     * To get all theaters
+     * @return $theaters
+     */
+    public function getTheaters();
+    /**
      * To add theater
      * @param $request request inputs
      * @return $theater_id

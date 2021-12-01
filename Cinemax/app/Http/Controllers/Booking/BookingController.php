@@ -34,8 +34,8 @@ class BookingController extends Controller
     {
         $seats = $this->bookingInterface->getSeats($movie_id, $showtime_id);
         $booked = $this->bookingInterface->getBookedSeats($movie_id, $showtime_id);
-        $theater_id = Movie::where('id', '=', $movie_id)->value('theater_id');
-        $theater_name = Theater::where('id', '=', $theater_id)->value('name');
+        $theater_id = $this->bookingInterface->getTheaterId($movie_id);
+        $theater_name = $this->bookingInterface->getTheaterName($theater_id);
 
         return view('booking.create')
             ->with(['seats'=>$seats, 'booked'=>$booked])
@@ -50,6 +50,23 @@ class BookingController extends Controller
      */
     public function submitBooking(Request $request, $movie_id, $showtime_id)
     {
-        return $this->bookingInterface->addBooking($request, $movie_id, $showtime_id);
+        $book = $this->bookingInterface->addBooking($request, $movie_id, $showtime_id);
+        if ($book == "booked") {
+            return redirect()->route('booking-create', [$movie_id, $showtime_id])
+                ->with('error', 'The Seat is already booked!')
+                ->withInput();
+        } elseif ($book == "not-available") {
+            return redirect()->route('booking-create', [$movie_id, $showtime_id])
+                ->with('error', 'The Seat is not available!')
+                ->withInput();
+        }
+        else{
+            return view('booking.confirm')
+                ->with('movie_name', $book->movie_name)
+                ->with('theater_name', $book->theater_name)
+                ->with('seats', $book->seats)
+                ->with('showtime', $book->showtime)
+                ->with('fee', $book->fee);
+        }
     }
 }
