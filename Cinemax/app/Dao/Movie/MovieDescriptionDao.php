@@ -9,47 +9,47 @@ use App\Contracts\Dao\Movie\MovieDescriptionDaoInterface;
 
 class MovieDescriptionDao implements MovieDescriptionDaoInterface
 {
-
+    /**
+     * @param Movie $id
+     * @return object of $movies
+     */
     public function movie_details($id)
     {
-        $movie = Movie::where('id' , '=' , $id)
-                ->first();
-        return $movie;
+        return  Movie::where('id', '=', $id)->first();
     }
-
+    /**
+     * @param int $id
+     * @return object of $showtimes
+     */
     public function showtime($id)
     {
-        $showtime = Showtime::where('movie_id' , '=' , $id)
-                    ->get();
-
-        return $showtime;
+        return  Showtime::where('movie_id', '=', $id)->get();
     }
 
+    /**
+     * @param int $id
+     * @return object of $upcomingmovies
+     */
     public function upmovie($id)
     {
-        $upmovie = UpcomingMovie::where('id' , '=' , $id)
-                   ->first();
-        return $upmovie;
+        return  UpcomingMovie::where('id', '=', $id)->first();
     }
-
-     /**
+    /**
      * count upcoming movie
+     * @return no of upcomingmocies
      */
     public function count_upcomingMovie()
     {
-        $upcomingMovie = UpcomingMovie::count();
-
-        return $upcomingMovie;
+        return UpcomingMovie::count();
     }
     /**
      * get upcoming movie data
+     * @return object of upcomingmovies
      */
     public function get_upcomingMovieData()
     {
-        $upcomingMovie_value = UpcomingMovie::select('id', 'title', 'duration', 'poster')
-                               ->whereNull('upcoming_movies.deleted_at')
-                               ->get();
-        return $upcomingMovie_value;
+        return  UpcomingMovie::select('id', 'title', 'duration', 'poster')
+            ->whereNull('upcoming_movies.deleted_at')
+            ->get();
     }
-
 }

@@ -4,18 +4,17 @@ namespace App\Dao\UpMovie;
 
 use App\Contracts\Dao\UpMovie\UpMovieDaoInterface;
 use App\Models\UpcomingMovie;
+use Illuminate\Support\Facades\DB;
 
 class UpMovieDao implements UpMovieDaoInterface
 {
     /**
      * Add new Movie
-     * @param $request
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
      */
     public function store($request)
     {
-        $request->validate([
-            'poster' => 'required',
-      ]);
         $input = $request->all();
         $input = $request->validated();
         if ($image = $request->file('poster')) {
@@ -24,15 +23,19 @@ class UpMovieDao implements UpMovieDaoInterface
             $image->move($destinationPath, $profileImage);
             $input['poster'] = "$profileImage";
         }
-        UpcomingMovie::create($input);
+        DB::transaction(function () use ($input) {
+            UpcomingMovie::create($input);
+        });
     }
     /**
      * Update Movie Data
-     * @param $request and $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param UpcomingMovie $id
+     * @return void
      */
     public function update($request, $id)
     {
-            $input = $request->all();
+        $input = $request->all();
         $input = $request->validated();
 
         if ($image = $request->file('poster')) {
@@ -43,14 +46,20 @@ class UpMovieDao implements UpMovieDaoInterface
         } else {
             unset($input['poster']);
         }
-        UpcomingMovie::where('id', '=', $id)->update($input);
+        return   DB::transaction(function () use ($id, $input) {
+            UpcomingMovie::where('id', '=', $id)->update($input);
+        });
     }
     /**
      * Delete Upcoming Movie By Id
+     * @param UpcomingMovie $id
+     * @return view
      */
     public function deleteMovie($id)
     {
-        UpcomingMovie::find($id)->delete();
+        DB::transaction(function () use ($id) {
+            UpcomingMovie::find($id)->delete();
+        });
         return redirect()->route('admin-movie');
     }
 }

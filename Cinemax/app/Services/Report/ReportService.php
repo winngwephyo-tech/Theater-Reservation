@@ -16,7 +16,7 @@ class ReportService implements ReportServiceInterface
     private $reportDao;
     /**
      * Class Constructor
-     * @param ReportDaoInterface
+     * @param ReportDaoInterface $reportDao
      * @return 
      */
     public function __construct(ReportDaoInterface $reportDao)
@@ -25,12 +25,10 @@ class ReportService implements ReportServiceInterface
     }
     /**
      * To show report view
-     *
-     * @return $reports
+     * @return object $reports report
      */
     public function showReports()
     {
-        $reports = $this->reportDao->showReports();
-        return $reports;
+        return  $this->reportDao->showReports();    
     }
 }

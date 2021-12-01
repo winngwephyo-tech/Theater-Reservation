@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Theater;
 use App\Contracts\Services\Theater\TheaterServiceInterface;
 use App\Contracts\Services\Seat\SeatServiceInterface;
 use App\Http\Controllers\Controller;
-use App\Models\Seat;
 use App\Models\Theater;
-use Illuminate\Http\Request;
 use App\Http\Requests\CreateTheaterRequest;
 
 class TheaterController extends Controller
@@ -49,13 +47,12 @@ class TheaterController extends Controller
     }
     /**
      * To check theater create form and redirect to confirm page.
-     * @param Request $request Request form theater create
+     * @param  \Illuminate\Http\Request  $request
      * @return View theater create confirm
      */
     public function submitTheater(CreateTheaterRequest $request)
     {
         $validated = $request->validated();
-
         foreach ($request->addmore as $key => $value) {
             $number = $value['number'];
             if ($number > 18) {
@@ -64,11 +61,8 @@ class TheaterController extends Controller
                     ->withInput();
             }
         }
-
         $theater_id = $this->theaterInterface->addTheaters($request);
-
         $this->seatInterface->addSeats($request, $theater_id);
-
         return redirect()->route('theater-manage');
     }
     /**
@@ -79,9 +73,7 @@ class TheaterController extends Controller
     public function deleteTheater($theater_id)
     {
         $this->theaterInterface->deleteTheater($theater_id);
-
         $this->seatInterface->deleteSeats($theater_id);
-
         return back();
     }
 }

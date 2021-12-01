@@ -5,7 +5,6 @@ namespace App\Dao\Theater;
 use App\Contracts\Dao\Theater\TheaterDaoInterface;
 use App\Models\Theater;
 use App\Models\Seat;
-use Illuminate\Http\Request;
 
 /**
  * Data accessing object for theater
@@ -14,8 +13,9 @@ class TheaterDao implements TheaterDaoInterface
 {
     /**
      * To add theaters
-     * @param $request request with inputs
-     * @return $theater_id
+     *  @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * @return  $theater_id
      */
     public function addTheaters($request)
     {
@@ -27,11 +27,12 @@ class TheaterDao implements TheaterDaoInterface
     }
     /**
      * To delete theater
-     * @param $theater_id
+     * @param Theater $theater_id
+     * @return \Illuminate\Http\Response
      */
     public function deleteTheater($theater_id)
     {
-        Theater::where('id', '=', $theater_id)->delete();
-        Seat::where('theater_id', '=', $theater_id)->delete();
+        return Theater::where('id', '=', $theater_id)->delete();
+        return Seat::where('theater_id', '=', $theater_id)->delete();
     }
 }

@@ -2,40 +2,53 @@
 
 namespace App\Contracts\Services\Movie;
 
+use App\Models\Movie;
+
 interface MovieServiceInterface
 {
     /**
      * To get Movies
-     * @return $Movies
+     * @return object $movies
      */
     public function getMovies();
     /**
-     * Store Movies
+     * Store Movie
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store($request);
-     /**
+    /**
      * Count theater id
      * for create movie
+     * @return void
      */
     public function create();
     /**
      * Update Movie
+     * @param  \Illuminate\Http\Request  $request
+     * @param Movie $id 
+     * @return \Illuminate\Http\Response
+     * @return object Movies
      */
     public function update($request, $id);
     /**
-     * Count Number of theater
+     * count theater
+     * @return no of theater
      */
     public function count_theater();
     /**
-     * Read all data from Movies table
+     * get data for showing movie
+     * @return object of Movies 
      */
     public function get_showingMovieData();
     /**
-     * Count Number of Movie
+     * count upcoming movie
+     * @return no of upcoming movies
      */
     public function count_upcomingMovie();
     /**
-     * Read all data from UpMovies table
+     * get data for upcoming movie
+     * @return object of  UpcomingMovies
      */
     public function get_upcomingMovieData();
 }
