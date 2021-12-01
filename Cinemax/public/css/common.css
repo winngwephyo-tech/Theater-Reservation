@@ -61,12 +61,12 @@ a:active {
     margin-right: 4px;
 }
 
-.nav-before-login {
+/* .nav-before-login {
     display: block;
     flex: 1 1 20%;
     text-align: right;
     margin: auto;
-}
+} */
 
 .button {
     background-color: #732dd9;
@@ -113,7 +113,18 @@ a:active {
     padding-right: 5px;
 }
 
+@media screen and (min-width:641px) {
+    .nav-after-login ul{
+        display: flex;
+    }
+
+    .nav-after-login a {
+        margin-left: 20px;
+    }
+}
+
 @media screen and (max-width: 640px) {
+
     .wrapper {
         width: 95%;
     }
@@ -122,4 +133,62 @@ a:active {
         margin: 5px 0;
         font-size: 12px;
     }
+
+    .nav-after-login  {
+        position: absolute;
+        top: 54px;
+        left: 100%;
+        margin: 0 auto;
+        background-color: #732dd9;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgb(0 0 0 / 5%);
+      }
+
+      .nav-after-login li {
+        float: none;
+        padding: 9px 0;
+      }
+
+      .nav-after-login a {
+        color: #fff;
+      }
+
+      .nav-a {
+          color: #fff;
+      }
+
+      .nav-after-login.active {
+        left: 0;
+      }
+
+      .nav-icon {
+        display: block;
+        cursor: pointer;
+        float: right;
+      }
+
+      .nav-icon.active .bar-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-icon.active .bar-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .nav-icon.active .bar-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .bar-line {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 4px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: #732dd9;
+      }
 }

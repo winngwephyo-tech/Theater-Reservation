@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
+
 <nav class="navbar sticky-top bg-white shadow-sm">
     <div class="wrapper">
         <!-- Left Side Of Navbar -->
@@ -13,20 +14,27 @@
             <!-- Authentication Links -->
             @auth
             <!-- After Login -->
-            <div class="nav-before-login">
+            <div class="nav-after-login right">
                     @csrf
-
+                <ul>
                     @if(Auth::user()->role == '0')
-                    <a href="{{ route('admin') }}" class="nav-a pr-20">Dashboard</a>
+                    <li><a href="{{ route('admin') }}" class="nav-a">Dashboard</a></li>
                     @endif
-                    <a href="{{ route('user-edit') }}" class="nav-a"><i class="fas fa-user-circle nav-a pr-5"></i>{{Auth::user()->name}}</a>
-
+                    <li> <a href="{{ route('user-edit') }}" class="nav-a"><i class="fas fa-user-circle nav-a pr-5"></i>{{Auth::user()->name}}</a></li>
+                </ul>
+            </div>
+            <div class="nav-icon">
+                <span class="bar-line"></span>
+                <span class="bar-line"></span>
+                <span class="bar-line"></span>
             </div>
 
             @else
             <!-- Before Login -->
-            <div class="nav-before-login">
-                <a href="{{ route('login') }}">Login</a>
+            <div class="nav-before-login right">
+                <ul>
+                    <li> <a href="{{ route('login') }}">Login</a></li>
+                </ul>
             </div>
             @endauth
         </ul>

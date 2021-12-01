@@ -11,6 +11,7 @@
     <!-- Script -->
     <script src="{{ asset('js/lib/jquery.min.js') }}"></script>
     <script src="{{ asset('js/common/nav.js') }}"></script>
+
     @yield('script')
 
     <title>Cinemax</title>
@@ -19,7 +20,7 @@
 
     @include('common.nav')
     @yield('content')
-
+    <script src="{{ asset('js/common/sp_nav.js') }}"></script>
 </body>
 
 </html>

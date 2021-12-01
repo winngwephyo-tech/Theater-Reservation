@@ -103,12 +103,8 @@ h3 {
     line-height: 1.2;
     padding: 30px 20px 0;
     color: #fff;
-    margin-left: 20px;
+    margin: 0 20px 20px 0;
     float: left;
-}
-
-.theaters:first-child {
-    margin-left: 0;
 }
 
 .create-theater {
@@ -124,18 +120,9 @@ h3 {
 @media screen and (max-width: 640px) {
     .manage-movie,
     .manage-booking,
-    .statistics {
-        width: 45%;
-    }
-
-    .manage-theater {
-        width: 45%;
-    }
-
-    .manage-movie,
-    .manage-booking,
     .statistics,
     .manage-theater {
+        width: 45%;
         height: 100px;
         padding-top: 30px;
     }
@@ -143,4 +130,11 @@ h3 {
     h3 {
         font-size: 18px;
     }
+
+    .theaters {
+        height: 130px;
+        font-size: 20px;
+        padding: 22px 15px 0;
+    }
+
 }

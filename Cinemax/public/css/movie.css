@@ -124,7 +124,7 @@ ul img:hover {
     margin-right: 0;
 }
 
-/* @media screen and (min-width: 641px) and (max-width: 900px)
+@media screen and (min-width: 641px) and (max-width: 900px)
 {
     h2 {
         font-size: 28px;
@@ -134,7 +134,7 @@ ul img:hover {
         max-width: 150px;
     }
 
-} */
+}
 
 @media screen and (max-width:640px)
 {
