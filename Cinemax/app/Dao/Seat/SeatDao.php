@@ -5,6 +5,7 @@ namespace App\Dao\Seat;
 use App\Contracts\Dao\Seat\SeatDaoInterface;
 use App\Models\Seat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Data accessing object for seat
@@ -25,7 +26,9 @@ class SeatDao implements SeatDaoInterface
                 $display_id = $roll . $i;
 
                 $data = ['roll' => $roll, 'display_id' => $display_id, 'theater_id' => $theater_id, 'price' => $price];
-                Seat::create($data);
+                DB::transaction(function () use ($data) {
+                    Seat::create($data);
+                });
             }
         }
     }
@@ -35,6 +38,8 @@ class SeatDao implements SeatDaoInterface
      */
     public function deleteSeats($theater_id)
     {
-        Seat::where('theater_id', '=', $theater_id)->delete();
+        DB::transaction(function () use ($theater_id) {
+            Seat::where('theater_id', '=', $theater_id)->delete();
+        });
     }
 }

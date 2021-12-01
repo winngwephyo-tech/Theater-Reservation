@@ -122,7 +122,10 @@ class BookingDao implements BookingDaoInterface
                 $price = Seat::where('display_id', '=', $display_id)->value('price');
                 $data = ['user_id' => $user, 'theater_id' => $theater_id, 'movie_id' => $movie_id, 'showtime_id' => $showtime_id,
                     'seat_display_id' => $display_id, 'price' => $price, 'is_booked' => 1];
-                Booking::create($data);
+
+                DB::transaction(function () use ($data) {
+                    Booking::create($data);
+                });
 
                 //for report table
 
@@ -133,10 +136,13 @@ class BookingDao implements BookingDaoInterface
                 }
                 $income += $price;
                 $rating = Movie::where('id', '=', $movie_id)->value('rating');
-                Report::updateOrCreate(
-                    ['movie_id' => $movie_id],
-                    ['income' => $income, 'rating' => $rating]
-                );
+
+                DB::transaction(function () use ($movie_id, $income, $rating) {
+                    Report::updateOrCreate(
+                        ['movie_id' => $movie_id],
+                        ['income' => $income, 'rating' => $rating]
+                    );
+                });
             }
 
             $data = array(

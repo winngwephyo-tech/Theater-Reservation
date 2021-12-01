@@ -6,6 +6,7 @@ use App\Contracts\Dao\Theater\TheaterDaoInterface;
 use App\Models\Theater;
 use App\Models\Seat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Data accessing object for theater
@@ -31,8 +32,9 @@ class TheaterDao implements TheaterDaoInterface
         $name = $request->input('name');
         $address = $request->input('address');
         $data = ['name' => $name, 'address' => $address];
-        $theater_id = Theater::create($data)->id;
-        return $theater_id;
+        return DB::transaction(function () use ($data) {
+            return $theater_id = Theater::create($data)->id;
+        });
     }
     /**
      * To delete theater
@@ -40,7 +42,9 @@ class TheaterDao implements TheaterDaoInterface
      */
     public function deleteTheater($theater_id)
     {
-        Theater::where('id', '=', $theater_id)->delete();
-        Seat::where('theater_id', '=', $theater_id)->delete();
+        DB::transaction(function () use ($theater_id) {
+            Theater::where('id', '=', $theater_id)->delete();
+            Seat::where('theater_id', '=', $theater_id)->delete();
+        });
     }
 }
