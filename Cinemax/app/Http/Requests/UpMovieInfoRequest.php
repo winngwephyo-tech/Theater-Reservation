@@ -24,13 +24,13 @@ class UpMovieInfoRequest extends FormRequest
     public function rules()
     {
         return [
-            'release_date' => 'required',
-            'genre' => 'required',
-            'title' => 'required',
-            'details' => 'required',
-            'trailer' => 'required',
-            'duration' => 'required',
-            'cast' => 'required',
+            'release_date' => ['required'],
+            'genre' => ['required'],
+            'title' => ['required'],
+            'details' => ['required'],
+            'trailer' => ['required'],
+            'duration' => ['required'],
+            'cast' => ['required'],
 
         ];
     }

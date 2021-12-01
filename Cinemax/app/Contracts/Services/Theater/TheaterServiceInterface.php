@@ -2,6 +2,7 @@
 
 namespace App\Contracts\Services\Theater;
 
+use App\Models\Theater;
 use Illuminate\Http\Request;
 
 /**
@@ -9,15 +10,16 @@ use Illuminate\Http\Request;
  */
 interface TheaterServiceInterface
 {
-    /**
-     * To add theaters
-     * @param $request request with inputs
-     * @return $theater_id
+   /**
+     * To add theater
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function addTheaters($request);
     /**
      * To delete theater
-     * @param $theater_id
+     * @param Theater $theater_id
+     * @return \Illuminate\Http\Response
      */
     public function deleteTheater($theater_id);
 

@@ -7,12 +7,10 @@ use App\Contracts\Services\Booking\ManageBookingServiceInterface;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 
-
-
 class ManageBookingController extends Controller
 {
     /**
-     * report interface
+     * Booking interface
      */
     private $bookingInterface;
 
@@ -33,12 +31,12 @@ class ManageBookingController extends Controller
     public function manageBooking()
     {
         $bookings = $this->bookingInterface->manageBooking();
-        return view('booking.index')->with('bookings' , $bookings);
+        return view('booking.index')->with('bookings', $bookings);
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Booking  $Booking
+     * @param  Booking $booking
      * @return \Illuminate\Http\Response
      */
     public function deleteBooking($booking)
@@ -47,21 +45,21 @@ class ManageBookingController extends Controller
     }
     /**
      * delete all from bookings
-     *
+     *@return \Illuminate\Http\Response
      */
     public function deleteAll()
     {
         return $this->bookingInterface->deleteAll();
     }
 
-     /**
+    /**
      * search name
-     * @param $request
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function searchName(Request $request)
     {
         $bookings = $this->bookingInterface->searchName($request);
-        return view('booking.index')-> with('bookings' , $bookings);
+        return view('booking.index')->with('bookings', $bookings);
     }
-
 }

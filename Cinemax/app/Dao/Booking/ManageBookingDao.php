@@ -27,20 +27,22 @@ class ManageBookingDao implements ManageBookingDaoInterface
             ->join('users', 'bookings.user_id', '=', 'users.id')
             ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
             ->orderBy('id', 'DESC')
-            ->select('bookings.id',
-                     'users.name',
-                     'movies.title',
-                     'bookings.seat_display_id',
-                     'showtimes.showtime',
-                     'bookings.price')
+            ->select(
+                'bookings.id',
+                'users.name',
+                'movies.title',
+                'bookings.seat_display_id',
+                'showtimes.showtime',
+                'bookings.price'
+            )
             ->get();
         return $bookingList;
     }
     /**
      * Report table
      * for cancel booking recalculate price
-     * delete
-     * @param $Booking
+     * delete booking
+     * @param array $booking
      */
     public function deleteBooking($booking)
     {
@@ -52,8 +54,10 @@ class ManageBookingDao implements ManageBookingDaoInterface
                 $price = Seat::where('display_id', '=', $display_id)->value('price');
                 $income = Report::where('movie_id', '=', $movie_id)->value('income');
                 $income -= $price;
-                Report::where('movie_id', $movie_id)
-                    ->update(['income' => $income]);
+                DB::transaction(function () use ($movie_id, $income) {
+                    Report::where('movie_id', $movie_id)
+                        ->update(['income' => $income]);
+                });
             }
             $book->forceDelete();
             return redirect()->route('booking-index');
@@ -62,33 +66,38 @@ class ManageBookingDao implements ManageBookingDaoInterface
     }
     /**
      * delete all booking
+     * @return void
      */
     public function deleteAll()
     {
-        Booking::query()->forceDelete();
+        DB::transaction(function () {
+            Booking::query()->forceDelete();
+        });
         return redirect()->route('booking-index');
     }
 
-      /**
+    /**
      * search name
-     * @param $request
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function searchName($request)
     {
-        $bookings= DB::table('bookings')
-        ->join('movies', 'bookings.movie_id', '=', 'movies.id')
-        ->join('users', 'bookings.user_id', '=', 'users.id')
-        ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
-        ->orderBy('id', 'DESC')
-        ->select('bookings.id',
-                 'users.name',
-                 'movies.title',
-                 'bookings.seat_display_id',
-                 'showtimes.showtime',
-                 'bookings.price')
-        ->where('name', '=',$request->get('name'))
-        ->get();
+        $bookings = DB::table('bookings')
+            ->join('movies', 'bookings.movie_id', '=', 'movies.id')
+            ->join('users', 'bookings.user_id', '=', 'users.id')
+            ->join('showtimes', 'bookings.showtime_id', '=', 'showtimes.id')
+            ->orderBy('id', 'DESC')
+            ->select(
+                'bookings.id',
+                'users.name',
+                'movies.title',
+                'bookings.seat_display_id',
+                'showtimes.showtime',
+                'bookings.price'
+            )
+            ->where('name', '=', $request->get('name'))
+            ->get();
         return $bookings;
-
     }
 }

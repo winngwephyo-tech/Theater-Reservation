@@ -2,20 +2,35 @@
 
 namespace App\Contracts\Services\Movie;
 
+use App\Models\Movie;
+use App\Models\Showtime;
+use App\Models\UpcomingMovie;
+
 interface MovieDescriptionServiceInterface
 {
-    public function movie_details($id);
-
-    public function showtime($id);
-
-    public function upmovie($id);
-
     /**
-     * Count Number of Movie
+     * @param Movie $id
+     * @return Movies movies
+     */
+    public function movie_details($id);
+    /**
+     * @param Showtime $id
+     * @return Showtimes showtimes
+     */
+    public function showtime($id);
+    /**
+     * @param UpcomingMovie $id
+     * @return UpcomingMovie upcomingmovie
+     */
+    public function upmovie($id);
+    /**
+     * count upcoming movie
+     * @return no of upcoming movie list
      */
     public function count_upcomingMovie();
     /**
-     * Read all data from UpMovies table
+     * get data for upcoming movie
+     * @return Object UpcomingMovie 
      */
     public function get_upcomingMovieData();
 }

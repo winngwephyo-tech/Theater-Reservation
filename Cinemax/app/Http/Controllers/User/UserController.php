@@ -8,10 +8,7 @@ use App\Contracts\Services\Movie\MovieServiceInterface;
 use App\Contracts\Services\User\UserServiceInterface;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserPasswordChangeRequest;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -45,7 +42,7 @@ class UserController extends Controller
     {
         $request->validated();
         $user = $this->userInterface->submitUserEditView($request);
-        return redirect('/');
+        return redirect()->route('home');
     }
     /**
      * To Show the application dashboard.
@@ -56,6 +53,6 @@ class UserController extends Controller
     {
         $request->validated();
         $this->userInterface->changeUserPassword($request);
-        return redirect('/');
+        return redirect()->route('home');
     }
 }

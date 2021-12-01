@@ -4,6 +4,7 @@ namespace App\Services\Booking;
 
 use App\Contracts\Dao\Booking\BookingDaoInterface;
 use App\Contracts\Services\Booking\BookingServiceInterface;
+use App\Models\Showtime;
 
 /**
  * Service class for booking.
@@ -16,8 +17,8 @@ class BookingService implements BookingServiceInterface
     private $bookingDao;
     /**
      * Class Constructor
-     * @param BookingDaoInterface
-     * @return
+     * @param BookingDaoInterface $bookingDao
+     * @return void
      */
     public function __construct(BookingDaoInterface $bookingDao)
     {
@@ -25,7 +26,8 @@ class BookingService implements BookingServiceInterface
     }
     /**
      * To get all seats
-     * @param $movie_id, $showtime_id
+     * @param  Movie $movie_id
+     * @param Showtime $showtime_id
      */
     public function getSeats($movie_id, $showtime_id)
     {
@@ -33,15 +35,35 @@ class BookingService implements BookingServiceInterface
     }
     /**
      * To get booked seats
-     * @param $movie_id, $showtime_id
+     * @param  Movie $movie_id
+     * @param Showtime $showtime_id
      */
     public function getBookedSeats($movie_id, $showtime_id)
     {
         return $this->bookingDao->getBookedSeats($movie_id, $showtime_id);
     }
     /**
+     * To get theaterId
+     * @param int $movie_id
+     */
+    public function getTheaterId($movie_id)
+    {
+        return $this->bookingDao->getTheaterId($movie_id);
+    }
+    /**
+     * To get theaterName
+     * @param int $theater_id
+     */
+    public function getTheaterName($theater_id)
+    {
+        return $this->bookingDao->getTheaterName($theater_id);
+    }
+    /**
      * To add booking
-     * @param $request , $movie_id, $showtime_id
+     * @param  Movie $movie_id
+     * @param Showtime $showtime_id
+     * @param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response 
      */
     public function addBooking($request, $movie_id, $showtime_id)
     {

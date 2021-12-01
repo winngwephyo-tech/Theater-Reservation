@@ -6,7 +6,6 @@ use App\Contracts\Services\Report\ReportServiceInterface;
 use App\Exports\ReportsExport;
 use App\Http\Controllers\Controller;
 use App\Models\Report;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
@@ -18,7 +17,6 @@ class ReportController extends Controller
 
     /**
      * Create a new controller instance.
-     *
      * @return void
      */
     public function __construct(ReportServiceInterface $reportServiceInterface)
@@ -27,13 +25,12 @@ class ReportController extends Controller
     }
     /**
      * To show report view
-     *
      * @return View report
      */
     public function showReports()
     {
         $reports = $this->reportInterface->showReports();
-        return view('report.index')-> with(['reports'=> $reports]);
+        return view('report.index')->with(['reports' => $reports]);
     }
     /**
      * Export to excel
@@ -49,11 +46,9 @@ class ReportController extends Controller
      */
     public function deleteANDexport()
     {
-        Report::query()->delete();
+        $this->reportInterface->deleteReports();
         return Excel::download(new ReportsExport, 'report.xlsx');
-
     }
-
     /**
      * Give data to chart blade
      *
@@ -61,13 +56,9 @@ class ReportController extends Controller
     public function getChartData()
     {
         $reports = $this->reportInterface->showReports();
-
-        foreach($reports as $key=> $value)
-        {
+        foreach ($reports as $key => $value) {
             $data[] = [$value->title, $value->income, $value->rating];
         }
-
-        return view('report.chart')-> with(['data'=>$data]);
-
+        return view('report.chart')->with(['data' => $data]);
     }
 }

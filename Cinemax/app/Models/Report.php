@@ -11,6 +11,8 @@ class Report extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'movie_id','income', 'rating',
+        'movie_id',
+        'income', 
+        'rating',
     ];
 }

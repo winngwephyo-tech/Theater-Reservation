@@ -12,16 +12,22 @@ class ReportDao implements ReportDaoInterface
 {
     /**
      * To show report view
-     *
-     * @return $reports
+     * @return object $reports
      */
     public function showReports()
     {
-        $reports = Report::join('movies', 'reports.movie_id', '=', 'movies.id')
+        return  Report::join('movies', 'reports.movie_id', '=', 'movies.id')
                    ->whereNull('reports.deleted_at')
                    ->select('reports.*', 'movies.title')
                    ->get();
-        return $reports;
+        
+    }
+    /**
+     * To delete all reports
+     */
+    public function deleteReports()
+    {
+        Report::query()->delete();
     }
 
 }

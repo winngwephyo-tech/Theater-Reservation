@@ -4,7 +4,9 @@ namespace App\Dao\Seat;
 
 use App\Contracts\Dao\Seat\SeatDaoInterface;
 use App\Models\Seat;
+use App\Models\Theater;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Data accessing object for seat
@@ -13,7 +15,10 @@ class SeatDao implements SeatDaoInterface
 {
     /**
      * To add seats
-     * @param $request request with inputs, $theater_id
+     *  @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @param Theater $theater_id
+     * @return void
      */
     public function addSeats($request, $theater_id)
     {
@@ -28,16 +33,21 @@ class SeatDao implements SeatDaoInterface
                          'display_id' => $display_id,
                          'theater_id' => $theater_id,
                          'price' => $price];
-                Seat::create($data);
+                DB::transaction(function () use ($data) {
+                    Seat::create($data);
+                });
             }
         }
     }
     /**
      * To delete seats
-     * @param $theater_id
+     * @param Theater $theater_id
+     * @return void
      */
     public function deleteSeats($theater_id)
     {
-        Seat::where('theater_id', '=', $theater_id)->delete();
+        DB::transaction(function () use ($theater_id) {
+            Seat::where('theater_id', '=', $theater_id)->delete();
+        });
     }
 }

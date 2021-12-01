@@ -9,9 +9,9 @@ use App\Models\Report;
 use App\Models\Seat;
 use App\Models\Showtime;
 use App\Models\Theater;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;\
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Data accessing object for booking
@@ -20,7 +20,8 @@ class BookingDao implements BookingDaoInterface
 {
     /**
      * To get all seats
-     * @param $movie_id, $showtime_id
+     * @param Movie $movie_id 
+     * @param Showtime $showtime_id
      */
     public function getSeats($movie_id, $showtime_id)
     {
@@ -30,7 +31,8 @@ class BookingDao implements BookingDaoInterface
     }
     /**
      * To get booked seats
-     * @param $movie_id, $showtime_id
+     *@param Movie $movie_id 
+     * @param Showtime $showtime_id
      */
     public function getBookedSeats($movie_id, $showtime_id)
     {
@@ -46,16 +48,35 @@ class BookingDao implements BookingDaoInterface
         return $booked;
     }
     /**
+     * To get theaterId
+     * @param int $movie_id
+     */
+    public function getTheaterId($movie_id)
+    {
+        $theater_id = Movie::where('id', '=', $movie_id)->value('theater_id');
+        return $theater_id;
+    }
+    /**
+     * To get theaterName
+     * @param int $theater_id
+     */
+    public function getTheaterName($theater_id)
+    {
+        $theater_name = Theater::where('id', '=', $theater_id)->value('name');
+        return $theater_name;
+    }
+    /**
      * To add bookings
-     * @param $request, $movie_id, $showtime_id
+     * @param Movie $movie_id 
+     * @param Showtime $showtime_id
      */
     public function addBooking($request, $movie_id, $showtime_id)
     {
         $user = Auth::user()->id;
         $movie_name = Movie::where('id', '=', $movie_id)->value('title');
         $showtime = Showtime::where('id', '=', $showtime_id)->value('showtime');
-        $booking_error = 0;
-        $validated = 0;
+        $booking_error = '';
+        $validated = '';
         foreach ($request->addmore as $key => $value) {
             //for booking table
 
@@ -70,27 +91,28 @@ class BookingDao implements BookingDaoInterface
                 ->where('movie_id', '=', $movie_id)
                 ->where('showtime_id', '=', $showtime_id)
                 ->exists()) {
-                $booking_error += 1;
+                $booking_error = "booked";
             }
 
             //check if the seat is validated
             if (Seat::where('display_id', '=', $display_id)
                 ->where('theater_id', '=', $theater_id)
-                ->exists()) {
+                ->exists()
+            ) {
                 continue;
             } else {
-                $validated = 1;
+                $validated = "not-available";
             }
         }
 
         if ($booking_error > 0) {
-            return redirect()->route('booking-create', [$movie_id, $showtime_id])
-                ->with('error', 'The Seat is already booked!')
-                ->withInput();
+
+            return $booking_error;
+
         } elseif ($validated > 0) {
-            return redirect()->route('booking-create', [$movie_id, $showtime_id])
-                ->with('error', 'The Seat is not available!')
-                ->withInput();
+
+            return $validated;
+
         } else {
 
             $income = 0;
@@ -103,13 +125,16 @@ class BookingDao implements BookingDaoInterface
                 $number = $value['number'];
                 $display_id = $roll . $number;
                 $price = Seat::where('display_id', '=', $display_id)->value('price');
+
                 $data = ['user_id' => $user,
                          'theater_id'=> $theater_id,
                          'movie_id' => $movie_id,
                          'showtime_id' => $showtime_id,
                          'seat_display_id' => $display_id,
                          'price' => $price, 'is_booked' => 1];
-                Booking::create($data);
+                DB::transaction(function () use ($data) {
+                    Booking::create($data);
+                });
 
                 //for report table
 
@@ -117,24 +142,26 @@ class BookingDao implements BookingDaoInterface
                 $seatString .= $display_id . ",";
                 if (Report::where('movie_id', '=', $movie_id)->exists()) {
                     $income = Report::where('movie_id', '=', $movie_id)->value('income');
-                } else {
                 }
                 $income += $price;
                 $rating = Movie::where('id', '=', $movie_id)->value('rating');
-                Report::updateOrCreate(
-                    ['movie_id' => $movie_id],
-                    ['income' => $income, 'rating' => $rating]
-                );
+
+                DB::transaction(function () use ($movie_id, $income, $rating) {
+                    Report::updateOrCreate(
+                        ['movie_id' => $movie_id],
+                        ['income' => $income, 'rating' => $rating]
+                    );
+                });
             }
 
-            return view('booking.confirm')
-                ->with('movie_name', $movie_name)
-                ->with('theater_name', $theater_name)
-                ->with('seats', $seatString)
-                ->with('showtime', $showtime)
-                ->with('fee', $fee);
-
+            $data = array(
+                'movie_name' => $movie_name,
+                'theater_name' => $theater_name,
+                'seats' => $seatString,
+                'showtime' => $showtime,
+                'fee' => $fee,
+            );
+            return (object) $data;
         }
-
     }
 }
