@@ -24,17 +24,17 @@ class MovieInfoRequest extends FormRequest
     public function rules()
     {
         return [
-            'theater_id' => 'required',
-            'genre' => 'required',
-            'title' => 'required',
-            'details' => 'required',
-            'rating' => 'required',
-            'trailer' => 'required',
+            'theater_id' => ['required', 'max:255'],
+            'genre' => ['required', 'max:255'],
+            'title' => ['required', 'max:255'],
+            'details' => ['required', 'max:255'],
+            'rating' => ['required', 'max:255'],
+            'trailer' => ['required', 'max:255'],
             'duration' => 'required',
-            'cast' => 'required',
-            'time1'=>'required',
-            'time2'=>'required',
-            'time3'=>'required',
+            'cast' => ['required'],
+            'time1' => ['required'],
+            'time2' => ['required'],
+            'time3' => ['required'],
 
         ];
     }

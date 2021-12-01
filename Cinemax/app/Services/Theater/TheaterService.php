@@ -16,8 +16,8 @@ class TheaterService implements TheaterServiceInterface
     private $theaterDao;
     /**
      * Class Constructor
-     * @param TheaterDaoInterface
-     * @return
+     * @param TheaterDaoInterface $theaterDao
+     * @return void
      */
     public function __construct(TheaterDaoInterface $theaterDao)
     {
@@ -33,8 +33,8 @@ class TheaterService implements TheaterServiceInterface
     }
     /**
      * To add theater
-     * @param $request request with inputs
-     * @return $theater_id
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function addTheaters($request)
     {
@@ -42,10 +42,11 @@ class TheaterService implements TheaterServiceInterface
     }
     /**
      * To delete theater
-     * @param $theater_id
+     * @param Theater $theater_id
+     * @return \Illuminate\Http\Response
      */
     public function deleteTheater($theater_id)
     {
-        $this->theaterDao->deleteTheater($theater_id);
+        return $this->theaterDao->deleteTheater($theater_id);
     }
 }

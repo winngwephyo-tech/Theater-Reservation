@@ -9,6 +9,7 @@ use App\Models\Report;
 use App\Models\Seat;
 use App\Models\Showtime;
 use App\Models\Theater;
+use Illuminate\Support\Facades\DB;\
 use Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,8 @@ class BookingDao implements BookingDaoInterface
 {
     /**
      * To get all seats
-     * @param $movie_id, $showtime_id
+     * @param Movie $movie_id 
+     * @param Showtime $showtime_id
      */
     public function getSeats($movie_id, $showtime_id)
     {
@@ -29,7 +31,8 @@ class BookingDao implements BookingDaoInterface
     }
     /**
      * To get booked seats
-     * @param $movie_id, $showtime_id
+     *@param Movie $movie_id 
+     * @param Showtime $showtime_id
      */
     public function getBookedSeats($movie_id, $showtime_id)
     {
@@ -64,7 +67,8 @@ class BookingDao implements BookingDaoInterface
     }
     /**
      * To add bookings
-     * @param $request, $movie_id, $showtime_id
+     * @param Movie $movie_id 
+     * @param Showtime $showtime_id
      */
     public function addBooking($request, $movie_id, $showtime_id)
     {
@@ -93,7 +97,8 @@ class BookingDao implements BookingDaoInterface
             //check if the seat is validated
             if (Seat::where('display_id', '=', $display_id)
                 ->where('theater_id', '=', $theater_id)
-                ->exists()) {
+                ->exists()
+            ) {
                 continue;
             } else {
                 $validated = "not-available";
@@ -157,8 +162,6 @@ class BookingDao implements BookingDaoInterface
                 'fee' => $fee,
             );
             return (object) $data;
-
         }
-
     }
 }

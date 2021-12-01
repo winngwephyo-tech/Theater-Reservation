@@ -3,7 +3,9 @@
 namespace App\Services\Booking;
 
 use App\Contracts\Dao\Booking\ManageBookingDaoInterface;
+use App\Contracts\Dao\Movie\MovieDaoInterface;
 use App\Contracts\Services\Booking\ManageBookingServiceInterface;
+use App\Models\Booking;
 
 /**
  * Service class for report.
@@ -11,13 +13,13 @@ use App\Contracts\Services\Booking\ManageBookingServiceInterface;
 class ManageBookingService implements ManageBookingServiceInterface
 {
     /**
-     * report dao
+     * booking dao
      */
     private $bookingDao;
     /**
      * Class Constructor
-     * @param ReportDaoInterface
-     * @return 
+     * @param ManageBookingDaoInterface $bookingDao
+     *  @return void
      */
     public function __construct(ManageBookingDaoInterface $bookingDao)
     {
@@ -35,6 +37,8 @@ class ManageBookingService implements ManageBookingServiceInterface
 
     /**
      * delete by booking id
+     * @param Booking $booking
+     * @return void
      */
     public function deleteBooking($booking)
     {
@@ -42,21 +46,21 @@ class ManageBookingService implements ManageBookingServiceInterface
     }
     /**
      * delete all booking
+     * @return void
+     * 
      */
     public function deleteAll()
     {
         return $this->bookingDao->deleteAll();
     }
 
-       /**
+    /**
      * search name
-     * @param $request
+     * @param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response 
      */
     public function searchName($request)
     {
-       return $this->bookingDao->searchName($request);
-    
+        return $this->bookingDao->searchName($request);
     }
-
-
 }

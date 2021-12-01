@@ -11,6 +11,8 @@ class Theater extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'movie_id', 'name', 'address',
+        'movie_id',
+        'name',
+        'address',
     ];
 }

@@ -4,6 +4,7 @@ namespace App\Services\Booking;
 
 use App\Contracts\Dao\Booking\BookingDaoInterface;
 use App\Contracts\Services\Booking\BookingServiceInterface;
+use App\Models\Showtime;
 
 /**
  * Service class for booking.
@@ -16,8 +17,8 @@ class BookingService implements BookingServiceInterface
     private $bookingDao;
     /**
      * Class Constructor
-     * @param BookingDaoInterface
-     * @return
+     * @param BookingDaoInterface $bookingDao
+     * @return void
      */
     public function __construct(BookingDaoInterface $bookingDao)
     {
@@ -25,7 +26,8 @@ class BookingService implements BookingServiceInterface
     }
     /**
      * To get all seats
-     * @param $movie_id, $showtime_id
+     * @param  Movie $movie_id
+     * @param Showtime $showtime_id
      */
     public function getSeats($movie_id, $showtime_id)
     {
@@ -33,7 +35,8 @@ class BookingService implements BookingServiceInterface
     }
     /**
      * To get booked seats
-     * @param $movie_id, $showtime_id
+     * @param  Movie $movie_id
+     * @param Showtime $showtime_id
      */
     public function getBookedSeats($movie_id, $showtime_id)
     {
@@ -57,7 +60,10 @@ class BookingService implements BookingServiceInterface
     }
     /**
      * To add booking
-     * @param $request , $movie_id, $showtime_id
+     * @param  Movie $movie_id
+     * @param Showtime $showtime_id
+     * @param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response 
      */
     public function addBooking($request, $movie_id, $showtime_id)
     {
