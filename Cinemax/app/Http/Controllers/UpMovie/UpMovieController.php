@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class UpMovieController extends Controller
 {
+  /**
+   * UpMovieServiceInterface
+   */
+
   private $movieInterface;
 
   /**
@@ -25,6 +29,7 @@ class UpMovieController extends Controller
    * Display a listing of the resource.
    *
    * create upcomming movie
+   * @return view of upcoming movie 
    */
   public function create()
   {
@@ -38,12 +43,16 @@ class UpMovieController extends Controller
    */
   public function store(UpMovieInfoRequest $request)
   {
+    $request->validate([
+      'poster' => 'required',
+    ]);
     $this->movieInterface->store($request);
     return redirect()->route('admin-movie')
       ->with('success', 'Movie created successfully.');
   }
   /**
    * Edit Upcoming Movie By Id
+   * @param  UpcomingMovie $id
    */
 
   public function edit($id)
@@ -52,13 +61,13 @@ class UpMovieController extends Controller
       ->where('id', '=', $id)
       ->select('*')
       ->first();
-    return view('upmovie.edit')-> with(['upmovie'=>$upmovie]);
+    return view('upmovie.edit')->with(['upmovie' => $upmovie]);
   }
   /**
    * Update the specified resource in storage.
    *
    * @param  \Illuminate\Http\Request  $request
-   * @param  \App\movie  $movie
+   * @param  UpcomingMovie $id
    * @return \Illuminate\Http\Response
    */
   public function update(UpMovieInfoRequest $request, $id)
@@ -67,6 +76,10 @@ class UpMovieController extends Controller
     return redirect()->route('admin-movie')
       ->with('success', 'Movie updated successfully');
   }
+  /**
+   * @param Movie $id
+   * @return \Illuminate\Http\Response
+   */
   public function deleteMovie($id)
   {
     return $this->movieInterface->deleteMovie($id);

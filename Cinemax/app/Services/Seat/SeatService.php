@@ -16,8 +16,8 @@ class SeatService implements SeatServiceInterface
     private $seatDao;
     /**
      * Class Constructor
-     * @param SeatDaoInterface
-     * @return
+     * @param SeatDaoInterface $seatDao
+     * @return void
      */
     public function __construct(SeatDaoInterface $seatDao)
     {
@@ -25,18 +25,21 @@ class SeatService implements SeatServiceInterface
     }
     /**
      * To add seats
-     * @param $request request with inputs, $theater_id
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * @param  int $theater_id
      */
     public function addSeats($request, $theater_id)
     {
-        $this->seatDao->addSeats($request, $theater_id);
+       return $this->seatDao->addSeats($request, $theater_id);
     }
     /**
      * To delete seats
-     * @param $theater_id
+     * @param  Theater $theater_id
+     * @return \Illuminate\Http\Response
      */
     public function deleteSeats($theater_id)
     {
-        $this->seatDao->deleteSeats($theater_id);
+       return $this->seatDao->deleteSeats($theater_id);
     }
 }

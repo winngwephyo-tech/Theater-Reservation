@@ -24,11 +24,11 @@ class CreateTheaterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'address' => 'required',
-            'addmore.*.roll' => 'required|string|max:1',
-            'addmore.*.number' => 'required',
-            'addmore.*.price' => 'required|max:5',
+            'name' => ['required', 'max:255'],
+            'address' => ['required','max:255'],
+            'addmore.*.roll' =>['required','string','max:1'],
+            'addmore.*.number' => ['required'],
+            'addmore.*.price' => ['required','max:5'],
         ];
     }
 }

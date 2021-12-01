@@ -24,8 +24,9 @@ class TheaterDao implements TheaterDaoInterface
     }
     /**
      * To add theaters
-     * @param $request request with inputs
-     * @return $theater_id
+     *  @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * @return  $theater_id
      */
     public function addTheaters($request)
     {
@@ -38,7 +39,8 @@ class TheaterDao implements TheaterDaoInterface
     }
     /**
      * To delete theater
-     * @param $theater_id
+     * @param Theater $theater_id
+     * @return \Illuminate\Http\Response
      */
     public function deleteTheater($theater_id)
     {

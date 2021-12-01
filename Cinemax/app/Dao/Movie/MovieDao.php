@@ -7,6 +7,7 @@ use App\Models\Movie;
 use App\Models\Showtime;
 use App\Models\Theater;
 use App\Models\UpcomingMovie;
+use Illuminate\Support\Facades\DB;
 
 class MovieDao implements MovieDaoInterface
 {
@@ -16,44 +17,43 @@ class MovieDao implements MovieDaoInterface
      */
     public function getMovies()
     {
-        $movie = Movie::latest()->paginate(5);
-        return $movie;
+        return Movie::latest()->paginate(5);
     }
     /**
      * Select Theater id
+     * @return Theater id 
      */
-    public function create(){
-        $theater=Theater::select('id')->get();
-        return $theater;
-
+    public function create()
+    {
+        return Theater::select('id')->get();
     }
     /**
      * Add new Movie
-     * @param $request
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store($request)
     {
-        $request->validate([
-              'poster' => 'required',
-        ]);
-
-        $input = ['theater_id' =>  $request->theater_id,
-                  'genre' =>  $request->genre,
-                  'title' =>  $request->title,
-                  'details' =>  $request->details,
-                  'rating' =>  $request->rating,
-                  'trailer' =>  $request->trailer,
-                  'duration' =>  $request->duration,
-                  'cast' =>  $request->cast
-                 ];
+        $input = [
+            'theater_id' =>  $request->theater_id,
+            'genre' =>  $request->genre,
+            'title' =>  $request->title,
+            'details' =>  $request->details,
+            'rating' =>  $request->rating,
+            'trailer' =>  $request->trailer,
+            'duration' =>  $request->duration,
+            'cast' =>  $request->cast
+        ];
         if ($poster = $request->file('poster')) {
             $destinationPath = 'image/';
             $profileImage = date('YmdHis') . "." . $poster->getClientOriginalExtension();
             $poster->move($destinationPath, $profileImage);
             $input['poster'] = "$profileImage";
         }
+        $movieid =   DB::transaction(function () use ($input) {
+            return $movieid =    Movie::create($input)->id;
+        });
 
-        $movieid = Movie::create($input)->id;
 
         // For ShowTime Table
         for ($i = 0; $i < 3; $i++) {
@@ -68,24 +68,35 @@ class MovieDao implements MovieDaoInterface
                     $showtime = $request->time3;
                     break;
             }
-            $data = ['movie_id' => $movieid,
-                     'theater_id' => $request->theater_id,
-                     'showtime' => $showtime];
-            Showtime::create($data);
+
+            $data = [
+                'movie_id' => $movieid,
+                'theater_id' => $request->theater_id,
+                'showtime' => $showtime
+            ];
+
+            DB::transaction(function () use ($data) {
+                Showtime::create($data);
+            });
         }
     }
     /**
      * Update Movie
-     * @param $input ,$id
-     * @param movie
+     * @param array $input
+     * @param Movie $id
+     * @return \Illuminate\Http\\Response
      */
     public function updateMovie($input, $id)
     {
-        Movie::where('id', '=', $id)->update($input);
+        return DB::transaction(function () use ($input, $id) {
+            Movie::where('id', '=', $id)->update($input);
+        });
     }
     /**
      * Update ShowTime
-     * @param $request,$id
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\\Response
+     * @param Showtime $id
      */
     public function updateShowTime($request, $id)
     {
@@ -94,48 +105,52 @@ class MovieDao implements MovieDaoInterface
             ->where('movie_id', '=', $id)
             ->get();
         $data = ['showtime' =>  $request->time1];
-        Showtime::where('id', '=', $showtimes[0]->id)->update($data);
+        DB::transaction(function () use ($data, $showtimes) {
+            Showtime::where('id', '=', $showtimes[0]->id)->update($data);
+        });
         $data = ['showtime' =>  $request->time2];
-        Showtime::where('id', '=',  $showtimes[1]->id)->update($data);
+        DB::transaction(function () use ($data, $showtimes) {
+            Showtime::where('id', '=',  $showtimes[1]->id)->update($data);
+        });
+
         $data = ['showtime' =>  $request->time3];
-        Showtime::where('id', '=', $showtimes[2]->id)->update($data);
+        DB::transaction(function () use ($data, $showtimes) {
+            Showtime::where('id', '=', $showtimes[2]->id)->update($data);
+        });
     }
     /**
      * count theater
+     * @return no of theater
      */
     public function count_theater()
     {
-        $theater = Theater::count();
-
-        return $theater;
+        return Theater::count();
     }
     /**
      * get movie data
+     * @return object of $movies
      */
     public function get_showingMovieData()
     {
-        $showingMovie_value = Movie::select('theater_id', 'title', 'duration', 'poster', 'id')
-                             ->get();
-
-        return $showingMovie_value;
+        return  Movie::select('theater_id', 'title', 'duration', 'poster', 'id')
+            ->get();
     }
     /**
      * count upcoming movie
+     * @return no of upcomingmovies
      */
     public function count_upcomingMovie()
     {
-        $upcomingMovie = UpcomingMovie::count();
-
-        return $upcomingMovie;
+        return  UpcomingMovie::count();
     }
     /**
      * get upcoming movie data
+     * @return object of $upcomingmovies
      */
     public function get_upcomingMovieData()
     {
-        $upcomingMovie_value = UpcomingMovie::select('id', 'title', 'duration', 'poster')
-                               ->whereNull('upcoming_movies.deleted_at')
-                               ->get();
-        return $upcomingMovie_value;
+        return  UpcomingMovie::select('id', 'title', 'duration', 'poster')
+            ->whereNull('upcoming_movies.deleted_at')
+            ->get();
     }
 }
