@@ -109,8 +109,36 @@ a:active {
 .f-12 {
     font-size: 12px;
 }
+
 .invalid-input {
     display: block;
     font-size: 12px;
     color: red;
+}
+
+
+/*for responsive*/
+
+@media screen and (max-width: 900px) {
+    .card {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .wrapper {
+        width: 95%;
+    }
+    h2 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    h3 {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    .card {
+        width: 100%;
+        box-shadow: none;
+    }
 }

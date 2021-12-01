@@ -1,7 +1,7 @@
 body {
     max-width: 1920px;
     font-family: sans-serif;
-    background-color: #F9F9F9;
+    background-color: #f9f9f9;
 }
 
 .wrapper {
@@ -110,4 +110,51 @@ table {
 
 textarea:focus {
     outline: none;
+}
+
+
+/*for responsive*/
+
+@media screen and (max-width: 900px) {
+    body {
+        font-size: 12px;
+    }
+    .form-control3 {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    h2 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    h3 {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    .form-control {
+        font-size: 12px;
+        padding: 2px 5px;
+        width: 100px;
+        height: 30px;
+        border: 2px solid #e3d7f3;
+        border-radius: 7px;
+        margin: 10px;
+    }
+    .form-control2 {
+        width: 200px;
+    }
+    .form-control3 {
+        width: 60px;
+        margin: 10px 3px;
+    }
+    .line {
+        margin: 10px 0;
+        height: 30px;
+    }
+    .alert {
+        width: 90%;
+        padding-top: 10px;
+    }
 }
