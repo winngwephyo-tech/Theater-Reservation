@@ -112,3 +112,22 @@ a:active {
 .pr-5 {
     padding-right: 5px;
 }
+
+@media screen and (min-width: 641px) and (max-width: 900px) {
+
+    .button {
+        padding: 5px 10px;
+        margin: 8px 0;
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width:640px) {
+
+    .button {
+        padding: 5px 10px;
+        margin: 10px 0;
+        font-size: 14px;
+    }
+}
