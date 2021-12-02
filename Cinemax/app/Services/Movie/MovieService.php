@@ -5,7 +5,7 @@ namespace App\Services\Movie;
 use App\Contracts\Dao\Movie\MovieDaoInterface;
 use App\Contracts\Services\Movie\MovieServiceInterface;
 use App\Dao\Movie\MovieDao;
-
+use App\Models\Movie;
 
 class MovieService implements MovieServiceInterface
 {
@@ -45,8 +45,24 @@ class MovieService implements MovieServiceInterface
      *Store Movie Data
      */
     public function store($request)
-    {
-        $this->movieDao->store($request);
+    {    $input = [
+        'theater_id' =>  $request->theater_id,
+        'genre' =>  $request->genre,
+        'title' =>  $request->title,
+        'details' =>  $request->details,
+        'rating' =>  $request->rating,
+        'trailer' =>  $request->trailer,
+        'duration' =>  $request->duration,
+        'cast' =>  $request->cast
+    ];
+    if ($poster = $request->file('poster')) {
+        $destinationPath = 'image/';
+        $profileImage = date('YmdHis') . "." . $poster->getClientOriginalExtension();
+        $poster->move($destinationPath, $profileImage);
+        $input['poster'] = "$profileImage";
+    }
+        $this->movieDao->store($request,$input);
+   
     }
     /**
      * @param \Illuminate\Http\Request  $request
@@ -57,7 +73,6 @@ class MovieService implements MovieServiceInterface
     public function update($request, $id)
     {
         $input = [
-            'theater_id' => $request->theater_id,
             'genre' => $request->genre,
             'title' => $request->title,
             'details' => $request->details,

@@ -24,7 +24,6 @@ class MovieInfoRequest extends FormRequest
     public function rules()
     {
         return [
-            'theater_id' => ['required', 'max:255'],
             'genre' => ['required', 'max:255'],
             'title' => ['required', 'max:255'],
             'details' => ['required', 'max:255'],
