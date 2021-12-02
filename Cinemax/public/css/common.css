@@ -61,12 +61,12 @@ a:active {
     margin-right: 4px;
 }
 
-/* .nav-before-login {
+.nav-after-login {
     display: block;
     flex: 1 1 20%;
     text-align: right;
     margin: auto;
-} */
+}
 
 .button {
     background-color: #732dd9;
@@ -113,15 +113,6 @@ a:active {
     padding-right: 5px;
 }
 
-@media screen and (min-width:641px) {
-    .nav-after-login ul{
-        display: flex;
-    }
-
-    .nav-after-login a {
-        margin-left: 20px;
-    }
-}
 
 @media screen and (max-width: 640px) {
 
@@ -135,24 +126,23 @@ a:active {
     }
 
     .nav-after-login  {
-        position: absolute;
+        position: fixed;
         top: 54px;
-        left: 100%;
+        right: -100%;
+        width: 100%;
+        height: 100%;
         margin: 0 auto;
         background-color: #732dd9;
-        width: 100%;
         flex-direction: column;
         text-align: center;
         transition: 0.3s;
         box-shadow: 0 10px 27px rgb(0 0 0 / 5%);
       }
 
-      .nav-after-login li {
-        float: none;
-        padding: 9px 0;
-      }
-
       .nav-after-login a {
+        display: block;
+        float: none;
+        padding: 8% 0 0;
         color: #fff;
       }
 
@@ -161,7 +151,7 @@ a:active {
       }
 
       .nav-after-login.active {
-        left: 0;
+        right: 0;
       }
 
       .nav-icon {
