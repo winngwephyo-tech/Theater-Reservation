@@ -14,14 +14,12 @@
             <!-- Authentication Links -->
             @auth
             <!-- After Login -->
-            <div class="nav-after-login right">
+            <div class="nav-after-login">
                     @csrf
-                <ul>
                     @if(Auth::user()->role == '0')
-                    <li><a href="{{ route('admin') }}" class="nav-a">Dashboard</a></li>
+                        <a href="{{ route('admin') }}" class="nav-a pr-20">Dashboard</a>
                     @endif
-                    <li> <a href="{{ route('user-edit') }}" class="nav-a"><i class="fas fa-user-circle nav-a pr-5"></i>{{Auth::user()->name}}</a></li>
-                </ul>
+                        <a href="{{ route('user-edit') }}" class="nav-a"><i class="fas fa-user-circle nav-a pr-5"></i>{{Auth::user()->name}}</a>
             </div>
             <div class="nav-icon">
                 <span class="bar-line"></span>
