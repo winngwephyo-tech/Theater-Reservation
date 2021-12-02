@@ -32,28 +32,11 @@ class MovieDao implements MovieDaoInterface
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($request)
+    public function store($request, $input)
     {
-        $input = [
-            'theater_id' =>  $request->theater_id,
-            'genre' =>  $request->genre,
-            'title' =>  $request->title,
-            'details' =>  $request->details,
-            'rating' =>  $request->rating,
-            'trailer' =>  $request->trailer,
-            'duration' =>  $request->duration,
-            'cast' =>  $request->cast
-        ];
-        if ($poster = $request->file('poster')) {
-            $destinationPath = 'image/';
-            $profileImage = date('YmdHis') . "." . $poster->getClientOriginalExtension();
-            $poster->move($destinationPath, $profileImage);
-            $input['poster'] = "$profileImage";
-        }
         $movieid =   DB::transaction(function () use ($input) {
             return $movieid =    Movie::create($input)->id;
         });
-
 
         // For ShowTime Table
         for ($i = 0; $i < 3; $i++) {

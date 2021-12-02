@@ -83,6 +83,13 @@ class MovieController extends Controller
         $request->validate([
             'poster' => 'required',
         ]);
+        $theater_id = $request->theater_id;
+        $movie_theater_id = Movie::select('theater_id')->get();
+        foreach ($movie_theater_id as  $value) {
+            if ($theater_id == $value['theater_id']) {
+                return redirect()->back()->withErrors(['msg' =>'Now Theater is not unavaiable']);
+            }
+        }
         $this->movieInterface->store($request);
         return redirect()->route('admin-movie')
             ->with('success', 'Movie created successfully.');

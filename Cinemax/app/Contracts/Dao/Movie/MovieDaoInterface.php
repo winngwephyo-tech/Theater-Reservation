@@ -17,7 +17,7 @@ interface MovieDaoInterface
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($request);
+    public function store($request,$input);
     /**
      * Count theater id
      * for create movie

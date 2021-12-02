@@ -6,6 +6,7 @@
 <link href="{{ asset('css/movie/common.css') }}" rel="stylesheet" type="text/css">
 @endsection
 @section('script')
+<script src="{{ asset('js/lib/jquery.min.js') }}"></script>
 <script src="{{ asset('js/preview_poster.js') }}"></script>
 @endsection
 
@@ -22,7 +23,7 @@
     </div>
     @if ($errors->any())
     <div class="line line-round">
-         <ul class="alert">
+        <ul class="alert">
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
@@ -93,12 +94,14 @@
             <input type="text" class="form-control width-1" name="cast" value="{{ $movie->cast }}" placeholder="Casts"></textarea>
             <div class="right-row2 clearfix">
                 <input type="text" name="duration" value="{{ $movie->duration }}" class="row2-left form-control" placeholder="Duration">
-                <select name="theater_id" class="row2-left form-control dropdown">
+                <select name="theater_id" class="row2-left form-control dropdown" disabled="disabled" id="sel_test">
                     <option value="{{ $movie->theater_id }}">{{ $movie->theater_id }}</option>
                     @foreach($theaters as $theater)
                     <option value="{{$theater->id}}">{{$theater->id}}</option>
                     @endforeach
                 </select>
+                <input type="hidden" id="hdn_test" />
+                <div id="output"></div>
             </div>
             <div class="right-row2 clearfix">
                 <input type="text" name="genre" value="{{ $movie->genre }}" class="row2-left form-control" placeholder="Genre">
@@ -108,4 +111,11 @@
     </div>
     </div>
 </form>
+<script src="text/javascript">
+    $(function() {
+        var select_val = $('#sel_test option:selected').val();
+        $('#hdn_test').val(select_val);
+        $('#output').text('Selected value is: ' + select_val);
+    });
+</script>
 @endsection

@@ -14,7 +14,7 @@
     <div class="clearfix">
         <div class="left">
             <h2>Create Now Showing Movie</h2>
-        </div>      
+        </div>
         <div class="right">
             <a class="button" href="{{ route('admin-movie') }}"> Back</a>
         </div>
@@ -22,7 +22,7 @@
 
     @if ($errors->any())
     <div class="line line-round">
-         <ul class="alert">
+        <ul class="alert">
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
@@ -77,4 +77,12 @@
     </div>
 
 </form>
+<!-- @if(session()->has('message'))
+<div class="alert alert-success">
+    {{ session()->get('message') }}
+</div>
+@endif -->
+@if ($errors->any())
+<div>{{$errors->first()}} </div>
+@endif
 @endsection
