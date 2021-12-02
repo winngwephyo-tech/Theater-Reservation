@@ -56,3 +56,47 @@ h2 {
 textarea:focus {
     outline: none;
 }
+
+/* Media */
+@media screen and (min-width: 641px) and (max-width: 900px) {
+    body {
+        max-width: 100%;
+    }
+
+    .wrapper {
+        width: 95%;
+        margin: 0 auto;
+    }       
+    .left-con {
+        width: 35%;
+    }
+    .right-con {
+        width: 60%;
+    }
+    .time-input {
+        width: 58%;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width:640px) {
+    body {
+        max-width: 100%;
+    }
+
+    .wrapper {
+        width: 95%;
+        margin: 0 auto;
+    }
+    .left-con {
+        width: 100%;
+    }
+    .right-con {
+        width: 100%;
+    }
+    .time-input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+}
