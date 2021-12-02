@@ -10,7 +10,6 @@
 @endsection
 
 @section('content')
-
 <div class="wrapper mt-20">
     <div class="clearfix pt-20">
         <div class="left">
