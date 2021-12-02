@@ -56,9 +56,16 @@ class ReportController extends Controller
     public function getChartData()
     {
         $reports = $this->reportInterface->showReports();
+
         foreach ($reports as $key => $value) {
             $data[] = [$value->title, $value->income, $value->rating];
         }
-        return view('report.chart')->with(['data' => $data]);
+        if(isset($data))
+        {
+            return view('report.chart')->with(['data' => $data]);
+        }
+        else{
+            return redirect()->route('statistic');
+        }
     }
 }

@@ -1,7 +1,7 @@
 body {
     max-width: 1920px;
     font-family: sans-serif;
-    background-color: #F9F9F9;
+    background-color: #f9f9f9;
 }
 
 .wrapper {
@@ -27,6 +27,10 @@ body {
 
 .ml-10 {
     margin-left: 10px;
+}
+
+.pt-20 {
+    padding-top: 20px;
 }
 
 h2 {
@@ -61,7 +65,7 @@ h3 {
 }
 
 .button:hover {
-    opacity: .7;
+    opacity: 0.7;
 }
 
 .left {
@@ -89,6 +93,10 @@ table {
     margin: 30px auto;
 }
 
+.notes {
+    display: none;
+}
+
 .seats {
     width: 100%;
     text-align: center;
@@ -100,11 +108,11 @@ table {
 }
 
 .seats span {
-    margin: 1% .1%;
-    padding-top: 10px;
+    margin: 1% 0.1%;
+    padding: 10px 3px;
     display: inline-block;
-    width: 5%;
-    height: 50px;
+    width: 4.5%;
+    height: auto;
     border-radius: 10px;
 }
 
@@ -125,7 +133,7 @@ small {
 }
 
 .seats span:hover {
-    box-shadow: 0 0 3px rgba(33, 33, 33, .2);
+    box-shadow: 0 0 3px rgba(33, 33, 33, 0.2);
     cursor: pointer;
 }
 
@@ -208,6 +216,86 @@ textarea:focus {
 .info-purple {
     color: #732dd9;
     font-size: 16px;
+}
+
+
+/*for responsive*/
+
+@media screen and (max-width: 900px) {
+    body {
+        font-size: 12px;
+    }
+    .inputs {
+        width: 90%;
+    }
+    .seats span {
+        line-height: .5;
+    }
+    strong {
+        line-height: 1;
+        font-size: 10px;
+    }
+    small {
+        font-size: 6px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    h2 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    h3 {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    .screen {
+        font-size: 12px;
+        height: 20px;
+        padding-top: 4px;
+        border-radius: 8px;
+        margin: 15px auto;
+    }
+    .notes {
+        display: block;
+        color: #d5c2ed;
+        text-align: center;
+        font-size: 8px;
+    }
+    .seats span {
+        line-height: .5;
+        margin: 1% 0.01%;
+        padding: 3px 1px;
+        width: 7%;
+        border-radius: 5px;
+    }
+    strong {
+        line-height: 1;
+        font-size: 8px;
+    }
+    small {
+        font-size: 6px;
+    }
+    .form-control {
+        font-size: 12px;
+        padding: 2px 5px;
+        width: 60px;
+        height: 30px;
+        border: 2px solid #e3d7f3;
+        border-radius: 10px;
+        margin: 10px;
+    }
+    .line {
+        margin: 10px 0;
+        height: 30px;
+    }
+    .alert {
+        width: 90%;
+        padding-top: 10px;
+    }
+    .info-purple {
+        font-size: 12px;
+    }
 }
 
 

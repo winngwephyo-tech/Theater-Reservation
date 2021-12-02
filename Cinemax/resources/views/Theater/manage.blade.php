@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="wrapper mt-20">
-    
+
     <div class="clearfix">
         <div class="left">
             <h2>Manage Theaters</h2>
@@ -32,7 +32,7 @@
             </div>
         @endforeach
     </div>
-    
+
 </div>
 @endsection
 
