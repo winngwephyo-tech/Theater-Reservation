@@ -46,14 +46,21 @@ h3 {
     height: 70px;
 }
 
-.manage-sec {
-    display: flex;
+/* .manage-sec {
+
+} */
+.manage-movie,
+.manage-booking,
+.statistics {
+    float: left;
+    width: 20%;
+    margin: 5% 5% 5% 0;
 }
 
-.manage-sec a {
+/* .manage-sec a {
     margin: 5% 5% 5% 0;
     width: 20%;
-}
+} */
 
 .manage-theater {
     margin: 5% 0;
@@ -96,12 +103,8 @@ h3 {
     line-height: 1.2;
     padding: 30px 20px 0;
     color: #fff;
-    margin-left: 20px;
+    margin: 0 20px 20px 0;
     float: left;
-}
-
-.theaters:first-child {
-    margin-left: 0;
 }
 
 .create-theater {
@@ -111,5 +114,27 @@ h3 {
 }
 
 .create-theater:hover {
-    opacity: .7;
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 640px) {
+    .manage-movie,
+    .manage-booking,
+    .statistics,
+    .manage-theater {
+        width: 45%;
+        height: 100px;
+        padding-top: 30px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .theaters {
+        height: 130px;
+        font-size: 20px;
+        padding: 22px 15px 0;
+    }
+
 }

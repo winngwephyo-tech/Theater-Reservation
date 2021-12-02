@@ -8,13 +8,13 @@
 @endsection
 
 @section('script')
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{{ asset('js/lib/jquery.min.js') }}"></script>
 @endsection
 
 
 @section('content')
 <div class="wrapper mt-20">
-    <div class="clearfix">
+    <div class="clearfix pt-20">
             <div class="left">
                 <h2>{{ $theater_name }}</h2>
             </div>
@@ -22,8 +22,9 @@
                 <a class="button" href="{{ route('description-movie', $movie_id) }}"> Back</a>
             </div>
     </div>
-    <div class="seats">
     <div class="screen">Screen</div>
+    <div class="notes">Seats with the same alphabet are all in the same row.</div>
+    <div class="seats">
         @php
         $old_roll = 'A';
         @endphp

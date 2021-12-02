@@ -12,7 +12,7 @@
 @section('content')
 
 <div class="wrapper mt-20">
-    <div class="clearfix">
+    <div class="clearfix pt-20">
         <div class="left">
             <h2>Statistics Charts</h2>
         </div>

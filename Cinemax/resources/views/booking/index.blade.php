@@ -13,7 +13,7 @@
 @section('content')
 <div class="wrapper mt-20">
 
-    <div class="clearfix">
+    <div class="clearfix pt-20">
         <div class="left">
             <h2>Manage Booking</h2>
         </div>
@@ -29,7 +29,7 @@
             <button type="submit" class="button"><i class="fa fa-search"></i></button>
         </div>
     </form>
-
+    <div class="overscroll">
     <table class="report mt-20">
         <tr>
             <th>No</th>
@@ -56,6 +56,7 @@
         </tr>
         @endforeach
     </table>
+    </div>
     <div class="clearfix mt-20">
         <div class="right">
             <form method="PUT" action="{{ route('booking-deleteall') }}">

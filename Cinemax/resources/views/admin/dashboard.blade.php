@@ -8,7 +8,7 @@
 @section('content')
 <div class="wrapper mt-20">
     <h2>Admin Dashboard</h2>
-    <div class="manage-sec">
+    <div class="manage-sec clearfix">
         <a href="{{route('admin-movie') }}">
             <div class="manage-movie">
                 <h3>Manage<br>Movies</h3>
