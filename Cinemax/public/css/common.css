@@ -113,6 +113,12 @@ a:active {
     padding-right: 5px;
 }
 
+@media screen and (min-width: 641px) and (max-width: 900px) {
+    .wrapper {
+        width: 90%;
+    }
+}
+
 
 @media screen and (max-width: 640px) {
 
