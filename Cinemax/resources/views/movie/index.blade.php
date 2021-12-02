@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="wrapper mt-20">
-    <h2 class="heading">Now Showing</h2>
+    <h2 class="heading pt-20">Now Showing</h2>
     <ul class="recent-list clearfix mt-40">
         @for($i=1 ; $i<= $no_of_theater ; $i++)
         @foreach ($showingMovie_result as $data)

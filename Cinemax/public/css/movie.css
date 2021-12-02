@@ -48,6 +48,10 @@ body {
     padding-top: 10px;
 }
 
+.pt-20 {
+    padding-top: 20px;
+}
+
 h2 {
     font-size: 32px;
     margin: 15px 0;
@@ -65,7 +69,6 @@ h3 {
 .movie-lists small {
     font-size: 12px;
 }
-
 
 .button:hover {
     opacity: .7;
@@ -110,6 +113,7 @@ ul img:hover {
     opacity: .7;
 }
 
+
 /* recent-blk */
 
 .recent-list li {
@@ -120,12 +124,13 @@ ul img:hover {
     list-style-type: none;
 }
 
+
 /* Media */
+
 @media screen and (min-width: 641px) and (max-width: 900px) {
     body {
         max-width: 100%;
     }
-
     .wrapper {
         width: 95%;
         margin: 0 auto;
@@ -136,12 +141,18 @@ ul img:hover {
     body {
         max-width: 100%;
     }
-
+    h2 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    h3 {
+        font-size: 16px;
+        margin: 10px 0;
+    }
     .wrapper {
         width: 95%;
         margin: 0 auto;
     }
-
     .button {
         padding: 5px 7px;
         margin: 5px 0;
@@ -154,7 +165,6 @@ ul img:hover {
     .movie-lists strong {
         font-size: 14px;
     }
-    
     .movie-lists small {
         font-size: 12px;
     }
