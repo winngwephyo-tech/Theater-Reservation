@@ -13,7 +13,7 @@
     padding-left: 3%;
 }
 
-.movie-title  {
+.movie-title {
     width: 30%;
     float: left;
 }
@@ -70,7 +70,9 @@ a:active {
     text-align: center;
 }
 
+
 /* upmovie */
+
 .upmovie-title {
     width: 100%;
 }
@@ -84,73 +86,60 @@ a:active {
     .sp {
         display: none;
     }
-
 }
 
 @media screen and (min-width: 641px) and (max-width: 900px) {
-
     .btn {
         display: none;
     }
-
     .movie-poster {
         width: 28%;
     }
-
     .movie-description {
         width: 68%;
         padding-left: 4%;
     }
-
-    .movie-title  {
+    .movie-title {
         width: 100%;
     }
-
 }
 
 @media screen and (max-width: 640px) {
     .btn {
         display: none;
     }
-
+    .phone {
+        display: none;
+    }
     .movie-poster {
         width: 35%;
     }
-
     .movie-poster img {
         width: 120px;
         height: 220px;
     }
-
     .movie-description {
         width: 58%;
         margin-left: 5%;
     }
-
     .movie-title {
         width: 100%;
         float: left;
     }
-
     .font-size {
         font-size: 12px;
     }
-
     .movie-trailer {
         margin: 10px 0;
     }
-
     .movie-details {
         line-height: 1;
         margin: 10px 0;
     }
-
     .description {
         line-height: 1.3;
     }
-
     .showing-theater {
         margin: 10px 0;
     }
-
 }
