@@ -165,17 +165,27 @@ ul img:hover {
     .recent-list{
         margin: 0 auto;
     }
-    .recent-list li {
-        width: 200px;
-        margin-left: 18%;
-    }
     .movie-lists strong {
         font-size: 14px;
     }
     .movie-lists small {
         font-size: 12px;
     }
+    .recent-list li {
+        width: 135px;
+        margin-right: 12px;
+    }
+    img{
+        height: 226px;
+    }
     .add-movie {
-        width: 200px;
+        width: 135px;
+        height: 226px;
+        padding-top: 86px;
+    }
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
