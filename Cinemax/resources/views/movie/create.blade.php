@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 <link href="{{ asset('css/movie/style.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('css/movie/common.css') }}" rel="stylesheet" type="text/css">
 @endsection
@@ -11,7 +12,7 @@
 @section('content')
 
 <div class="wrapper mt-20">
-    <div class="clearfix">
+    <div class="clearfix pt-20">
         <div class="left">
             <h2>Create Now Showing Movie</h2>
         </div>

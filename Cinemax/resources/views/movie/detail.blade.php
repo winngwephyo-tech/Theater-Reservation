@@ -58,7 +58,7 @@
 <div class="check-out">
     <p class="font-size"><a href="{{route('movie')}}">Check out </a>what other movies are showing today!</p>
 </div>
-<div class="wrapper">
+<div class="wrapper phone">
     <div class="pt-10">
         <h2 class="heading">Upcoming Movies</h2>
         <ul class="recent-list clearfix mt-40">
