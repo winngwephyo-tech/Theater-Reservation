@@ -162,9 +162,12 @@ ul img:hover {
         margin: 10px 0;
         height: 30px;
     }
+    .recent-list{
+        margin: 0 auto;
+    }
     .recent-list li {
         width: 200px;
-        margin-left: 22px;
+        margin-left: 18%;
     }
     .movie-lists strong {
         font-size: 14px;

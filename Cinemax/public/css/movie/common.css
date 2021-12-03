@@ -110,4 +110,8 @@ textarea:focus {
     .form-control {
         margin: 10px 0;
     }
+    .row2-left {
+        width: 48%;
+        float: none;
+    }
 }
