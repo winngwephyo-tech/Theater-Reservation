@@ -28,7 +28,7 @@
 
                         <div>
                                 <button type="submit" class="button">
-                                    {{ __('Send Password Reset Link') }}
+                                    {{ __('Send Reset Link') }}
                                 </button>
                                 <p class="f-12 p-20"><a href="{{route('register')}}">Create New Account</a></p>
                         </div>
