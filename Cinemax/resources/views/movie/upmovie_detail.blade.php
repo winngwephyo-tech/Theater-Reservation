@@ -30,6 +30,6 @@
        </div>
     </div>
     <div class="check-out">
-        <p><a href="{{route('movie')}}">Check out </a>what other movies are showing today.</p>
+        <p class="font-size"><a href="{{route('movie')}}">Check out </a>what other movies are showing today.</p>
     </div>
 @endsection

@@ -21,7 +21,7 @@
         </a>
         <a href="{{route('statistic') }}">
             <div class="statistics">
-                <h3>Statistics</h3>
+                <h3 class="txt-center">Statistics</h3>
             </div>
         </a>
     </div>
