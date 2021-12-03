@@ -81,7 +81,8 @@ class MovieController extends Controller
     public function store(MovieInfoRequest $request)
     {
         $request->validate([
-            'poster' => 'required',
+            'theater_id'=>['required'],
+            'poster' => ['required'],
         ]);
         $theater_id = $request->theater_id;
         $movie_theater_id = Movie::select('theater_id')->get();

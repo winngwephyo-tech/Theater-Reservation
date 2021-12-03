@@ -62,7 +62,7 @@
             <div class="right-row2 clearfix">
                 <textarea class="form-control width-1" name="cast" placeholder="Casts"></textarea>
                 <div class="right-row2 clearfix">
-                    <input type="text" name="duration" class="row2-left form-control" placeholder="Duration">
+                    <input type="text" name="duration" class="row2-left form-control" placeholder="100min">
                     <select name="theater_id" class="row2-left form-control">
                         <option value="">Select Theater ID</option>
                         @foreach($theaters as $theater)
@@ -71,7 +71,7 @@
                     </select>
                 </div>
                 <input type="text" name="genre" class="row2-left form-control" placeholder="Genre">
-                <input type="text" name="rating" class="row2-left form-control" placeholder="Rating">
+                <input type="text" name="rating" class="row2-left form-control" placeholder="rating:5">
             </div>
         </div>
 
