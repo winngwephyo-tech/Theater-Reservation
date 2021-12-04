@@ -65,11 +65,10 @@ a:active {
 
 .check-out {
     background-color: rgba(224, 215, 228, 0.863);
-    margin-top: 4%;
-    padding: 2%;
+    margin: 4% 0 5%;
+    padding: 3%;
     text-align: center;
 }
-
 
 /* upmovie */
 
@@ -77,50 +76,142 @@ a:active {
     width: 100%;
 }
 
-.sp {
-    text-align: center;
-    margin-top: 10px;
+.rating {
+    display: inline-flex;
+    border: 2px solid #ff8c33;
+    border-radius: 4px;
+    padding: 4px 15px;
+    color: #ff8c33;
+    margin: 0 0 15px 0;
 }
 
-@media screen and (min-width:901px) {
+.btn-bg {
+    background-color: #732dd9;
+    color: #fff;
+    text-align: center;
+    padding: 18px 0;
+    margin: 30px 0 0;
+}
+
+.sp-button {
+    background-color: #421980;
+    color: #fff;
+    border: 2px solid #421980;
+    padding: 10px 25px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 901px) {
     .sp {
+        display: none;
+    }
+    .tablet {
         display: none;
     }
 }
 
 @media screen and (min-width: 641px) and (max-width: 900px) {
-    .btn {
+    .pc {
+        display: none;
+    }
+    .sp {
         display: none;
     }
     .movie-poster {
         width: 28%;
     }
     .movie-description {
-        width: 68%;
-        padding-left: 4%;
+        width: 67%;
+        padding-left: 5%;
     }
     .movie-title {
         width: 100%;
     }
+
+    .check-out {
+        margin: 0 0 5%;
+    }
+    .upmovie-poster img {
+        height: 250px;
+    }
+    .upcoming-checkOut {
+        margin-top: 5%;
+    }
 }
 
 @media screen and (max-width: 640px) {
-    .btn {
+    .pc-tablet {
         display: none;
     }
     .phone {
         display: none;
+    }
+    .poster {
+        width: 100%;
+        text-align: center;
+    }
+    .poster img {
+        width: 140px;
+        height: 210px;
+    }
+    .sp-title {
+        width: 100%;
+        margin-top: 12%;
+    }
+    .title {
+        width: 73%;
+        float: left;
+    }
+    .title h2 {
+        margin: 0;
+    }
+    .trailer {
+        width: 22%;
+        float: right;
+        text-align: center;
+    }
+    .sp-button {
+        padding: 10px 12px;
+        margin: 5px;
+        font-size: 14px;
+    }
+    .check-out {
+        margin: 0 0 5%;
+        padding: 18px 0;
+    }
+    .rating {
+        margin: 6px 0;
+    }
+    .font-size {
+        font-size: 15px;
+    }
+    .line {
+        margin-bottom: 0;
+    }
+}
+
+/* for upcoming movie */
+@media screen and (max-width: 640px) {
+    .upmovie-wrapper {
+        width: 90%;
     }
     .movie-poster {
         width: 35%;
     }
     .movie-poster img {
         width: 120px;
-        height: 220px;
+        height: 180px;
     }
     .movie-description {
-        width: 58%;
-        margin-left: 5%;
+        width: 60%;
+        margin-left: 3%;
     }
     .movie-title {
         width: 100%;
@@ -141,5 +232,8 @@ a:active {
     }
     .showing-theater {
         margin: 10px 0;
+    }
+    .upcoming-checkOut {
+        margin-top: 20px;
     }
 }

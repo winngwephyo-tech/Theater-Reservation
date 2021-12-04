@@ -3,6 +3,7 @@
 namespace App\Dao\Movie;
 
 use App\Models\Movie;
+use App\Models\Theater;
 use App\Models\Showtime;
 use App\Models\UpcomingMovie;
 use App\Contracts\Dao\Movie\MovieDescriptionDaoInterface;
@@ -16,6 +17,17 @@ class MovieDescriptionDao implements MovieDescriptionDaoInterface
     public function movie_details($id)
     {
         return  Movie::where('id', '=', $id)->first();
+
+    }
+    /**
+     * get theater name
+     * @return object of theaters
+     */
+    public function theater_name($id)
+    {
+
+        return Theater::where('id' , '=' , $id)
+                        ->first('name');
     }
     /**
      * @param int $id

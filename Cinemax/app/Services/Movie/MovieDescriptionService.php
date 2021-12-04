@@ -29,6 +29,14 @@ class MovieDescriptionService implements MovieDescriptionServiceInterface
         return $this->MovieDescriptionDao->movie_details($id);
     }
     /**
+     * get data for theater
+     * @return Object Theater
+     */
+    public function theater_name($id)
+    {
+        return $this->MovieDescriptionDao->theater_name($id);
+    }
+    /**
      * @param Showtime $id
      * @return Showtimes showtimes
      */
@@ -56,7 +64,7 @@ class MovieDescriptionService implements MovieDescriptionServiceInterface
     }
     /**
      * get data for upcoming movie
-     * @return Object UpcomingMovie 
+     * @return Object UpcomingMovie
      */
     public function get_upcomingMovieData()
     {
