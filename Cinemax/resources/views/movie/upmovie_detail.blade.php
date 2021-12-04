@@ -17,7 +17,7 @@
                 <small>{{ $upmovie->duration }}mins</small>
             </div>
            <div class="movie-trailer">
-            <a href="{{ $upmovie->trailer }}" class="trailer-btn button">Watch Trailer</a>
+            <a href="{{ $upmovie->trailer }}" class="trailer-btn button">Trailer</a>
            </div>
            <div class="movie-details font-size">
                <p>{{$upmovie->details}}</p>
@@ -29,7 +29,7 @@
            </div>
        </div>
     </div>
-    <div class="check-out">
+    <div class="check-out upcoming-checkOut">
         <p class="font-size"><a href="{{route('movie')}}">Check out </a>what other movies are showing today.</p>
     </div>
 @endsection

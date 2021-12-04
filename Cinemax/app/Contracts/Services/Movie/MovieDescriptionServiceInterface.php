@@ -14,6 +14,11 @@ interface MovieDescriptionServiceInterface
      */
     public function movie_details($id);
     /**
+     * get data for theater
+     * @return Object theater
+     */
+    public function theater_name($id);
+    /**
      * @param Showtime $id
      * @return Showtimes showtimes
      */
@@ -30,7 +35,7 @@ interface MovieDescriptionServiceInterface
     public function count_upcomingMovie();
     /**
      * get data for upcoming movie
-     * @return Object UpcomingMovie 
+     * @return Object UpcomingMovie
      */
     public function get_upcomingMovieData();
 }

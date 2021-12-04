@@ -13,14 +13,19 @@ interface MovieDescriptionDaoInterface
      * @return object of  movies
      */
     public function movie_details($id);
+     /**
+     * @param Movie $id
+     * @return Object Theater
+     */
+    public function theater_name($id);
     /**
      * @param Showtime $id
-     * @return object of Showtimes 
+     * @return object of Showtimes
      */
     public function showtime($id);
     /**
      * @param UpcomingMovie $id
-     * @return object of UpcomingMovie 
+     * @return object of UpcomingMovie
      */
     public function upmovie($id);
     /**
@@ -30,7 +35,7 @@ interface MovieDescriptionDaoInterface
     public function count_upcomingMovie();
     /**
      * get data for upcoming movie
-     * @return Object UpcomingMovie 
+     * @return Object UpcomingMovie
      */
     public function get_upcomingMovieData();
 }
