@@ -138,7 +138,9 @@ a:active {
     .check-out {
         margin: 0 0 5%;
     }
-
+    .upmovie-poster img {
+        height: 250px;
+    }
     .upcoming-checkOut {
         margin-top: 5%;
     }
@@ -197,22 +199,19 @@ a:active {
 
 /* for upcoming movie */
 @media screen and (max-width: 640px) {
-    .btn {
-        display: none;
-    }
-    .phone {
-        display: none;
+    .upmovie-wrapper {
+        width: 90%;
     }
     .movie-poster {
         width: 35%;
     }
     .movie-poster img {
         width: 120px;
-        height: 220px;
+        height: 180px;
     }
     .movie-description {
-        width: 58%;
-        margin-left: 5%;
+        width: 60%;
+        margin-left: 3%;
     }
     .movie-title {
         width: 100%;

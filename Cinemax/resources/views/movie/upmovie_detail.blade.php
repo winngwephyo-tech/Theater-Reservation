@@ -7,8 +7,8 @@
 @endsection
 
 @section('content')
-    <div class="wrapper clearfix">
-       <div class="movie-poster mt-20">
+    <div class="wrapper clearfix upmovie-wrapper">
+       <div class="movie-poster mt-20 upmovie-poster">
           <img src="/upimage/{{ $upmovie->poster }}" alt="">
        </div>
        <div class="movie-description mt-20">
