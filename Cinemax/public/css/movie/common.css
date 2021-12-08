@@ -57,16 +57,16 @@ textarea:focus {
     outline: none;
 }
 
+
 /* Media */
+
 @media screen and (min-width: 641px) and (max-width: 900px) {
     body {
         max-width: 100%;
     }
-
     .wrapper {
         width: 95%;
-        margin: 0 auto;
-    }       
+    }
     .left-con {
         width: 35%;
     }
@@ -83,10 +83,16 @@ textarea:focus {
     body {
         max-width: 100%;
     }
-
     .wrapper {
         width: 95%;
-        margin: 0 auto;
+    }
+    h2 {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+    h3 {
+        font-size: 16px;
+        margin: 10px 0;
     }
     .left-con {
         width: 100%;
@@ -94,9 +100,19 @@ textarea:focus {
     .right-con {
         width: 100%;
     }
+    .m-10 {
+        margin: 10px 0;
+    }
     .time-input {
         width: 100%;
         margin-bottom: 10px;
+        margin-right: 0px;
     }
-
+    .form-control {
+        margin: 10px 0;
+    }
+    .row2-left {
+        width: 48%;
+        float: none;
+    }
 }

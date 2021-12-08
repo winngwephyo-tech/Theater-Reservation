@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+<div class="pc-tablet">
 <div class="wrapper clearfix mt-20">
     <div class="movie-poster mt-20">
         <img src="/image/{{ $movie->poster }}" alt="poster">
@@ -18,7 +19,7 @@
                 <h2>{{ $movie->title }}</h2>
                 <small>{{ $movie->duration }} mins</small>
             </div>
-            <div class="btn">
+            <div class="btn pc">
                     @foreach ($showtime as $item)
                     @auth
                     <a href="{{ route('booking-create', ['movie_id' => $item->movie_id, 'showtime_id' => $item->id]) }}" class="button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
@@ -29,28 +30,38 @@
             </div>
         </div>
         <div class="movie-trailer">
-            <a href="{{ $movie->trailer }}" class="button button2">Watch Trailer</a>
+            <a href="{{ $movie->trailer }}" class="button button2">Trailer</a>
         </div>
         <div class="movie-details font-size">
             <p>{{$movie->details}}</p>
         </div>
+        {{-- tablet--}}
+        <div class="rating tablet">
+            IMDB:&nbsp;{{$movie->rating}}
+        </div>
+        {{--tablet--}}
         <div class="description font-size">
+            <div class="tablet"><label for="">Theater : </label>{{$theater_name->name}}<br></div>
             <label for="">Genre : </label>{{$movie->genre}}<br>
-            <label for="">Rating : </label>{{$movie->rating}}<br>
+            <div class="pc"><label for="">Rating : </label>{{$movie->rating}}<br></div>
             <label for="">Casts : </label>{{$movie->cast}}<br>
         </div>
-        <div class="showing-theater font-size">
-            <p>This movie is now showing in <strong>Theater{{$movie->theater_id}}</strong></p>
+        <div class="showing-theater font-size pc">
+            <p>This movie is now showing in <strong>{{$theater_name->name}}</strong></p>
         </div>
     </div>
 </div>
-<div class="wrapper">
-    <div class="sp">
+<div class="btn-bg tablet">
+    <div class="tablet">
+        <h4>Book Here!</h4>
+        <div class="showing-theater font-size">
+            <p>This movie is now showing in&nbsp{{$theater_name->name}}.</p>
+        </div>
         @foreach ($showtime as $item)
         @auth
-        <a href="{{ route('booking-create', ['movie_id' => $item->movie_id, 'showtime_id' => $item->id]) }}" class="button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
+        <a href="{{ route('booking-create', ['movie_id' => $item->movie_id, 'showtime_id' => $item->id]) }}" class="sp-button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
         @else
-        <a href="{{ route('login') }}" class="button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
+        <a href="{{ route('login') }}" class="sp-button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
         @endauth
         @endforeach
     </div>
@@ -58,7 +69,8 @@
 <div class="check-out">
     <p class="font-size"><a href="{{route('movie')}}">Check out </a>what other movies are showing today!</p>
 </div>
-<div class="wrapper">
+</div>
+<div class="wrapper phone">
     <div class="pt-10">
         <h2 class="heading">Upcoming Movies</h2>
         <ul class="recent-list clearfix mt-40">
@@ -70,5 +82,50 @@
             @endforeach
         </ul>
     </div>
+</div>
+<div class="sp">
+    <div class="wrapper mt-20">
+        <div class="poster mt-20">
+            <img src="/image/{{ $movie->poster }}" alt="poster">
+        </div>
+        <div class="sp-title clearfix">
+            <div class="title">
+                <h2>{{ $movie->title }}</h2>
+                <small>{{ $movie->duration }} mins</small>
+            </div>
+            <a href="{{ $movie->trailer }}" class="sp-button trailer">Trailer</a>
+        </div>
+        <div class="movie-details font-size">
+            <p>{{$movie->details}}</p>
+        </div>
+    </div>
+    <div class="btn-bg">
+            <h4>Book Here!</h4>
+            <div class="showing-theater font-size">
+                <p>This movie is now showing in&nbsp{{ $theater_name->name }}.</p>
+            </div>
+            @foreach ($showtime as $item)
+            @auth
+            <a href="{{ route('booking-create', ['movie_id' => $item->movie_id, 'showtime_id' => $item->id]) }}" class="sp-button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
+            @else
+            <a href="{{ route('login') }}" class="sp-button">{{ date('g:i A', strtotime($item->showtime)) }}</a>
+            @endauth
+            @endforeach
+    </div>
+    <div class="check-out">
+        <p class="font-size"><a href="{{route('movie')}}">Check out&nbsp;</a>what other movies are showing today!</p>
+    </div>
+    <div class="wrapper">
+        <h2>Movie Details</h2>
+        <div class="rating font-size">
+            IMDB:&nbsp;{{$movie->rating}}
+        </div>
+        <div class="description font-size">
+            <label for="">Theater : </label>{{$theater_name->name}}<br>
+            <label for="">Genre : </label>{{$movie->genre}}<br>
+            <label for="">Casts : </label>{{$movie->cast}}<br>
+        </div>
+    </div>
+    <div class="line"></div>
 </div>
 @endsection

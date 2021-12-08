@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
 <link href="{{ asset('css/movie/style.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('css/movie/common.css') }}" rel="stylesheet" type="text/css">
 @endsection
@@ -11,7 +12,7 @@
 @section('content')
 
 <div class="wrapper mt-20">
-    <div class="clearfix">
+    <div class="clearfix pt-20">
         <div class="left">
             <h2>Create Now Showing Movie</h2>
         </div>
@@ -61,7 +62,7 @@
             <div class="right-row2 clearfix">
                 <textarea class="form-control width-1" name="cast" placeholder="Casts"></textarea>
                 <div class="right-row2 clearfix">
-                    <input type="text" name="duration" class="row2-left form-control" placeholder="Duration">
+                    <input type="text" name="duration" class="row2-left form-control" placeholder="100min">
                     <select name="theater_id" class="row2-left form-control">
                         <option value="">Select Theater ID</option>
                         @foreach($theaters as $theater)
@@ -70,7 +71,7 @@
                     </select>
                 </div>
                 <input type="text" name="genre" class="row2-left form-control" placeholder="Genre">
-                <input type="text" name="rating" class="row2-left form-control" placeholder="Rating">
+                <input type="text" name="rating" class="row2-left form-control" placeholder="rating:5">
             </div>
         </div>
 

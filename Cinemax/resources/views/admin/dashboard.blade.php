@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<div class="wrapper mt-20">
+<div class="wrapper mt-20 pt-20">
     <h2>Admin Dashboard</h2>
     <div class="manage-sec clearfix">
         <a href="{{route('admin-movie') }}">
@@ -21,7 +21,7 @@
         </a>
         <a href="{{route('statistic') }}">
             <div class="statistics">
-                <h3>Statistics</h3>
+                <h3 class="txt-center">Statistics</h3>
             </div>
         </a>
     </div>

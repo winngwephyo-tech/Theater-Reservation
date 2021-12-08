@@ -143,6 +143,7 @@ ul img:hover {
     }
     h2 {
         font-size: 18px;
+        margin: 10px 0;
     }
     h3 {
         font-size: 16px;
@@ -157,9 +158,12 @@ ul img:hover {
         margin: 5px 0;
         font-size: 12px;
     }
-    .recent-list li {
-        width: 200px;
-        margin-left: 22px;
+    .line {
+        margin: 10px 0;
+        height: 30px;
+    }
+    .recent-list{
+        margin: 0 auto;
     }
     .movie-lists strong {
         font-size: 14px;
@@ -167,7 +171,21 @@ ul img:hover {
     .movie-lists small {
         font-size: 12px;
     }
+    .recent-list li {
+        width: 135px;
+        margin-right: 12px;
+    }
+    img{
+        height: 226px;
+    }
     .add-movie {
-        width: 200px;
+        width: 135px;
+        height: 226px;
+        padding-top: 86px;
+    }
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

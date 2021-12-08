@@ -113,15 +113,17 @@ a:active {
     padding-right: 5px;
 }
 
+.logout {
+    display: none;
+}
+
 @media screen and (min-width: 641px) and (max-width: 900px) {
     .wrapper {
         width: 90%;
     }
 }
 
-
 @media screen and (max-width: 640px) {
-
     .wrapper {
         width: 95%;
     }
@@ -130,8 +132,20 @@ a:active {
         margin: 5px 0;
         font-size: 12px;
     }
-
-    .nav-after-login  {
+    .navbar {
+        padding: 15px 0;
+    }
+    .nav-link {
+        display: block;
+        margin-top: 4px;
+    }
+    .logo {
+        font-size: 16px;
+    }
+    .logo-icon {
+        font-size: 16px;
+    }
+    .nav-after-login {
         position: fixed;
         top: 54px;
         right: -100%;
@@ -143,42 +157,42 @@ a:active {
         text-align: center;
         transition: 0.3s;
         box-shadow: 0 10px 27px rgb(0 0 0 / 5%);
-      }
-
-      .nav-after-login a {
+    }
+    .nav-after-login a {
         display: block;
         float: none;
         padding: 8% 0 0;
         color: #fff;
-      }
-
-      .nav-a {
-          color: #fff;
-      }
-
-      .nav-after-login.active {
+    }
+    .nav-a {
+        color: #fff;
+    }
+    .logout {
+        display: inline-block;
+        padding: 8% 0 0;
+        background-color: inherit;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+    }
+    .nav-after-login.active {
         right: 0;
-      }
-
-      .nav-icon {
+    }
+    .nav-icon {
         display: block;
         cursor: pointer;
         float: right;
-      }
-
-      .nav-icon.active .bar-line:nth-child(2) {
+    }
+    .nav-icon.active .bar-line:nth-child(2) {
         opacity: 0;
-      }
-
-      .nav-icon.active .bar-line:nth-child(1) {
+    }
+    .nav-icon.active .bar-line:nth-child(1) {
         transform: translateY(7px) rotate(45deg);
-      }
-
-      .nav-icon.active .bar-line:nth-child(3) {
+    }
+    .nav-icon.active .bar-line:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
-      }
-
-      .bar-line {
+    }
+    .bar-line {
         display: block;
         width: 25px;
         height: 3px;
@@ -186,5 +200,5 @@ a:active {
         -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
         background-color: #732dd9;
-      }
+    }
 }

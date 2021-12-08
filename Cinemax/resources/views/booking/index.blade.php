@@ -46,7 +46,7 @@
             <td>{{ $book->name }}</td>
             <td>{{ $book->title }}</td>
             <td>{{ $book->seat_display_id }}</td>
-            <td>{{ $book->showtime}}</td>
+            <td>{{ date('g:i A', strtotime($book->showtime))}}</td>
             <td>{{ $book->price}}</td>
             <td>
                 <form method="PUT" action="{{ route('booking-delete',$book->id ) }}">

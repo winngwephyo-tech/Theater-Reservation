@@ -13,7 +13,7 @@
 
 @section('content')
 <div class="wrapper mt-20">
-    <div class="clearfix">
+    <div class="clearfix pt-20">
             <div class="left">
                 <h2>Create Theater</h2>
             </div>
